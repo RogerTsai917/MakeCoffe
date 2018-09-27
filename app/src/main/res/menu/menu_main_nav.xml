@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/newspaper"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_knowledge"
+        android:icon="@drawable/stack_of_books"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_make_coffee"
+        android:icon="@drawable/coffee_cup"
+        android:title="" />
+
+</menu>
