@@ -5,6 +5,7 @@ public class Constants {
     public static final String NEWS_URL =
             "https://newsapi.org/v2/everything?q=coffee&apiKey=af49a2f28f1f4e78b1267bb01efadaa3";
 
+    public static final int VIEW_TYPE_NEWS_LOADING = 0;
     public static final int VIEW_TYPE_NEWS_BIG = 1;
     public static final int VIEW_TYPE_NEWS_SMALL = 2;
 
