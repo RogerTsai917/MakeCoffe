@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_E1">
+
+    <TextView
+        android:id="@+id/textView_coffee_detail_timing_current_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="@dimen/make_coffee_detail_text_line_space"
+        android:textColor="@color/black_57"
+        android:textSize="@dimen/make_coffee_detail_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="(1/5)" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.36" />
+
+    <TextView
+        android:id="@+id/textView_coffee_detail_prepare"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="@dimen/make_coffee_detail_text_line_space"
+        android:text="萃取目標是 24 ~ 27秒內萃取出 30 ~32g 的咖啡液。"
+        android:textColor="@color/black_57"
+        android:textSize="@dimen/make_coffee_detail_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.sdsmdg.harjot.crollerTest.Croller
+        android:id="@+id/croller_coffee_detail_timing"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:back_circle_color="@color/brown_A2_origin"
+        app:indicator_color="@color/brown_B7"
+        app:indicator_width="10"
+        app:is_continuous="true"
+        app:label=""
+        app:label_color="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:main_circle_color="@color/gray_E1"
+        app:max="26"
+        app:min="0"
+        app:progress="26"
+        app:progress_primary_color="@color/brown_B7"
+        app:progress_secondary_color="@color/brown_B7_t"
+        app:start_offset="45" />
+
+    <TextView
+        android:id="@+id/textView_coffee_detail_timing_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="90s"
+        android:textColor="@color/brown_A2_origin"
+        android:textSize="@dimen/make_coffee_detail_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/croller_coffee_detail_timing"
+        app:layout_constraintEnd_toEndOf="@+id/croller_coffee_detail_timing"
+        app:layout_constraintStart_toStartOf="@+id/croller_coffee_detail_timing"
+        app:layout_constraintTop_toTopOf="@+id/croller_coffee_detail_timing" />
+
+    <Button
+        android:id="@+id/button_coffee_detail_timing_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/brown_B7_t"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/start"
+        android:textColor="@color/gray_E1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/croller_coffee_detail_timing" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/button_coffee_detail_timing_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/brown_B7_t"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/pause"
+        android:textColor="@color/gray_E1"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/croller_coffee_detail_timing" />
+
+    <Button
+        android:id="@+id/button_coffee_detail_timing_restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/brown_B7_t"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/restart"
+        android:textColor="@color/gray_E1"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/croller_coffee_detail_timing" />
+
+    <Button
+        android:id="@+id/button_coffee_detail_timing_single_restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/brown_B7_t"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/restart"
+        android:textColor="@color/gray_E1"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/croller_coffee_detail_timing" />
+
+</android.support.constraint.ConstraintLayout>

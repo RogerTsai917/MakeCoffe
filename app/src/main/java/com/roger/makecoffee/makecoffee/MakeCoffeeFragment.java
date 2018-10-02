@@ -17,6 +17,7 @@ import com.roger.makecoffee.R;
 import com.roger.makecoffee.activity.MakeCoffeeActivity;
 import com.roger.makecoffee.adapter.MakeCoffeeAdapter;
 import com.roger.makecoffee.decoration.MakeCoffeeItemDecoration;
+import com.roger.makecoffee.objects.MakeCoffeeData;
 import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
@@ -46,7 +47,7 @@ public class MakeCoffeeFragment extends Fragment implements MakeCoffeeContract.V
 
         mRecyclerView.setHasFixedSize(true);
 
-        mMakeCoffeeAdapter = new MakeCoffeeAdapter();
+        mMakeCoffeeAdapter = new MakeCoffeeAdapter(this);
         mRecyclerView.setAdapter(mMakeCoffeeAdapter);
 
         mRecyclerView.addItemDecoration(new MakeCoffeeItemDecoration(2,

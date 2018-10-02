@@ -1,6 +1,7 @@
 package com.roger.makecoffee.adapter;
 
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.roger.makecoffee.R;
+import com.roger.makecoffee.activity.MakeCoffeeActivity;
+import com.roger.makecoffee.makecoffee.MakeCoffeeFragment;
+import com.roger.makecoffee.objects.MakeCoffeeData;
+import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 
 public class MakeCoffeeAdapter extends RecyclerView.Adapter {
+    private MakeCoffeeFragment mMakeCoffeeFragment;
 
+    public MakeCoffeeAdapter(MakeCoffeeFragment fragment) {
+        mMakeCoffeeFragment = fragment;
+    }
 
     @NonNull
     @Override
@@ -29,37 +38,32 @@ public class MakeCoffeeAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        //temp
-        return 10;
+        return MakeCoffeeData.getInstance().getMakeCoffeeDataSize();
     }
 
     private void bindMakeCoffeeViewHolder(MakeCoffeeViewHolder holder, int position) {
-        int count = position % 4;
+        final MakeCoffeeTeaching teaching
+                = MakeCoffeeData.getInstance().getMakeCoffeeTeachingsArrayList().get(position);
+        holder.mImageView.setImageResource(teaching.getCoffeeDrawableId());
+        holder.mTextView.setText(teaching.getCoffeeName());
 
-        switch (count) {
-            case 0:
-                holder.mImageView.setImageResource(R.drawable.coffee_americano);
-                break;
-            case 1:
-                holder.mImageView.setImageResource(R.drawable.coffee_espresso);
-                break;
-            case 2:
-                holder.mImageView.setImageResource(R.drawable.coffee_latte);
-                break;
-            case 3:
-                holder.mImageView.setImageResource(R.drawable.coffee_cappuccino);
-                break;
-            default:
-        }
+        holder.mConstraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MakeCoffeeActivity)mMakeCoffeeFragment.getActivity()).transToMakeCoffeeDetail(teaching);
+            }
+        });
     }
 
     class MakeCoffeeViewHolder extends RecyclerView.ViewHolder {
+        ConstraintLayout mConstraintLayout;
         ImageView mImageView;
         TextView mTextView;
 
         public MakeCoffeeViewHolder(View itemView) {
             super(itemView);
 
+            mConstraintLayout = itemView.findViewById(R.id.constraintLayout_make_coffee);
             mImageView = itemView.findViewById(R.id.imageView_item_make_coffee);
             mTextView = itemView.findViewById(R.id.textView_item_make_coffee);
         }

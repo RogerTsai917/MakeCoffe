@@ -21,4 +21,10 @@ public class Constants {
     public static final String URL_TO_IMAGE = "urlToImage";
     public static final String PUBLISH_AT = "publishedAt";
     public static final String CONTENT = "content";
+
+    public static final String PREPARE = "prepare";
+    public static final String WATER_TEMP = "waterTemp";
+    public static final String TIMING = "timing";
+    public static final String NORMAL = "normal";
+    public static final String COMPLETED = "completed";
 }
