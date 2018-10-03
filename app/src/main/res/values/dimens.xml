@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="toolbar_height">59dp</dimen>
+    <dimen name="toolbar_height">70dp</dimen>
+    <dimen name="toolbar_icon_width">24dp</dimen>
+    <dimen name="toolbar_icon_height">24dp</dimen>
 
     <dimen name="sub_nav_bottom_height">45dp</dimen>
     <dimen name="sub_nav_bottom_icon_size">28dp</dimen>
@@ -15,4 +17,6 @@
 
     <dimen name="make_coffee_detail_text_size">20sp</dimen>
     <dimen name="make_coffee_detail_text_line_space">4sp</dimen>
+
+    <dimen name="knowledge_item_space">10dp</dimen>
 </resources>

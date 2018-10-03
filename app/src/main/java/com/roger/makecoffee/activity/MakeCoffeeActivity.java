@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.roger.makecoffee.BaseActivity;
 import com.roger.makecoffee.R;
+import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 
 public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContract.View, NavigationView.OnNavigationItemSelectedListener{
@@ -39,6 +40,11 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         mPresenter = new MakeCoffeePresenter(this, getFragmentManager());
         mPresenter.start();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void setToolbar() {
@@ -125,6 +131,11 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     @Override
     public void transToMakeCoffeeDetail(MakeCoffeeTeaching teaching) {
         mPresenter.transToMakeCoffeeDetail(teaching);
+    }
+
+    @Override
+    public void transToKnowledgeDetail(CoffeeKnowledgeCollection collection) {
+        mPresenter.transToKnowledgeDetail(collection);
     }
 
     @Override

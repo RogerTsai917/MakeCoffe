@@ -2,6 +2,7 @@ package com.roger.makecoffee.activity;
 
 import com.roger.makecoffee.BasePresenter;
 import com.roger.makecoffee.BaseView;
+import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 
 public interface MakeCoffeeContract {
@@ -19,6 +20,8 @@ public interface MakeCoffeeContract {
 
         void transToMakeCoffeeDetail(MakeCoffeeTeaching teaching);
 
+        void transToKnowledgeDetail(CoffeeKnowledgeCollection collection);
+
         void showToolbarAndNavBottom();
 
         void hideToolbarAndNavBottom();
@@ -35,6 +38,8 @@ public interface MakeCoffeeContract {
         void transToProfile();
 
         void transToMakeCoffeeDetail(MakeCoffeeTeaching teaching);
+
+        void transToKnowledgeDetail(CoffeeKnowledgeCollection collection);
 
         void setToolbarTitle(String title);
     }

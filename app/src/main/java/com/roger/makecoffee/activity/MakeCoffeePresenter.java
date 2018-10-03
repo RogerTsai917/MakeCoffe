@@ -6,9 +6,11 @@ import android.util.Log;
 
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.articles.ArticlesFragment;
+import com.roger.makecoffee.knowledgedetail.KnowledgeDetailFragment;
 import com.roger.makecoffee.main.MainFragment;
 import com.roger.makecoffee.main.MainPresenter;
 import com.roger.makecoffee.makecoffeedetail.MakeCoffeeDetailFragment;
+import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 import com.roger.makecoffee.profile.ProfileFragment;
 import com.roger.makecoffee.search.SearchFragment;
@@ -19,6 +21,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     private static final String SEARCH = "SEARCH";
     private static final String PROFILE = "PROFILE";
     private static final String MAKE_COFFEE_DETAIL = "MAKE_COFFEE_DETAIL";
+    private static final String KNOWLEDGE_DETAIL = "KNOWLEDGE_DETAIL";
 
     private MakeCoffeeContract.View mMakeCoffeeView;
     private FragmentManager mFragmentManager;
@@ -39,6 +42,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
         if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mMainFragment == null) mMainFragment = MainFragment.newInstance();
         if (mArticlesFragment != null) transaction.hide(mArticlesFragment);
         if (mSearchFragment != null) transaction.hide(mSearchFragment);
@@ -57,6 +61,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
         if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mArticlesFragment == null) mArticlesFragment = ArticlesFragment.newInstance();
         if (mMainFragment != null) transaction.hide(mMainFragment);
         if (mSearchFragment != null) transaction.hide(mSearchFragment);
@@ -74,6 +79,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
         if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mSearchFragment == null) mSearchFragment = SearchFragment.newInstance();
         if (mMainFragment != null) transaction.hide(mMainFragment);
         if (mArticlesFragment != null) transaction.hide(mArticlesFragment);
@@ -91,6 +97,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
         if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mProfileFragment == null) mProfileFragment = ProfileFragment.newInstance();
         if (mMainFragment != null) transaction.hide(mMainFragment);
         if (mArticlesFragment != null) transaction.hide(mArticlesFragment);
@@ -125,6 +132,31 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         }
         MakeCoffeeDetailFragment makeCoffeeDetailFragment = MakeCoffeeDetailFragment.newInstance(teaching);
         transaction.add(R.id.frameLayout_make_coffee_container, makeCoffeeDetailFragment, MAKE_COFFEE_DETAIL);
+        transaction.commit();
+    }
+
+    @Override
+    public void transToKnowledgeDetail(CoffeeKnowledgeCollection collection) {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+
+        if (mMainFragment != null && !mMainFragment.isHidden()) {
+            transaction.hide(mMainFragment);
+            transaction.addToBackStack(MAIN);
+        }
+        if (mArticlesFragment != null && !mArticlesFragment.isHidden()) {
+            transaction.hide(mArticlesFragment);
+            transaction.addToBackStack(ARTICLES);
+        }
+        if (mArticlesFragment != null && !mArticlesFragment.isHidden()) {
+            transaction.hide(mArticlesFragment);
+            transaction.addToBackStack(ARTICLES);
+        }
+        if (mSearchFragment != null && !mSearchFragment.isHidden()) {
+            transaction.hide(mSearchFragment);
+            transaction.addToBackStack(SEARCH);
+        }
+        KnowledgeDetailFragment knowledgeDetailFragment = KnowledgeDetailFragment.newInstance(collection);
+        transaction.add(R.id.frameLayout_make_coffee_container, knowledgeDetailFragment, MAKE_COFFEE_DETAIL);
         transaction.commit();
     }
 

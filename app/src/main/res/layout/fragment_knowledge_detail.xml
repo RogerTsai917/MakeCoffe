@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MakeCoffeeActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_make_coffee_activity"
+        android:id="@+id/toolbar_knowledge_detail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
         android:background="@color/brown_B7"
@@ -16,49 +15,36 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView_toolbar_icon"
+        android:id="@+id/imageView_knowledge_detail_back"
         android:layout_width="@dimen/toolbar_icon_width"
         android:layout_height="@dimen/toolbar_icon_height"
         android:layout_marginBottom="12dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar_make_coffee_activity"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_knowledge_detail"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/btn_menu" />
+        app:srcCompat="@drawable/back" />
 
     <TextView
-        android:id="@+id/textView_toolbar_title"
+        android:id="@+id/textView_knowledge_detail_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
-        android:text="@string/news"
         android:textColor="#EEEEEE"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_toolbar_icon"
-        app:layout_constraintStart_toEndOf="@+id/imageView_toolbar_icon"
-        app:layout_constraintTop_toTopOf="@+id/imageView_toolbar_icon" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_knowledge_detail_back"
+        app:layout_constraintStart_toEndOf="@+id/imageView_knowledge_detail_back"
+        app:layout_constraintTop_toTopOf="@+id/imageView_knowledge_detail_back"
+        tools:text="尋找咖啡" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout_make_coffee_container"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_knowledge_detail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/nav_bottom_main_activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_make_coffee_activity" />
-
-    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-        android:id="@+id/nav_bottom_main_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/white"
-        android:elevation="10dp"
-        app:itemIconTint="@drawable/nav_bottom_item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_navigation_button" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_knowledge_detail" />
 
 </android.support.constraint.ConstraintLayout>
