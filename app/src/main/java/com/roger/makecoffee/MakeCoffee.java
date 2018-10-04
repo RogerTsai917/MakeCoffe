@@ -3,6 +3,8 @@ package com.roger.makecoffee;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.firebase.FirebaseApp;
+
 public class MakeCoffee extends Application {
     private static Context mContext;
 

@@ -5,6 +5,14 @@ public class Constants {
     public static final String NEWS_URL =
             "https://newsapi.org/v2/everything?q=coffee&apiKey=af49a2f28f1f4e78b1267bb01efadaa3";
 
+    // Activity
+    public static final int LOGIN_ACTIVITY = 0x01;
+
+    // Status
+    public static final int LOGIN_SUCCESS = 0x11;
+    public static final int LOGIN_EXIT = 0x12;
+
+    // News page view type
     public static final int VIEW_TYPE_NEWS_LOADING = 0;
     public static final int VIEW_TYPE_NEWS_BIG = 1;
     public static final int VIEW_TYPE_NEWS_SMALL = 2;
@@ -27,4 +35,12 @@ public class Constants {
     public static final String TIMING = "timing";
     public static final String NORMAL = "normal";
     public static final String COMPLETED = "completed";
+
+    public static final String USER_DATA = "user_data";
+    public static final String USER_NAME = "user_name";
+    public static final String USER_EMAIL = "user_email";
+    public static final String USER_PHOTO_URL = "user_photo_url";
+    public static final String USER_UID = "user_uid";
+
+    public static final int RC_SIGN_IN = 9001;
 }

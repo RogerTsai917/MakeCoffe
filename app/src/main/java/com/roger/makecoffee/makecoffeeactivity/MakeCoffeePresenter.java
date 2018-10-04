@@ -1,14 +1,12 @@
-package com.roger.makecoffee.activity;
+package com.roger.makecoffee.makecoffeeactivity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.util.Log;
 
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.articles.ArticlesFragment;
 import com.roger.makecoffee.knowledgedetail.KnowledgeDetailFragment;
 import com.roger.makecoffee.main.MainFragment;
-import com.roger.makecoffee.main.MainPresenter;
 import com.roger.makecoffee.makecoffeedetail.MakeCoffeeDetailFragment;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
@@ -71,6 +69,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         } else {
             transaction.show(mArticlesFragment);
         }
+        mArticlesFragment.setSuperPresenter(this);
         transaction.commit();
     }
 

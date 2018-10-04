@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.activity.MakeCoffeeContract;
+import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeContract;
 
 public class MainFragment extends Fragment implements MainContract.View{
     private MakeCoffeeContract.Presenter mSuperPresenter;

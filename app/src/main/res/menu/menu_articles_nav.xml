@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_articles_list"
+        android:icon="@drawable/icon_articles"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_following"
+        android:icon="@drawable/icon_followers"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_liked"
+        android:icon="@drawable/icon_like"
+        android:title="" />
+
+</menu>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1004929203715",
+    "firebase_url": "https://make-coffee-e90a3.firebaseio.com",
+    "project_id": "make-coffee-e90a3",
+    "storage_bucket": "make-coffee-e90a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004929203715:android:5e4840206e7f25ab",
+        "android_client_info": {
+          "package_name": "com.roger.makecoffee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004929203715-1hcjp95qjhns193vi1djl6h6gh445imi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.roger.makecoffee",
+            "certificate_hash": "58cd3566465356e96cbeb89de46d5f1fa74cbd4e"
+          }
+        },
+        {
+          "client_id": "1004929203715-kpeg6pk1ii6caojrbdr0bba0nchpbs7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0REcSq5OvszoK8ctFS6Pbvq1OFEk7klw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004929203715-kpeg6pk1ii6caojrbdr0bba0nchpbs7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

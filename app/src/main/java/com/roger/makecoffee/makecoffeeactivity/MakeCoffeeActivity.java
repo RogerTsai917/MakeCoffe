@@ -1,6 +1,8 @@
-package com.roger.makecoffee.activity;
+package com.roger.makecoffee.makecoffeeactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.Toolbar;
@@ -10,11 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.google.firebase.FirebaseApp;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.roger.makecoffee.BaseActivity;
 import com.roger.makecoffee.R;
+import com.roger.makecoffee.loginactivity.LoginActivity;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
+import com.roger.makecoffee.user.UserManager;
+import com.roger.makecoffee.utils.Constants;
 
 public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContract.View, NavigationView.OnNavigationItemSelectedListener{
     private MakeCoffeeContract.Presenter mPresenter;
@@ -27,7 +33,18 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        init();
+        FirebaseApp.initializeApp(this);
+        if (UserManager.getInstance().isLoginStatus()) {
+
+            init();
+        } else {
+
+            popLogin();
+        }
+    }
+
+    private void popLogin() {
+        startActivityForResult(new Intent(mContext, LoginActivity.class), Constants.LOGIN_ACTIVITY);
     }
 
     private void init() {

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.activity.MakeCoffeeActivity;
+import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.adapter.MakeCoffeeDetailAdapter;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 

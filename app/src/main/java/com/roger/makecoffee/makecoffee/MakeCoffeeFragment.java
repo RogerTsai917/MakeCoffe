@@ -1,7 +1,6 @@
 package com.roger.makecoffee.makecoffee;
 
 import android.app.Fragment;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -9,17 +8,10 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.roger.makecoffee.MakeCoffee;
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.activity.MakeCoffeeActivity;
 import com.roger.makecoffee.adapter.MakeCoffeeAdapter;
 import com.roger.makecoffee.decoration.MakeCoffeeItemDecoration;
-import com.roger.makecoffee.objects.MakeCoffeeData;
-import com.sdsmdg.harjot.crollerTest.Croller;
-import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
 public class MakeCoffeeFragment extends Fragment implements MakeCoffeeContract.View {
     private MakeCoffeeContract.Presenter mpresenter;

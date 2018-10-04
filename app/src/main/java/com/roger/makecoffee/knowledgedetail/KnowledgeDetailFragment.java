@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.activity.MakeCoffeeActivity;
+import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.adapter.KnowledgeDetailAdapter;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 

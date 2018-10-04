@@ -1,4 +1,4 @@
-package com.roger.makecoffee.activity;
+package com.roger.makecoffee.makecoffeeactivity;
 
 import com.roger.makecoffee.BasePresenter;
 import com.roger.makecoffee.BaseView;
