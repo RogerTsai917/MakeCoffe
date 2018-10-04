@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,12 +24,13 @@ import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
 
-public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContract.View, NavigationView.OnNavigationItemSelectedListener{
+public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContract.View {
     private MakeCoffeeContract.Presenter mPresenter;
     private Toolbar mToolbar;
     private ImageView mToolbarIcon;
     private TextView mToolbarTitle;
     private BottomNavigationViewEx mBottomNavigation;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,26 +51,23 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     }
 
     private void init() {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_drawer);
 
         setToolbar();
         setBottomNavigation();
-//        setDrawerLayout();
+        setDrawerLayout();
 
         mPresenter = new MakeCoffeePresenter(this, getFragmentManager());
         mPresenter.start();
 
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
     private void setToolbar() {
         mToolbar = findViewById(R.id.toolbar_make_coffee_activity);
         mToolbarIcon = findViewById(R.id.imageView_toolbar_icon);
         mToolbarTitle = findViewById(R.id.textView_toolbar_title);
+
+        mToolbarIcon.setOnClickListener(mOnClickListener);
     }
 
     private void setBottomNavigation() {
@@ -87,12 +87,20 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
 
     }
 
+    private void setDrawerLayout() {
+        mDrawerLayout = findViewById(R.id.drawerLayout_main_activity);
+
+        mDrawerLayout.setFitsSystemWindows(true);
+        mDrawerLayout.setClipToPadding(false);
+    }
+
     private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationViewEx.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
             switch (item.getItemId()) {
+
                 case R.id.navigation_main:
                     transToMain();
                     return true;
@@ -115,9 +123,27 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         }
     };
 
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.imageView_toolbar_icon:
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+                    break;
+
+                default:
+            }
+        }
+    };
+
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+
     }
 
     @Override
@@ -175,6 +201,7 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     public void setPresenter(MakeCoffeeContract.Presenter presenter) {
         mPresenter = presenter;
     }
+
 
 
 }
