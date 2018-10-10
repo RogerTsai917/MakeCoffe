@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.roger.makecoffee.MakeCoffee;
 import com.roger.makecoffee.R;
+import com.roger.makecoffee.loginactivity.LoginActivity;
 import com.roger.makecoffee.utils.Constants;
 
 import java.util.concurrent.Executor;
@@ -58,7 +59,7 @@ public class UserManager {
         activity.startActivityForResult(signInIntent, Constants.RC_SIGN_IN);
     }
 
-    private void signOut() {
+    private void signOut(Activity activity) {
         // Firebase sign out
         mAuth.signOut();
 
@@ -69,9 +70,11 @@ public class UserManager {
                 .edit()
                 .clear()
                 .commit();
+
+        transToLoginActivity(activity);
     }
 
-    public void firebaseAuthWithGoogle(Activity activity, GoogleSignInAccount acct) {
+    public void firebaseAuthWithGoogle(final Activity activity, GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -81,13 +84,15 @@ public class UserManager {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             saveUserInfo(user);
+                            transToMakeCoffeeActivity(activity);
                         } else {
                             // If sign in fails, display a message.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-
+                            ((LoginActivity)activity).showSignInButton();
                         }
 
                     }
@@ -106,6 +111,15 @@ public class UserManager {
                 .putString(Constants.USER_PHOTO_URL, user.getPhotoUrl().toString())
                 .putString(Constants.USER_UID, user.getUid())
                 .commit();
+    }
+
+    private void transToMakeCoffeeActivity(Activity activity) {
+        activity.setResult(Constants.LOGIN_SUCCESS);
+        activity.finish();
+    }
+
+    private void transToLoginActivity(Activity activity) {
+
     }
 
     public String getUserName() {

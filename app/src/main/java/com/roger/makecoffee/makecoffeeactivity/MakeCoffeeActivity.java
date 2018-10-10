@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.roger.makecoffee.BaseActivity;
 import com.roger.makecoffee.R;
@@ -37,12 +37,22 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         super.onCreate(savedInstanceState);
 
         FirebaseApp.initializeApp(this);
+
         if (UserManager.getInstance().isLoginStatus()) {
 
             init();
         } else {
 
             popLogin();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Constants.LOGIN_SUCCESS) {
+            init();
         }
     }
 
@@ -56,6 +66,8 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         setToolbar();
         setBottomNavigation();
         setDrawerLayout();
+
+        //initFireStore();
 
         mPresenter = new MakeCoffeePresenter(this, getFragmentManager());
         mPresenter.start();
@@ -92,6 +104,10 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
 
         mDrawerLayout.setFitsSystemWindows(true);
         mDrawerLayout.setClipToPadding(false);
+    }
+
+    private void initFireStore() {
+        FirebaseFirestore.getInstance();
     }
 
     private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationViewEx.OnNavigationItemSelectedListener() {
@@ -179,6 +195,11 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     @Override
     public void transToKnowledgeDetail(CoffeeKnowledgeCollection collection) {
         mPresenter.transToKnowledgeDetail(collection);
+    }
+
+    @Override
+    public void transToWriteArticle() {
+        mPresenter.transToWriteArticle();
     }
 
     @Override

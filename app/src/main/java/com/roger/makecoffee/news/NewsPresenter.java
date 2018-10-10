@@ -23,7 +23,7 @@ public class NewsPresenter implements NewsContract.Presenter {
                 @Override
                 public void onCompleted() {
                     setLoading(false);
-                    Log.d(TAG, "onError");
+                    Log.d(TAG, "onCompleted");
                     mNewsView.showNews();
                 }
 

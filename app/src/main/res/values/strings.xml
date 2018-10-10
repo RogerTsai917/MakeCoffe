@@ -17,4 +17,20 @@
     <string name="following">Following</string>
     <string name="liked">Liked</string>
 
+    <string name="write_article_title">Title: </string>
+    <string name="write_article_description">Description: </string>
+    <string name="write_article_title_hint">Enter title…</string>
+    <string name="write_article_description_hint">Enter description…</string>
+    <string name="write_article_preview_photo">Preview Photo: </string>
+    <string name="write_article_upload_photo">Upload Photo</string>
+    <string name="write_article_content">Content: </string>
+    <string name="write_article_content_hint">Enter step content…</string>
+    <string name="write_article_step_upload_photo">Upload Photo(optional): </string>
+    <string name="post_article">Post Article</string>
+
+    <string name="title_cannot_be_empty">Title cannot be empty!</string>
+    <string name="description_cannot_be_empty">Description cannot be empty!</string>
+    <string name="step_content_cannot_be_empty">Step Content cannot be empty!</string>
+    <string name="uploading_article_please_wait">Uploading article, please wait a second!</string>
+
 </resources>

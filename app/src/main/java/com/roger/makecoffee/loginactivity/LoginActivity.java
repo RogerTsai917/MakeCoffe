@@ -29,10 +29,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mSignInButton.setOnClickListener(this);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -43,6 +39,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
+                hideSignInButton();
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 UserManager.getInstance().firebaseAuthWithGoogle(this, account);
             } catch (ApiException e) {
@@ -73,6 +70,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             default:
         }
+    }
+
+    public void hideSignInButton() {
+        mSignInButton.setVisibility(View.GONE);
+    }
+
+    public void showSignInButton() {
+        mSignInButton.setVisibility(View.VISIBLE);
     }
 
 }

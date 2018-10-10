@@ -22,6 +22,8 @@ public interface MakeCoffeeContract {
 
         void transToKnowledgeDetail(CoffeeKnowledgeCollection collection);
 
+        void transToWriteArticle();
+
         void showToolbarAndNavBottom();
 
         void hideToolbarAndNavBottom();
@@ -40,6 +42,8 @@ public interface MakeCoffeeContract {
         void transToMakeCoffeeDetail(MakeCoffeeTeaching teaching);
 
         void transToKnowledgeDetail(CoffeeKnowledgeCollection collection);
+
+        void transToWriteArticle();
 
         void setToolbarTitle(String title);
     }

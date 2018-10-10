@@ -12,10 +12,17 @@ public class Constants {
     public static final int LOGIN_SUCCESS = 0x11;
     public static final int LOGIN_EXIT = 0x12;
 
+    public static final int GET_IMAGE_FROM_ALBUM = 0x21;
+
     // News page view type
     public static final int VIEW_TYPE_NEWS_LOADING = 0;
     public static final int VIEW_TYPE_NEWS_BIG = 1;
     public static final int VIEW_TYPE_NEWS_SMALL = 2;
+
+    public static final int VIEW_TYPE_WRITE_ARTICLE_TITLE = 0;
+    public static final int VIEW_TYPE_WRITE_ARTICLE_STEP = 1;
+    public static final int VIEW_TYPE_WRITE_ARTICLE_ADD = 2;
+
 
     // News Api
     public static final String STATUS = "status";
@@ -41,6 +48,8 @@ public class Constants {
     public static final String USER_EMAIL = "user_email";
     public static final String USER_PHOTO_URL = "user_photo_url";
     public static final String USER_UID = "user_uid";
+
+    public static final String ARTICLES_PHOTOS = "articlesPhotos/";
 
     public static final int RC_SIGN_IN = 9001;
 }
