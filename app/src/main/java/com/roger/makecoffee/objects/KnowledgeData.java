@@ -40,8 +40,6 @@ public class KnowledgeData {
         basicKnowledge();
         findCoffee();
 
-        basicKnowledge();
-        findCoffee();
     }
 
     private void basicKnowledge() {

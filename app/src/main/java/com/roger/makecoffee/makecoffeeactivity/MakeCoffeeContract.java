@@ -10,11 +10,15 @@ public interface MakeCoffeeContract {
     interface View extends BaseView<Presenter> {
         void setToolbarTitle(String title);
 
-        void transToMain();
+        void transToMakeCoffee();
+
+        void transToKnowledge();
+
+        void transToNews();
 
         void transToArticles();
 
-        void transToSearch();
+        void transToLiked();
 
         void transToProfile();
 
@@ -31,11 +35,15 @@ public interface MakeCoffeeContract {
 
     interface Presenter extends BasePresenter {
 
-        void transToMain();
+        void transToMakeCoffee();
+
+        void transToKnowledge();
+
+        void transToNews();
 
         void transToArticles();
 
-        void transToSearch();
+        void transToLiked();
 
         void transToProfile();
 

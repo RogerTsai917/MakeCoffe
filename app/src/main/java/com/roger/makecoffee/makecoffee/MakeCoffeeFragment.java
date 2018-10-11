@@ -60,4 +60,5 @@ public class MakeCoffeeFragment extends Fragment implements MakeCoffeeContract.V
     public void setPresenter(MakeCoffeeContract.Presenter presenter) {
         mpresenter = presenter;
     }
+
 }

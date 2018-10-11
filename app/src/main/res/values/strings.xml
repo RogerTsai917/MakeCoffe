@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Make Coffee</string>
 
+    <string name="make_coffee">Make Coffee</string>
     <string name="news">News</string>
     <string name="coffee_knowledge">Coffee Knowledge</string>
-    <string name="make_coffee">Make Coffee</string>
+    <string name="articles">Articles</string>
+    <string name="following">Following</string>
+    <string name="liked">Liked</string>
+    <string name="profile">Profile</string>
+
     <string name="completed">Completed!</string>
     <string name="previous_step">Previous step</string>
     <string name="next_step">Next step</string>
@@ -12,10 +17,6 @@
     <string name="restart">Restart</string>
     <string name="continue_text">Continue</string>
     <string name="google_login">Login with Google</string>
-
-    <string name="articles">Articles</string>
-    <string name="following">Following</string>
-    <string name="liked">Liked</string>
 
     <string name="write_article_title">Title: </string>
     <string name="write_article_description">Description: </string>

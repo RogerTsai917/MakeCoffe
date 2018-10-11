@@ -67,8 +67,6 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         setBottomNavigation();
         setDrawerLayout();
 
-        //initFireStore();
-
         mPresenter = new MakeCoffeePresenter(this, getFragmentManager());
         mPresenter.start();
 
@@ -106,10 +104,6 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         mDrawerLayout.setClipToPadding(false);
     }
 
-    private void initFireStore() {
-        FirebaseFirestore.getInstance();
-    }
-
     private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationViewEx.OnNavigationItemSelectedListener() {
 
         @Override
@@ -117,20 +111,24 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
 
             switch (item.getItemId()) {
 
-                case R.id.navigation_main:
-                    transToMain();
+                case R.id.navigation_make_coffee:
+                    transToMakeCoffee();
+                    return true;
+
+                case R.id.navigation_knowledge:
+                    transToKnowledge();
+                    return true;
+
+                case R.id.navigation_news:
+                    transToNews();
                     return true;
 
                 case R.id.navigation_articles:
                     transToArticles();
                     return true;
 
-                case R.id.navigation_search:
-                    transToSearch();
-                    return true;
-
-                case R.id.navigation_profile:
-                    transToProfile();
+                case R.id.navigation_liked:
+                    transToLiked();
                     return true;
 
                 default:
@@ -159,7 +157,6 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         } else {
             super.onBackPressed();
         }
-
     }
 
     @Override
@@ -168,22 +165,38 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     }
 
     @Override
-    public void transToMain() {
-        mPresenter.transToMain();
+    public void transToMakeCoffee() {
+        setToolbarTitle(getResources().getString(R.string.make_coffee));
+        mPresenter.transToMakeCoffee();
+    }
+
+    @Override
+    public void transToKnowledge() {
+        setToolbarTitle(getResources().getString(R.string.coffee_knowledge));
+        mPresenter.transToKnowledge();
+    }
+
+    @Override
+    public void transToNews() {
+        setToolbarTitle(getResources().getString(R.string.news));
+        mPresenter.transToNews();
     }
 
     @Override
     public void transToArticles() {
+        setToolbarTitle(getResources().getString(R.string.articles));
         mPresenter.transToArticles();
     }
 
     @Override
-    public void transToSearch() {
-        mPresenter.transToSearch();
+    public void transToLiked() {
+        setToolbarTitle(getResources().getString(R.string.liked));
+        mPresenter.transToLiked();
     }
 
     @Override
     public void transToProfile() {
+        setToolbarTitle(getResources().getString(R.string.profile));
         mPresenter.transToProfile();
     }
 

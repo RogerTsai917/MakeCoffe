@@ -92,7 +92,7 @@ public class MakeCoffeeDetailFragment extends Fragment {
                     break;
 
                 case R.id.button_make_coffee_completed:
-                    ((MakeCoffeeActivity)getActivity()).transToMain();
+                    ((MakeCoffeeActivity)getActivity()).transToMakeCoffee();
                     break;
 
                 default:

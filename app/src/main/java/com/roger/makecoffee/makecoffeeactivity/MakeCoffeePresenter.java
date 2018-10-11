@@ -5,19 +5,27 @@ import android.app.FragmentTransaction;
 
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.articles.ArticlesFragment;
+import com.roger.makecoffee.articleslist.ArticlesListFragment;
+import com.roger.makecoffee.knowledge.KnowledgeFragment;
 import com.roger.makecoffee.knowledgedetail.KnowledgeDetailFragment;
+import com.roger.makecoffee.liked.LikedFragment;
 import com.roger.makecoffee.main.MainFragment;
+import com.roger.makecoffee.makecoffee.MakeCoffeeFragment;
 import com.roger.makecoffee.makecoffeedetail.MakeCoffeeDetailFragment;
+import com.roger.makecoffee.news.NewsFragment;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
+import com.roger.makecoffee.objects.define.News;
 import com.roger.makecoffee.profile.ProfileFragment;
 import com.roger.makecoffee.search.SearchFragment;
 import com.roger.makecoffee.writearticle.WriteArticleFragment;
 
 public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
-    private static final String MAIN = "MAIN";
-    private static final String ARTICLES = "ARTICLES";
-    private static final String SEARCH = "SEARCH";
+    private static final String MAKE_COFFEE = "MAKE_COFFEE";
+    private static final String KNOWLEDGE = "KNOWLEDGE";
+    private static final String NEWS = "NEWS";
+    private static final String ARTICLES_LIST = "ARTICLES_LIST";
+    private static final String LIKED = "LIKED";
     private static final String PROFILE = "PROFILE";
     private static final String MAKE_COFFEE_DETAIL = "MAKE_COFFEE_DETAIL";
     private static final String KNOWLEDGE_DETAIL = "KNOWLEDGE_DETAIL";
@@ -26,9 +34,11 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     private MakeCoffeeContract.View mMakeCoffeeView;
     private FragmentManager mFragmentManager;
 
-    private MainFragment mMainFragment;
-    private ArticlesFragment mArticlesFragment;
-    private SearchFragment mSearchFragment;
+    private MakeCoffeeFragment mMakeCoffeeFragment;
+    private KnowledgeFragment mKnowledgeFragment;
+    private NewsFragment mNewsFragment;
+    private ArticlesListFragment mArticlesListFragment;
+    private LikedFragment mLikedFragment;
     private ProfileFragment mProfileFragment;
 
     public MakeCoffeePresenter(MakeCoffeeContract.View makeCoffeeView, FragmentManager fragmentManager) {
@@ -37,24 +47,70 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         mFragmentManager = fragmentManager;
     }
 
+
     @Override
-    public void transToMain() {
+    public void transToMakeCoffee() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
         if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
 
-        if (mMainFragment == null) mMainFragment = MainFragment.newInstance();
-        if (mArticlesFragment != null) transaction.hide(mArticlesFragment);
-        if (mSearchFragment != null) transaction.hide(mSearchFragment);
+        if (mMakeCoffeeFragment == null) mMakeCoffeeFragment = MakeCoffeeFragment.newInstance();
+        if (mKnowledgeFragment != null) transaction.hide(mKnowledgeFragment);
+        if (mNewsFragment != null) transaction.hide(mNewsFragment);
+        if (mArticlesListFragment != null) transaction.hide(mArticlesListFragment);
+        if (mLikedFragment != null) transaction.hide(mLikedFragment);
         if (mProfileFragment != null) transaction.hide(mProfileFragment);
-        if (!mMainFragment.isAdded()) {
-            transaction.add(R.id.frameLayout_make_coffee_container, mMainFragment, MAIN);
+        if (!mMakeCoffeeFragment.isAdded()) {
+            transaction.add(R.id.frameLayout_make_coffee_container, mMakeCoffeeFragment, MAKE_COFFEE);
         } else {
-            transaction.show(mMainFragment);
+            transaction.show(mMakeCoffeeFragment);
         }
-        mMainFragment.setSuperPresenter(this);
+        transaction.commit();
+    }
+
+    @Override
+    public void transToKnowledge() {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+
+        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
+
+        if (mKnowledgeFragment == null) mKnowledgeFragment = KnowledgeFragment.newInstance();
+        if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
+        if (mNewsFragment != null) transaction.hide(mNewsFragment);
+        if (mArticlesListFragment != null) transaction.hide(mArticlesListFragment);
+        if (mLikedFragment != null) transaction.hide(mLikedFragment);
+        if (mProfileFragment != null) transaction.hide(mProfileFragment);
+        if (!mKnowledgeFragment.isAdded()) {
+            transaction.add(R.id.frameLayout_make_coffee_container, mKnowledgeFragment, KNOWLEDGE);
+        } else {
+            transaction.show(mKnowledgeFragment);
+        }
+        transaction.commit();
+    }
+
+    @Override
+    public void transToNews() {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+
+        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
+
+        if (mNewsFragment == null) mNewsFragment = NewsFragment.newInstance();
+        if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
+        if (mKnowledgeFragment != null) transaction.hide(mKnowledgeFragment);
+        if (mArticlesListFragment != null) transaction.hide(mArticlesListFragment);
+        if (mLikedFragment != null) transaction.hide(mLikedFragment);
+        if (mProfileFragment != null) transaction.hide(mProfileFragment);
+        if (!mNewsFragment.isAdded()) {
+            transaction.add(R.id.frameLayout_make_coffee_container, mNewsFragment, NEWS);
+        } else {
+            transaction.show(mNewsFragment);
+        }
         transaction.commit();
     }
 
@@ -66,79 +122,53 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
 
-        if (mArticlesFragment == null) mArticlesFragment = ArticlesFragment.newInstance();
-        if (mMainFragment != null) transaction.hide(mMainFragment);
-        if (mSearchFragment != null) transaction.hide(mSearchFragment);
+        if (mArticlesListFragment == null) mArticlesListFragment = ArticlesListFragment.newInstance();
+        if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
+        if (mKnowledgeFragment != null) transaction.hide(mKnowledgeFragment);
+        if (mNewsFragment != null) transaction.hide(mNewsFragment);
+        if (mLikedFragment != null) transaction.hide(mLikedFragment);
         if (mProfileFragment != null) transaction.hide(mProfileFragment);
-        if (!mArticlesFragment.isAdded()) {
-            transaction.add(R.id.frameLayout_make_coffee_container, mArticlesFragment, ARTICLES);
+        if (!mArticlesListFragment.isAdded()) {
+            transaction.add(R.id.frameLayout_make_coffee_container, mArticlesListFragment, ARTICLES_LIST);
         } else {
-            transaction.show(mArticlesFragment);
+            transaction.show(mArticlesListFragment);
         }
-        mArticlesFragment.setSuperPresenter(this);
         transaction.commit();
     }
 
     @Override
-    public void transToSearch() {
+    public void transToLiked() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
         if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
 
-        if (mSearchFragment == null) mSearchFragment = SearchFragment.newInstance();
-        if (mMainFragment != null) transaction.hide(mMainFragment);
-        if (mArticlesFragment != null) transaction.hide(mArticlesFragment);
+        if (mLikedFragment == null) mLikedFragment = LikedFragment.newInstance();
+        if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
+        if (mKnowledgeFragment != null) transaction.hide(mKnowledgeFragment);
+        if (mNewsFragment != null) transaction.hide(mNewsFragment);
+        if (mArticlesListFragment != null) transaction.hide(mArticlesListFragment);
         if (mProfileFragment != null) transaction.hide(mProfileFragment);
-        if (!mSearchFragment.isAdded()) {
-            transaction.add(R.id.frameLayout_make_coffee_container, mSearchFragment, SEARCH);
+        if (!mLikedFragment.isAdded()) {
+            transaction.add(R.id.frameLayout_make_coffee_container, mLikedFragment, LIKED);
         } else {
-            transaction.show(mSearchFragment);
+            transaction.show(mLikedFragment);
         }
         transaction.commit();
     }
 
     @Override
     public void transToProfile() {
-        FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
-
-        if (mProfileFragment == null) mProfileFragment = ProfileFragment.newInstance();
-        if (mMainFragment != null) transaction.hide(mMainFragment);
-        if (mArticlesFragment != null) transaction.hide(mArticlesFragment);
-        if (mSearchFragment != null) transaction.hide(mSearchFragment);
-        if (!mProfileFragment.isAdded()) {
-            transaction.add(R.id.frameLayout_make_coffee_container, mProfileFragment, PROFILE);
-        } else {
-            transaction.show(mProfileFragment);
-        }
-        transaction.commit();
     }
 
     @Override
     public void transToMakeCoffeeDetail(MakeCoffeeTeaching teaching) {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mMainFragment != null && !mMainFragment.isHidden()) {
-            transaction.hide(mMainFragment);
-            transaction.addToBackStack(MAIN);
-        }
-        if (mArticlesFragment != null && !mArticlesFragment.isHidden()) {
-            transaction.hide(mArticlesFragment);
-            transaction.addToBackStack(ARTICLES);
-        }
-        if (mArticlesFragment != null && !mArticlesFragment.isHidden()) {
-            transaction.hide(mArticlesFragment);
-            transaction.addToBackStack(ARTICLES);
-        }
-        if (mSearchFragment != null && !mSearchFragment.isHidden()) {
-            transaction.hide(mSearchFragment);
-            transaction.addToBackStack(SEARCH);
-        }
+        hideFragment(transaction);
+
         MakeCoffeeDetailFragment makeCoffeeDetailFragment = MakeCoffeeDetailFragment.newInstance(teaching);
         transaction.add(R.id.frameLayout_make_coffee_container, makeCoffeeDetailFragment, MAKE_COFFEE_DETAIL);
         transaction.commit();
@@ -148,22 +178,8 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     public void transToKnowledgeDetail(CoffeeKnowledgeCollection collection) {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mMainFragment != null && !mMainFragment.isHidden()) {
-            transaction.hide(mMainFragment);
-            transaction.addToBackStack(MAIN);
-        }
-        if (mArticlesFragment != null && !mArticlesFragment.isHidden()) {
-            transaction.hide(mArticlesFragment);
-            transaction.addToBackStack(ARTICLES);
-        }
-        if (mArticlesFragment != null && !mArticlesFragment.isHidden()) {
-            transaction.hide(mArticlesFragment);
-            transaction.addToBackStack(ARTICLES);
-        }
-        if (mSearchFragment != null && !mSearchFragment.isHidden()) {
-            transaction.hide(mSearchFragment);
-            transaction.addToBackStack(SEARCH);
-        }
+        hideFragment(transaction);
+
         KnowledgeDetailFragment knowledgeDetailFragment = KnowledgeDetailFragment.newInstance(collection);
         transaction.add(R.id.frameLayout_make_coffee_container, knowledgeDetailFragment, MAKE_COFFEE_DETAIL);
         transaction.commit();
@@ -173,22 +189,8 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     public void transToWriteArticle() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mMainFragment != null && !mMainFragment.isHidden()) {
-            transaction.hide(mMainFragment);
-            transaction.addToBackStack(MAIN);
-        }
-        if (mArticlesFragment != null && !mArticlesFragment.isHidden()) {
-            transaction.hide(mArticlesFragment);
-            transaction.addToBackStack(ARTICLES);
-        }
-        if (mArticlesFragment != null && !mArticlesFragment.isHidden()) {
-            transaction.hide(mArticlesFragment);
-            transaction.addToBackStack(ARTICLES);
-        }
-        if (mSearchFragment != null && !mSearchFragment.isHidden()) {
-            transaction.hide(mSearchFragment);
-            transaction.addToBackStack(SEARCH);
-        }
+        hideFragment(transaction);
+
         WriteArticleFragment writeArticleFragment = WriteArticleFragment.newInstance();
         transaction.add(R.id.frameLayout_make_coffee_container, writeArticleFragment, WRITE_ARTICLE);
         transaction.commit();
@@ -196,7 +198,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
 
     @Override
     public void start() {
-        transToMain();
+        transToMakeCoffee();
     }
 
     @Override
@@ -204,4 +206,27 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         mMakeCoffeeView.setToolbarTitle(title);
     }
 
+
+    private void hideFragment(FragmentTransaction transaction) {
+        if (mMakeCoffeeFragment != null && !mMakeCoffeeFragment.isHidden()) {
+            transaction.hide(mMakeCoffeeFragment);
+            transaction.addToBackStack(MAKE_COFFEE);
+        }
+        if (mKnowledgeFragment != null && !mKnowledgeFragment.isHidden()) {
+            transaction.hide(mKnowledgeFragment);
+            transaction.addToBackStack(KNOWLEDGE);
+        }
+        if (mNewsFragment != null && !mNewsFragment.isHidden()) {
+            transaction.hide(mNewsFragment);
+            transaction.addToBackStack(NEWS);
+        }
+        if (mArticlesListFragment != null && !mArticlesListFragment.isHidden()) {
+            transaction.hide(mArticlesListFragment);
+            transaction.addToBackStack(ARTICLES_LIST);
+        }
+        if (mLikedFragment != null && !mLikedFragment.isHidden()) {
+            transaction.hide(mLikedFragment);
+            transaction.addToBackStack(LIKED);
+        }
+    }
 }
