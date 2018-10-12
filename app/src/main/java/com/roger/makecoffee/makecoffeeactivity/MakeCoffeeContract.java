@@ -1,5 +1,7 @@
 package com.roger.makecoffee.makecoffeeactivity;
 
+import android.app.Activity;
+
 import com.roger.makecoffee.BasePresenter;
 import com.roger.makecoffee.BaseView;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
@@ -31,6 +33,8 @@ public interface MakeCoffeeContract {
         void showToolbarAndNavBottom();
 
         void hideToolbarAndNavBottom();
+
+        Activity getMakeCoffeeActivity();
     }
 
     interface Presenter extends BasePresenter {
@@ -54,6 +58,8 @@ public interface MakeCoffeeContract {
         void transToWriteArticle();
 
         void setToolbarTitle(String title);
+
+        void logout();
     }
 
 }

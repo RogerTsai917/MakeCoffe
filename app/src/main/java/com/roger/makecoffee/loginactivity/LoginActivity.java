@@ -46,6 +46,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 // Google Sign In failed.
                 Log.w(TAG, "Google sign in failed", e);
             }
+        } else if(requestCode == Constants.RE_LOGIN_ACTIVITY) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                hideSignInButton();
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                UserManager.getInstance().resetFirebaseAuthWithGoogle(this, account);
+            } catch (ApiException e) {
+                // Google Sign In failed.
+                Log.w(TAG, "Google sign in failed", e);
+            }
         }
     }
 

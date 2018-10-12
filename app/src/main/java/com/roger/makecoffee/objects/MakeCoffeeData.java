@@ -45,10 +45,6 @@ public class MakeCoffeeData {
         makeLatte();
         makeCappuccino();
 
-        makeEspresso();
-        makeAmericano();
-        makeLatte();
-        makeCappuccino();
     }
 
     private void makeEspresso() {

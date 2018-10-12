@@ -4,27 +4,27 @@
     <item
         android:id="@+id/navigation_make_coffee"
         android:icon="@drawable/coffee_cup"
-        android:title="" />
+        android:title="@string/makecoffee" />
 
     <item
         android:id="@+id/navigation_knowledge"
         android:icon="@drawable/stack_of_books"
-        android:title="" />
+        android:title="@string/knowledge" />
 
     <item
         android:id="@+id/navigation_news"
         android:icon="@drawable/folded_newspaper"
-        android:title="" />
+        android:title="@string/news" />
 
     <item
         android:id="@+id/navigation_articles"
         android:icon="@drawable/project"
-        android:title="" />
+        android:title="@string/articles" />
 
     <item
         android:id="@+id/navigation_liked"
         android:icon="@drawable/icon_like"
-        android:title="" />
+        android:title="@string/liked" />
 
 
 </menu>

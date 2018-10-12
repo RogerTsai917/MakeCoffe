@@ -20,6 +20,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.roger.makecoffee.MakeCoffee;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.loginactivity.LoginActivity;
+import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.utils.Constants;
 
 import java.util.concurrent.Executor;
@@ -59,7 +60,7 @@ public class UserManager {
         activity.startActivityForResult(signInIntent, Constants.RC_SIGN_IN);
     }
 
-    private void signOut(Activity activity) {
+    public void signOut(Activity activity) {
         // Firebase sign out
         mAuth.signOut();
 
@@ -99,6 +100,31 @@ public class UserManager {
                 });
     }
 
+    public void resetFirebaseAuthWithGoogle(final Activity activity, GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            saveUserInfo(user);
+                            reTransToMakeCoffeeActivity(activity);
+                        } else {
+                            // If sign in fails, display a message.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            ((LoginActivity)activity).showSignInButton();
+                        }
+
+                    }
+                });
+    }
+
     private void saveUserInfo(FirebaseUser user) {
         Log.d(TAG, "UserInfo Name: " + user.getDisplayName());
         Log.d(TAG, "UserInfo Email: " + user.getEmail());
@@ -118,8 +144,15 @@ public class UserManager {
         activity.finish();
     }
 
-    private void transToLoginActivity(Activity activity) {
+    private void reTransToMakeCoffeeActivity(Activity activity) {
+        Intent intent = new Intent(activity, MakeCoffeeActivity.class);
+        activity.startActivity(intent);
+        activity.finish();
+    }
 
+    private void transToLoginActivity(Activity activity) {
+        activity.startActivityForResult(new Intent(activity, LoginActivity.class), Constants.RE_LOGIN_ACTIVITY);
+        activity.finish();
     }
 
     public String getUserName() {

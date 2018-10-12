@@ -4,20 +4,17 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.articles.ArticlesFragment;
 import com.roger.makecoffee.articleslist.ArticlesListFragment;
 import com.roger.makecoffee.knowledge.KnowledgeFragment;
 import com.roger.makecoffee.knowledgedetail.KnowledgeDetailFragment;
 import com.roger.makecoffee.liked.LikedFragment;
-import com.roger.makecoffee.main.MainFragment;
 import com.roger.makecoffee.makecoffee.MakeCoffeeFragment;
 import com.roger.makecoffee.makecoffeedetail.MakeCoffeeDetailFragment;
 import com.roger.makecoffee.news.NewsFragment;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
-import com.roger.makecoffee.objects.define.News;
 import com.roger.makecoffee.profile.ProfileFragment;
-import com.roger.makecoffee.search.SearchFragment;
+import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.writearticle.WriteArticleFragment;
 
 public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
@@ -67,6 +64,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         } else {
             transaction.show(mMakeCoffeeFragment);
         }
+
         transaction.commit();
     }
 
@@ -204,6 +202,11 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     @Override
     public void setToolbarTitle(String title) {
         mMakeCoffeeView.setToolbarTitle(title);
+    }
+
+    @Override
+    public void logout() {
+        UserManager.getInstance().signOut(mMakeCoffeeView.getMakeCoffeeActivity());
     }
 
 

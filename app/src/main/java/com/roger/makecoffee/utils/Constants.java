@@ -7,6 +7,7 @@ public class Constants {
 
     // Activity
     public static final int LOGIN_ACTIVITY = 0x01;
+    public static final int RE_LOGIN_ACTIVITY = 0x02;
 
     // Status
     public static final int LOGIN_SUCCESS = 0x11;

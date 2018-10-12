@@ -1,9 +1,11 @@
 package com.roger.makecoffee.makecoffeeactivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
@@ -31,6 +33,7 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     private TextView mToolbarTitle;
     private BottomNavigationViewEx mBottomNavigation;
     private DrawerLayout mDrawerLayout;
+    private ConstraintLayout mLogoutView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,6 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         FirebaseApp.initializeApp(this);
 
         if (UserManager.getInstance().isLoginStatus()) {
-
             init();
         } else {
 
@@ -86,7 +88,7 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         mBottomNavigation.enableAnimation(false);
         mBottomNavigation.enableShiftingMode(false);
         mBottomNavigation.enableItemShiftingMode(false);
-        mBottomNavigation.setTextVisibility(false);
+        mBottomNavigation.setTextVisibility(true);
 
         mBottomNavigation.setItemHeight((int) getResources().getDimension(R.dimen.nav_bottom_height));
 
@@ -94,7 +96,6 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         mBottomNavigation.setIconSize(
                 getResources().getDimension(R.dimen.nav_bottom_icon_size) / getResources().getDisplayMetrics().density,
                 getResources().getDimension(R.dimen.nav_bottom_icon_size) / getResources().getDisplayMetrics().density);
-
     }
 
     private void setDrawerLayout() {
@@ -102,6 +103,9 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
 
         mDrawerLayout.setFitsSystemWindows(true);
         mDrawerLayout.setClipToPadding(false);
+
+        mLogoutView = findViewById(R.id.constraintLayout_nav_logout);
+        mLogoutView.setOnClickListener(mOnClickListener);
     }
 
     private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationViewEx.OnNavigationItemSelectedListener() {
@@ -143,6 +147,10 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
             switch (v.getId()) {
                 case R.id.imageView_toolbar_icon:
                     mDrawerLayout.openDrawer(GravityCompat.START);
+                    break;
+
+                case R.id.constraintLayout_nav_logout:
+                    mPresenter.logout();
                     break;
 
                 default:
@@ -229,6 +237,11 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         mToolbarIcon.setVisibility(View.GONE);
         mToolbarTitle.setVisibility(View.GONE);
         mBottomNavigation.setVisibility(View.GONE);
+    }
+
+    @Override
+    public Activity getMakeCoffeeActivity() {
+        return this;
     }
 
     @Override
