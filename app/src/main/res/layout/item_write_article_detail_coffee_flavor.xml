@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:barchart="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/article_coffee_flavor"
+        android:textColor="@color/black_57"
+        android:textSize="18sp"
+        barchart:layout_constraintEnd_toEndOf="parent"
+        barchart:layout_constraintStart_toStartOf="parent"
+        barchart:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout_barChart_coffee_flavor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        barchart:layout_constraintEnd_toEndOf="parent"
+        barchart:layout_constraintHorizontal_bias="0.0"
+        barchart:layout_constraintStart_toStartOf="parent"
+        barchart:layout_constraintTop_toBottomOf="@+id/textView19">
+
+        <com.github.mikephil.charting.charts.HorizontalBarChart
+            android:id="@+id/HorizontalBarChart_coffee_flavor"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+             />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/article_supplement"
+        android:textColor="@color/black_57"
+        android:textSize="16sp"
+        barchart:layout_constraintStart_toStartOf="parent"
+        barchart:layout_constraintTop_toBottomOf="@+id/constraintLayout_barChart_coffee_flavor" />
+
+    <EditText
+        android:id="@+id/editText_write_article_supplement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_background"
+        android:ems="10"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="start"
+        android:hint="@string/article_supplement_hint"
+        android:inputType="textPersonName"
+        android:minHeight="160dp"
+        android:textColor="@color/black_57"
+        android:textSize="16sp"
+        barchart:layout_constraintBottom_toBottomOf="parent"
+        barchart:layout_constraintEnd_toEndOf="parent"
+        barchart:layout_constraintStart_toStartOf="parent"
+        barchart:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+</android.support.constraint.ConstraintLayout>

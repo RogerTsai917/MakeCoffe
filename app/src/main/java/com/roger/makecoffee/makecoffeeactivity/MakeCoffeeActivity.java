@@ -55,6 +55,7 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
 
         if (resultCode == Constants.LOGIN_SUCCESS) {
             init();
+            UserManager.getInstance().checkFireStoreUserInfo();
         }
     }
 
@@ -70,6 +71,7 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         setDrawerLayout();
 
         mPresenter = new MakeCoffeePresenter(this, getFragmentManager());
+        setToolbarTitle(getResources().getString(R.string.make_coffee));
         mPresenter.start();
 
     }

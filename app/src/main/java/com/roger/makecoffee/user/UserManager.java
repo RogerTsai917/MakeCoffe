@@ -12,18 +12,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.roger.makecoffee.MakeCoffee;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.loginactivity.LoginActivity;
 import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.utils.Constants;
-
-import java.util.concurrent.Executor;
 
 public class UserManager {
     private static final String TAG = "UserManager";
@@ -31,6 +33,7 @@ public class UserManager {
 
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
+    private FirebaseFirestore mDb;
 
     private UserManager() {
         // [START config_sign_in]
@@ -43,9 +46,9 @@ public class UserManager {
 
         mGoogleSignInClient = GoogleSignIn.getClient(MakeCoffee.getAppContext(), gso);
 
-        // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
+
+        mDb = FirebaseFirestore.getInstance();
     }
 
     public static synchronized UserManager getInstance() {
@@ -73,6 +76,12 @@ public class UserManager {
                 .commit();
 
         transToLoginActivity(activity);
+    }
+
+    public void checkFireStoreUserInfo() {
+        CollectionReference usersReference = mDb.collection(Constants.USERS);
+        Query query = usersReference.whereEqualTo(Constants.USER_INFO_USER_UID, getUserUid());
+
     }
 
     public void firebaseAuthWithGoogle(final Activity activity, GoogleSignInAccount acct) {

@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.roger.makecoffee.BasePresenter;
 import com.roger.makecoffee.BaseView;
 import com.roger.makecoffee.objects.define.Article;
+import com.roger.makecoffee.objects.define.NewArticle;
 
 public interface WriteArticleContract {
 
@@ -17,11 +18,15 @@ public interface WriteArticleContract {
 
         void hideUploadingDialog();
 
+        void showChangeCoffeeFlavorDialog();
+
+        void hideChangeCoffeeFlavorDialog();
+
         void backPress();
     }
 
     interface Presenter extends BasePresenter {
 
-        void postArticle(Article article);
+        void postArticle(NewArticle article);
     }
 }

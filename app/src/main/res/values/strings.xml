@@ -28,13 +28,42 @@
     <string name="write_article_preview_photo">Preview Photo: </string>
     <string name="write_article_upload_photo">Upload Photo</string>
     <string name="write_article_content">Content: </string>
-    <string name="write_article_content_hint">Enter step content…</string>
+    <string name="write_article_content_hint">Enter content…</string>
     <string name="write_article_step_upload_photo">Upload Photo(optional): </string>
     <string name="post_article">Post Article</string>
 
     <string name="title_cannot_be_empty">Title cannot be empty!</string>
     <string name="description_cannot_be_empty">Description cannot be empty!</string>
+    <string name="content_cannot_be_empty">Content cannot be empty!</string>
     <string name="step_content_cannot_be_empty">Step Content cannot be empty!</string>
     <string name="uploading_article_please_wait">Uploading article, please wait a second!</string>
+
+    <string name="article_coffee_bean">咖啡豆: </string>
+    <string name="article_coffee_bean_volume">咖啡量(g): </string>
+    <string name="article_coffee_bean_roast_level">烘焙度: </string>
+    <string name="article_coffee_bean_grind">研磨度: </string>
+    <string name="article_coffee_water_temp">水溫(°C): </string>
+    <string name="article_coffee_water_volume">水量(g): </string>
+    <string name="article_coffee_tool">沖泡工具: </string>
+    <string name="article_coffee_time">沖泡時間(s): </string>
+    <string name="article_coffee_volume">咖啡液成品(g): </string>
+
+    <string name="article_coffee_flavor">咖啡風味</string>
+    <string name="article_coffee_flavor_body">醇度:</string>
+    <string name="article_coffee_flavor_acidity">酸味:</string>
+    <string name="article_coffee_flavor_bitter">苦味:</string>
+    <string name="article_coffee_flavor_sweet">甘味:</string>
+    <string name="article_coffee_flavor_aroma">香氣:</string>
+    <string name="article_supplement">補充:</string>
+    <string name="article_supplement_hint">補充內容…</string>
+
+    <string name="flavor_body">醇度</string>
+    <string name="flavor_acidity">酸味</string>
+    <string name="flavor_bitter">苦味</string>
+    <string name="flavor_sweet">甘味</string>
+    <string name="flavor_aroma">香氣</string>
+
+    <string name="confirm">確認</string>
+    <string name="cancel">取消</string>
 
 </resources>

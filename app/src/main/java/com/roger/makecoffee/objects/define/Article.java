@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Article {
+    private String articleUid;
     private String title;
     private String description;
     private String imageUrl;
@@ -17,6 +18,15 @@ public class Article {
     public Article() {
         articleStepArrayList = new ArrayList<>();
     }
+
+    public String getArticleUid() {
+        return articleUid;
+    }
+
+    public void setArticleUid(String articleUid) {
+        this.articleUid = articleUid;
+    }
+
     public String getTitle() {
         return title;
     }

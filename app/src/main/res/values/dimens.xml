@@ -19,4 +19,7 @@
     <dimen name="make_coffee_detail_text_line_space">4sp</dimen>
 
     <dimen name="knowledge_item_space">10dp</dimen>
+
+    <dimen name="bar_chart_text_size">12sp</dimen>
+
 </resources>

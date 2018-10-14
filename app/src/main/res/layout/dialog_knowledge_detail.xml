@@ -25,7 +25,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:padding="16dp"
                 android:textColor="@color/black_57"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 tools:text="TextView" />
 
         </ScrollView>

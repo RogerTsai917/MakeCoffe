@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -17,6 +18,7 @@ import com.roger.makecoffee.MakeCoffee;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.objects.define.Article;
 import com.roger.makecoffee.objects.define.ArticleStep;
+import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.utils.Constants;
 
 import java.io.ByteArrayOutputStream;
@@ -38,7 +40,7 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
 
 
     @Override
-    public void postArticle(Article article) {
+    public void postArticle(NewArticle article) {
         if (isArticleContentLegal(article)) {
             mView.showUploadingDialog();
             postArticleImageToFireStorage(article);
@@ -50,86 +52,39 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
 
     }
 
-    private void postArticleToFireStore(Article article) {
-        mDb.collection("articles").add(article);
-        mView.hideUploadingDialog();
-        mView.backPress();
-    }
-
-    private boolean isArticleContentLegal(Article article) {
+    private boolean isArticleContentLegal(NewArticle article) {
 
         if (article.getTitle().equals("")) {
             mView.showToast(MakeCoffee.getAppContext().getResources()
                     .getString(R.string.title_cannot_be_empty));
             return false;
         }
-        if (article.getDescription().equals("")) {
+        if (article.getContent().equals("")) {
             mView.showToast(MakeCoffee.getAppContext().getResources()
-                    .getString(R.string.description_cannot_be_empty));
+                    .getString(R.string.content_cannot_be_empty));
             return false;
         }
-        for (int i = 0; i < article.getArticleStepArrayListSize(); i++) {
-            if (article.getArticleStepArrayList().get(i).getContent().equals("")) {
-                mView.showToast(MakeCoffee.getAppContext().getResources()
-                        .getString(R.string.step_content_cannot_be_empty));
-                return false;
-            }
-        }
+
         return true;
     }
 
-    private void postArticleImageToFireStorage(final Article article) {
+    private void postArticleToFireStore(NewArticle article) {
+        DocumentReference documentReference = mDb.collection(Constants.ARTICLES).document();
+        String uid = documentReference.getId();
+        article.setArticleUid(uid);
+        mDb.collection(Constants.ARTICLES).document(uid).set(article);
+        mView.hideUploadingDialog();
+        mView.backPress();
+    }
+
+    private void postArticleImageToFireStorage(final NewArticle article) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Bitmap bitmap = null;
 
-                //upload article steps photo
-                for (int i = 0; i < article.getArticleStepArrayListSize(); i++) {
-                    String hashKey = UUID.randomUUID().toString();
-                    final StorageReference reference = FirebaseStorage.getInstance().getReference()
-                            .child(Constants.ARTICLES_PHOTOS + hashKey);
-                    final ArticleStep articleStep = article.getArticleStepArrayList().get(i);
-                    if (!articleStep.getPhotoUrl().equals("")) {
-                        bitmap = null;
-                        try {
-                            bitmap = Glide.with(mView.returnActivity())
-                                    .asBitmap()
-                                    .load(articleStep.getPhotoUrl())
-                                    .submit()
-                                    .get();
-                        } catch (InterruptedException | ExecutionException e) {
-                            e.printStackTrace();
-                        }
-                        if (bitmap != null) {
-                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                            byte[] data = baos.toByteArray();
-
-                            UploadTask uploadTask = reference.putBytes(data);
-                            uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                                @Override
-                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                    if (!task.isSuccessful()) {
-                                        throw task.getException();
-                                    }
-                                    // Continue with the task to get the download URL
-                                    return reference.getDownloadUrl();
-                                }
-                            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Uri> task) {
-                                    String downloadUrl = task.getResult().toString();
-                                    Log.d(TAG, "sendPhotoToFireBase downloadUrl: " + downloadUrl);
-                                    articleStep.setPhotoUrl(downloadUrl);
-                                }
-                            });
-                        }
-                    }
-                }
-
                 //upload article title photo
-                String hashKey = UUID.randomUUID().toString();
+                final String hashKey = UUID.randomUUID().toString();
                 final StorageReference reference = FirebaseStorage.getInstance().getReference()
                         .child(Constants.ARTICLES_PHOTOS + hashKey);
                 try {
@@ -160,7 +115,7 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
                         @Override
                         public void onComplete(@NonNull Task<Uri> task) {
                             String downloadUrl = task.getResult().toString();
-                            Log.d(TAG, "sendPhotoToFireBase downloadUrl: " + downloadUrl);
+                            Log.d(TAG, "get photo downloadUrl: " + downloadUrl);
                             article.setImageUrl(downloadUrl);
                             postArticleToFireStore(article);
                         }

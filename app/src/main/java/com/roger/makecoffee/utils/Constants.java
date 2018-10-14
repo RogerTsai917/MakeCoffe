@@ -21,8 +21,8 @@ public class Constants {
     public static final int VIEW_TYPE_NEWS_SMALL = 2;
 
     public static final int VIEW_TYPE_WRITE_ARTICLE_TITLE = 0;
-    public static final int VIEW_TYPE_WRITE_ARTICLE_STEP = 1;
-    public static final int VIEW_TYPE_WRITE_ARTICLE_ADD = 2;
+    public static final int VIEW_TYPE_WRITE_ARTICLE_COFFEE_DETAIL = 1;
+    public static final int VIEW_TYPE_WRITE_ARTICLE_COFFEE_FLAVOR = 2;
 
 
     // News Api
@@ -51,6 +51,9 @@ public class Constants {
     public static final String USER_UID = "user_uid";
 
     public static final String ARTICLES_PHOTOS = "articlesPhotos/";
+
+    public static final String USERS = "users";
+    public static final String USER_INFO_USER_UID = "userUid";
 
     public static final int RC_SIGN_IN = 9001;
 }

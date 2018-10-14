@@ -1,8 +1,5 @@
 package com.roger.makecoffee.adapter;
 
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -25,14 +22,9 @@ import com.roger.makecoffee.objects.define.ArticleStep;
 import com.roger.makecoffee.objects.define.Author;
 import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
-import com.roger.makecoffee.utils.ResizeBitmap;
 import com.roger.makecoffee.writearticle.WriteArticleFragment;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class WriteArticleDetailAdapter extends RecyclerView.Adapter {
     private WriteArticleFragment mFragment;
@@ -53,7 +45,7 @@ public class WriteArticleDetailAdapter extends RecyclerView.Adapter {
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_write_article_detail_title, parent, false);
             return new TitleViewHolder(view);
-        } else if (viewType == Constants.VIEW_TYPE_WRITE_ARTICLE_ADD) {
+        } else if (viewType == Constants.VIEW_TYPE_WRITE_ARTICLE_COFFEE_FLAVOR) {
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_write_article_detail_add_step, parent, false);
             return new AddViewHolder(view);
@@ -93,9 +85,9 @@ public class WriteArticleDetailAdapter extends RecyclerView.Adapter {
         if (position == 0) {
             return Constants.VIEW_TYPE_WRITE_ARTICLE_TITLE;
         } else if (position == mArticle.getArticleStepArrayListSize() + 1) {
-            return Constants.VIEW_TYPE_WRITE_ARTICLE_ADD;
+            return Constants.VIEW_TYPE_WRITE_ARTICLE_COFFEE_FLAVOR;
         } else {
-            return Constants.VIEW_TYPE_WRITE_ARTICLE_STEP;
+            return Constants.VIEW_TYPE_WRITE_ARTICLE_COFFEE_DETAIL;
         }
     }
 
@@ -142,7 +134,7 @@ public class WriteArticleDetailAdapter extends RecyclerView.Adapter {
         holder.mUploadPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFragment.getImageFromAlbum(position);
+                mFragment.getImageFromAlbum();
 
             }
         });
@@ -153,7 +145,6 @@ public class WriteArticleDetailAdapter extends RecyclerView.Adapter {
                     .load(uri)
                     .into(holder.mPreviewImageView);
         }
-
     }
 
     private void bindStepViewHolder(final StepViewHolder holder, final int position) throws IOException {
@@ -194,7 +185,7 @@ public class WriteArticleDetailAdapter extends RecyclerView.Adapter {
         holder.mUploadPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFragment.getImageFromAlbum(position);
+                mFragment.getImageFromAlbum();
             }
         });
 
@@ -232,6 +223,8 @@ public class WriteArticleDetailAdapter extends RecyclerView.Adapter {
             mDescriptionEditText = itemView.findViewById(R.id.editText_write_article_title_description);
             mPreviewImageView = itemView.findViewById(R.id.imageView_write_article_title);
             mUploadPhotoButton = itemView.findViewById(R.id.button_write_article_title);
+
+            mPreviewImageView.setClipToOutline(true);
         }
     }
 
