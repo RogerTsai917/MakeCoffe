@@ -35,8 +35,10 @@
     <string name="title_cannot_be_empty">Title cannot be empty!</string>
     <string name="description_cannot_be_empty">Description cannot be empty!</string>
     <string name="content_cannot_be_empty">Content cannot be empty!</string>
+    <string name="photo_cannot_be_empty">Photo cannot be empty!</string>
     <string name="step_content_cannot_be_empty">Step Content cannot be empty!</string>
-    <string name="uploading_article_please_wait">Uploading article, please wait a second!</string>
+    <string name="uploading_article_please_wait">Uploading article, please wait a second.</string>
+    <string name="uploading_article_successful">Uploading article successful!</string>
 
     <string name="article_coffee_bean">咖啡豆: </string>
     <string name="article_coffee_bean_volume">咖啡量(g): </string>
@@ -47,6 +49,7 @@
     <string name="article_coffee_tool">沖泡工具: </string>
     <string name="article_coffee_time">沖泡時間(s): </string>
     <string name="article_coffee_volume">咖啡液成品(g): </string>
+    <string name="article_coffee_additive">咖啡添加物: </string>
 
     <string name="article_coffee_flavor">咖啡風味</string>
     <string name="article_coffee_flavor_body">醇度:</string>

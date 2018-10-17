@@ -197,7 +197,7 @@ public class MakeCoffeeDetailAdapter extends RecyclerView.Adapter {
                 public void onProgressChanged(Croller croller, int progress) {
                     currentTime = progress;
                     setCountTime(currentTime);
-                    if (progress == 0) {
+                    if (progress <= 0) {
                         onCrollerStartTrackingTouch();
                     }
                 }

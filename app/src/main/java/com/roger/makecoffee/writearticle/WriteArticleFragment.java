@@ -24,9 +24,9 @@ import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.utils.Constants;
 
 public class WriteArticleFragment extends Fragment implements WriteArticleContract.View, View.OnClickListener {
-    RecyclerView mRecyclerView;
-    NewWriteArticleDetailAdapter mAdapter;
-    Button mPostArticleButton;
+    private RecyclerView mRecyclerView;
+    private NewWriteArticleDetailAdapter mAdapter;
+    private Button mPostArticleButton;
     private WriteArticleContract.Presenter mPresenter;
     private AlertDialog mUploadingDialog;
     private AlertDialog mChangeCoffeeFlavorDialog;
@@ -113,6 +113,8 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
     public void showUploadingDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         mUploadingDialog = builder.create();
+        mUploadingDialog.setCanceledOnTouchOutside(false);
+        mUploadingDialog.setCancelable(false);
         View dialogView = View.inflate(getContext(), R.layout.dialog_uploading_article, null);
 
         mUploadingDialog.setView(dialogView);

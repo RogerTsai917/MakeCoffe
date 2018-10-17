@@ -18,13 +18,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.roger.makecoffee.MakeCoffee;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.loginactivity.LoginActivity;
 import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
+import com.roger.makecoffee.objects.define.UserInformation;
 import com.roger.makecoffee.utils.Constants;
 
 public class UserManager {
@@ -79,8 +80,31 @@ public class UserManager {
     }
 
     public void checkFireStoreUserInfo() {
-        CollectionReference usersReference = mDb.collection(Constants.USERS);
-        Query query = usersReference.whereEqualTo(Constants.USER_INFO_USER_UID, getUserUid());
+        DocumentReference documentReference = mDb.collection(Constants.USERS).document(getUserUid());
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot!= null && documentSnapshot.exists()) {
+                        Log.d(TAG, "documentSnapshot exists: " + documentSnapshot.getString("name"));
+
+                    } else {
+                        Log.d(TAG, "documentSnapshot not exists");
+                        createUserInfoToFireStore();
+                    }
+                } else {
+                    Log.d(TAG, "is not successful");
+                }
+            }
+        });
+    }
+
+    private void createUserInfoToFireStore() {
+        UserInformation userInformation = new UserInformation();
+        userInformation.initialUserInformation();
+
+        mDb.collection(Constants.USERS).document(getUserUid()).set(userInformation);
 
     }
 
@@ -161,7 +185,7 @@ public class UserManager {
 
     private void transToLoginActivity(Activity activity) {
         activity.startActivityForResult(new Intent(activity, LoginActivity.class), Constants.RE_LOGIN_ACTIVITY);
-        activity.finish();
+        //activity.finish();
     }
 
     public String getUserName() {

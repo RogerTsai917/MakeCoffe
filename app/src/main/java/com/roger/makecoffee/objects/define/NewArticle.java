@@ -20,6 +20,7 @@ public class NewArticle {
     private String coffeeTool;
     private String time;
     private String coffeeVolume;
+    private String additive;
     private int flavorBody;
     private int flavorAcidity;
     private int flavorBitter;
@@ -53,6 +54,7 @@ public class NewArticle {
         coffeeTool = "";
         time = "";
         coffeeVolume = "";
+        additive = "";
 
         flavorBody = 0;
         flavorAcidity = 0;
@@ -173,6 +175,14 @@ public class NewArticle {
 
     public void setCoffeeVolume(String coffeeVolume) {
         this.coffeeVolume = coffeeVolume;
+    }
+
+    public String getAdditive() {
+        return additive;
+    }
+
+    public void setAdditive(String additive) {
+        this.additive = additive;
     }
 
     public int getFlavorBody() {

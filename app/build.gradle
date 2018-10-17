@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.roger.makecoffee"
-        minSdkVersion 25
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 1
         versionName "alpha-1.0"
@@ -37,6 +37,7 @@ dependencies {
 
     implementation "android.arch.core:runtime:1.1.1"
     implementation "android.arch.core:common:1.1.1"
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     implementation 'me.ithebk:barchart:0.9'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'

@@ -55,5 +55,8 @@ public class Constants {
     public static final String USERS = "users";
     public static final String USER_INFO_USER_UID = "userUid";
 
+    public static final String POSTED_ARTICLES = "postedArticles";
+    public static final String LIKED_ARTICLES = "likedArticles";
+
     public static final int RC_SIGN_IN = 9001;
 }

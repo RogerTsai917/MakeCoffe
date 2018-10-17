@@ -317,6 +317,23 @@ public class NewWriteArticleDetailAdapter extends RecyclerView.Adapter{
                 mNewArticle.setCoffeeVolume(holder.mCoffeeVolumeEditText.getText().toString());
             }
         });
+        holder.mCoffeeAdditive.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mNewArticle.setAdditive(holder.mCoffeeAdditive.getText().toString());
+            }
+        });
 
     }
 
@@ -421,6 +438,7 @@ public class NewWriteArticleDetailAdapter extends RecyclerView.Adapter{
         EditText mCoffeeToolEditText;
         EditText mTimeEditText;
         EditText mCoffeeVolumeEditText;
+        EditText mCoffeeAdditive;
 
         public CoffeeDetailViewHolder(View itemView) {
             super(itemView);
@@ -433,6 +451,7 @@ public class NewWriteArticleDetailAdapter extends RecyclerView.Adapter{
             mCoffeeToolEditText = itemView.findViewById(R.id.editText_write_article_coffee_tool);
             mTimeEditText = itemView.findViewById(R.id.editText_write_article_coffee_time);
             mCoffeeVolumeEditText = itemView.findViewById(R.id.editText_write_article_coffee_volume);
+            mCoffeeAdditive = itemView.findViewById(R.id.editText_write_article_coffee_additive);
         }
     }
 

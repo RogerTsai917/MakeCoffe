@@ -19,6 +19,7 @@ import com.roger.makecoffee.R;
 import com.roger.makecoffee.objects.define.Article;
 import com.roger.makecoffee.objects.define.ArticleStep;
 import com.roger.makecoffee.objects.define.NewArticle;
+import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
 
 import java.io.ByteArrayOutputStream;
@@ -64,6 +65,11 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
                     .getString(R.string.content_cannot_be_empty));
             return false;
         }
+        if (article.getImageUrl().equals("")) {
+            mView.showToast(MakeCoffee.getAppContext().getResources()
+                    .getString(R.string.photo_cannot_be_empty));
+            return false;
+        }
 
         return true;
     }
@@ -72,8 +78,14 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
         DocumentReference documentReference = mDb.collection(Constants.ARTICLES).document();
         String uid = documentReference.getId();
         article.setArticleUid(uid);
+
         mDb.collection(Constants.ARTICLES).document(uid).set(article);
+        mDb.collection(Constants.USERS).document(UserManager.getInstance().getUserUid())
+                .collection(Constants.POSTED_ARTICLES).document(uid).set(article);
+
         mView.hideUploadingDialog();
+        mView.showToast(MakeCoffee.getAppContext().getResources()
+                .getString(R.string.uploading_article_successful));
         mView.backPress();
     }
 
@@ -106,6 +118,7 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
                         @Override
                         public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                             if (!task.isSuccessful()) {
+                                mView.hideUploadingDialog();
                                 throw task.getException();
                             }
                             // Continue with the task to get the download URL
