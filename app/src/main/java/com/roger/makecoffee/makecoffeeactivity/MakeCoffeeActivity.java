@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -23,8 +24,11 @@ import com.roger.makecoffee.R;
 import com.roger.makecoffee.loginactivity.LoginActivity;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
+import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContract.View {
     private MakeCoffeeContract.Presenter mPresenter;
@@ -39,6 +43,7 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Fabric.with(this, new Crashlytics());
         FirebaseApp.initializeApp(this);
 
         if (UserManager.getInstance().isLoginStatus()) {
@@ -223,6 +228,11 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     @Override
     public void transToWriteArticle() {
         mPresenter.transToWriteArticle();
+    }
+
+    @Override
+    public void transToArticleDetail(NewArticle newArticle) {
+        mPresenter.transToArticleDetail(newArticle);
     }
 
     @Override

@@ -40,14 +40,15 @@
     <string name="uploading_article_please_wait">Uploading article, please wait a second.</string>
     <string name="uploading_article_successful">Uploading article successful!</string>
 
+    <string name="article_coffee_bean_detail">咖啡詳細記錄</string>
     <string name="article_coffee_bean">咖啡豆: </string>
-    <string name="article_coffee_bean_volume">咖啡量(g): </string>
+    <string name="article_coffee_bean_weight">咖啡量(g): </string>
     <string name="article_coffee_bean_roast_level">烘焙度: </string>
     <string name="article_coffee_bean_grind">研磨度: </string>
     <string name="article_coffee_water_temp">水溫(°C): </string>
     <string name="article_coffee_water_volume">水量(g): </string>
     <string name="article_coffee_tool">沖泡工具: </string>
-    <string name="article_coffee_time">沖泡時間(s): </string>
+    <string name="article_coffee_time">沖泡時間: </string>
     <string name="article_coffee_volume">咖啡液成品(g): </string>
     <string name="article_coffee_additive">咖啡添加物: </string>
 

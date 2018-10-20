@@ -129,11 +129,11 @@ public class NewArticle {
         this.coffeeBeanGrind = coffeeBeanGrind;
     }
 
-    public String getCoffeeBeanVolume() {
+    public String getCoffeeBeanWeight() {
         return coffeeBeanVolume;
     }
 
-    public void setCoffeeBeanVolume(String coffeeBeanVolume) {
+    public void setCoffeeBeanWeight(String coffeeBeanVolume) {
         this.coffeeBeanVolume = coffeeBeanVolume;
     }
 

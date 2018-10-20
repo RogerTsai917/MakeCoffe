@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView_article_detail_image"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/all_picture_placeholder" />
+
+    <TextView
+        android:id="@+id/textView_article_detail_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/grey_72"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_article_detail_image"
+        tools:text="First Article: First time to make a cup of espresso." />
+
+    <ImageView
+        android:id="@+id/imageView_article_detail_like"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_title"
+        app:srcCompat="@drawable/btn_like_normal" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView_article_detail_author_image"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/icon_portrait01"
+        app:civ_border_color="#e6e7e7e7"
+        app:civ_border_width="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_title" />
+
+    <TextView
+        android:id="@+id/textView_article_detail_author_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Roger Tsai"
+        android:textColor="@color/grey_72"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView_article_detail_author_image"
+        app:layout_constraintStart_toEndOf="@+id/circleImageView_article_detail_author_image"
+        app:layout_constraintTop_toTopOf="@+id/circleImageView_article_detail_author_image" />
+
+    <TextView
+        android:id="@+id/textView_article_detail_posted_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/grey_72"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_author_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_author_name"
+        tools:text="2018-10-16" />
+
+    <View
+        android:id="@+id/view_separation_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#e7e7e7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView_article_detail_author_image" />
+
+    <TextView
+        android:id="@+id/textView_article_detail_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/black_57"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_separation_line"
+        tools:text="細粉濾泡咖啡操作，有點像在賽車，些許的微調或失誤，對咖啡成品的風味，會有放大的影響，算是很具挑戰性的手沖濾泡咖啡修練技巧，其與一般適切研磨度、粉量的手沖濾泡咖啡操作有點不同，如果要用細粉濾泡出自己認為好喝的咖啡，可能需要多次的濾泡參數調整，而且可能還是不會比平常操作的方式好喝，但或許有機會得到一些新的萃取操作心得。" />
+
+    <View
+        android:id="@+id/view_separation_line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#e7e7e7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_content" />
+
+
+</android.support.constraint.ConstraintLayout>

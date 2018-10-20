@@ -19,17 +19,18 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.adapter.NewWriteArticleDetailAdapter;
+import com.roger.makecoffee.adapter.WriteNewArticleDetailAdapter;
 import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.utils.Constants;
 
 public class WriteArticleFragment extends Fragment implements WriteArticleContract.View, View.OnClickListener {
     private RecyclerView mRecyclerView;
-    private NewWriteArticleDetailAdapter mAdapter;
+    private WriteNewArticleDetailAdapter mAdapter;
     private Button mPostArticleButton;
     private WriteArticleContract.Presenter mPresenter;
     private AlertDialog mUploadingDialog;
     private AlertDialog mChangeCoffeeFlavorDialog;
+    private boolean isPostArticle = false;
 
     public WriteArticleFragment() {
 
@@ -63,7 +64,7 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
 
         mRecyclerView.setHasFixedSize(true);
 
-        mAdapter = new NewWriteArticleDetailAdapter(this);
+        mAdapter = new WriteNewArticleDetailAdapter(this);
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -79,8 +80,8 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         ((MakeCoffeeActivity)getActivity()).showToolbarAndNavBottom();
+        super.onDestroy();
     }
 
     @Override
@@ -88,6 +89,7 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
         switch (v.getId()) {
             case R.id.button_write_article_post:
                 mPresenter.postArticle(mAdapter.getNewArticle());
+                isPostArticle = true;
                 break;
 
             default:

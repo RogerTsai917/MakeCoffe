@@ -23,7 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".loginactivity.LoginActivity"></activity>
+        <activity android:name=".loginactivity.LoginActivity"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9e5366622a8c2793a326f650d25e5f12d5312f9e"
+            />
     </application>
 
 </manifest>

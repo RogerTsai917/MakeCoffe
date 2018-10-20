@@ -1,6 +1,7 @@
 package com.roger.makecoffee.utils;
 
 public class Constants {
+    public static final String TAG = "Make Coffee";
 
     public static final String NEWS_URL =
             "https://newsapi.org/v2/everything?q=coffee&apiKey=af49a2f28f1f4e78b1267bb01efadaa3";
@@ -24,6 +25,12 @@ public class Constants {
     public static final int VIEW_TYPE_WRITE_ARTICLE_COFFEE_DETAIL = 1;
     public static final int VIEW_TYPE_WRITE_ARTICLE_COFFEE_FLAVOR = 2;
 
+    public static final int VIEW_TYPE_ARTICLES_LOADING = 0;
+    public static final int VIEW_TYPE_ARTICLES_LIST = 1;
+
+    public static final int VIEW_TYPE_ARTICLE_TITLE = 0;
+    public static final int VIEW_TYPE_ARTICLE_COFFEE_DETAIL = 1;
+    public static final int VIEW_TYPE_ARTICLE_COFFEE_FLAVOR = 2;
 
     // News Api
     public static final String STATUS = "status";
@@ -57,6 +64,8 @@ public class Constants {
 
     public static final String POSTED_ARTICLES = "postedArticles";
     public static final String LIKED_ARTICLES = "likedArticles";
+
+    public static final String CREATE_TIME = "createdTime";
 
     public static final int RC_SIGN_IN = 9001;
 }

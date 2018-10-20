@@ -6,6 +6,7 @@ import com.roger.makecoffee.BasePresenter;
 import com.roger.makecoffee.BaseView;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
+import com.roger.makecoffee.objects.define.NewArticle;
 
 public interface MakeCoffeeContract {
 
@@ -29,6 +30,8 @@ public interface MakeCoffeeContract {
         void transToKnowledgeDetail(CoffeeKnowledgeCollection collection);
 
         void transToWriteArticle();
+
+        void transToArticleDetail(NewArticle newArticle);
 
         void showToolbarAndNavBottom();
 
@@ -56,6 +59,8 @@ public interface MakeCoffeeContract {
         void transToKnowledgeDetail(CoffeeKnowledgeCollection collection);
 
         void transToWriteArticle();
+
+        void transToArticleDetail(NewArticle newArticle);
 
         void setToolbarTitle(String title);
 

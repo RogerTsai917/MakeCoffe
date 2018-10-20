@@ -2,25 +2,38 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout_articles_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/constraintLayout_articles_list"
     android:background="@drawable/image_view_round_corner"
     android:elevation="8dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView_articles_ist"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+    <TextView
+        android:id="@+id/textView_articles_list_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/icon_portrait01"
-        app:civ_border_color="#e6e7e7e7"
-        app:civ_border_width="1dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="2"
+        android:hint="First Article: First time to make a cup of espresso."
+        android:textColor="@color/grey_72"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_articles_list_photo"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_articles_list_title"
+        app:srcCompat="@drawable/all_picture_placeholder" />
 
     <ImageView
         android:id="@+id/imageView_articles_list_like"
@@ -28,7 +41,7 @@
         android:layout_height="24dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView_articles_list_photo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,22 +53,41 @@
         android:layout_height="24dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/imageView_articles_list_photo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btn_more" />
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView_articles_ist"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/icon_portrait01"
+        app:civ_border_color="#e6e7e7e7"
+        app:civ_border_width="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_articles_list_photo" />
+
     <TextView
         android:id="@+id/textView_articles_list_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:text="Roger Tsai"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
-        android:textColor="@color/black_57"
-        android:textSize="16sp"
+        android:text="Roger Tsai"
+        android:textColor="@color/grey_72"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView_articles_ist"
         app:layout_constraintStart_toEndOf="@+id/circleImageView_articles_ist"
         app:layout_constraintTop_toTopOf="@+id/circleImageView_articles_ist" />
 
@@ -63,50 +95,16 @@
         android:id="@+id/textView_articles_list_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="2018/10/16"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
+        android:text="2018/10/16"
         android:textColor="@color/grey_72"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/circleImageView_articles_ist"
-        app:layout_constraintStart_toEndOf="@+id/circleImageView_articles_ist" />
-
-    <ImageView
-        android:id="@+id/imageView_articles_list_photo"
-        android:layout_width="0dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_articles_list_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView_articles_ist"
-        app:srcCompat="@drawable/all_picture_placeholder" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:background="#77000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView_articles_list_photo" />
-
-    <TextView
-        android:id="@+id/textView_articles_list_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:fontFamily="sans-serif-medium"
-        android:maxLines="2"
-        android:text="First Article: First time to make a cup of espresso."
-        android:textColor="@color/gray_E1"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintTop_toTopOf="@+id/textView_articles_list_name" />
 
 
 </android.support.constraint.ConstraintLayout>

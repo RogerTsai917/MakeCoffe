@@ -116,7 +116,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/article_coffee_bean_volume"
+        android:text="@string/article_coffee_bean_weight"
         android:textColor="@color/black_57"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_bean_volume"
