@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class ArticlesListFragment extends Fragment implements ArticlesListContract.View, View.OnClickListener {
     private static ArticlesListFragment mArticlesListFragment;
     private RecyclerView mRecyclerView;
-    private ArticlesListAdapter mAdapter;
+    public static ArticlesListAdapter mAdapter;
     private FloatingActionButton mFloatingActionButton;
     private SwipeRefreshLayout mRefreshLayout;
     private ArticlesListContract.Presenter mPresenter;

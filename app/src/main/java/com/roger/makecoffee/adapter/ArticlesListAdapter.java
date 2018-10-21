@@ -19,7 +19,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.articleslist.ArticlesListFragment;
-import com.roger.makecoffee.objects.define.Article;
+import com.roger.makecoffee.objects.LikedArticlesData;
 import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
@@ -38,6 +38,7 @@ public class ArticlesListAdapter extends RecyclerView.Adapter {
     public ArticlesListAdapter(ArticlesListFragment fragment) {
         mFragment = fragment;
         mNewArticleArrayList = new ArrayList<>();
+        LikedArticlesData.getInstance();
         getArticlesDataFromFireStore();
         mUserUid = UserManager.getInstance().getUserUid();
     }
@@ -96,6 +97,26 @@ public class ArticlesListAdapter extends RecyclerView.Adapter {
             holder.mLikedImageView.setVisibility(View.VISIBLE);
         }
 
+        if (LikedArticlesData.getInstance().isLikedArticle(article.getArticleUid())) {
+            holder.mLikedImageView.setImageResource(R.drawable.btn_like_selected);
+
+        } else {
+            holder.mLikedImageView.setImageResource(R.drawable.btn_like_normal);
+        }
+
+        holder.mLikedImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (LikedArticlesData.getInstance().isLikedArticle(article.getArticleUid())) {
+                    LikedArticlesData.getInstance().removeLikedArticle(article.getArticleUid());
+                    notifyDataSetChanged();
+                } else {
+                    LikedArticlesData.getInstance().addLikedArticle(article.getArticleUid());
+                    notifyDataSetChanged();
+                }
+            }
+        });
+
         Glide.with(mFragment)
                 .load(article.getImageUrl())
                 .into(holder.mPhotoImageView);
@@ -129,7 +150,6 @@ public class ArticlesListAdapter extends RecyclerView.Adapter {
                         }
                     }
                 });
-
     }
 
     private class LoadingNewsItemViewHolder extends RecyclerView.ViewHolder {

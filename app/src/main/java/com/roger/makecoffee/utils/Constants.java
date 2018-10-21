@@ -66,6 +66,7 @@ public class Constants {
     public static final String LIKED_ARTICLES = "likedArticles";
 
     public static final String CREATE_TIME = "createdTime";
+    public static final String ADD_TIME = "addTime";
 
     public static final int RC_SIGN_IN = 9001;
 }

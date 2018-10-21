@@ -19,6 +19,7 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.articledetail.ArticleDetailFragment;
+import com.roger.makecoffee.objects.LikedArticlesData;
 import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.utils.Constants;
 
@@ -94,6 +95,13 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
         holder.mTitleTextView.setText(mArticle.getTitle());
         holder.mAuthorNameTextView.setText(mArticle.getAuthor().getName());
         holder.mContentTextView.setText(mArticle.getContent());
+
+        if (LikedArticlesData.getInstance().isLikedArticle(mArticle.getArticleUid())) {
+            holder.mLikedImageView.setImageResource(R.drawable.btn_like_selected);
+
+        } else {
+            holder.mLikedImageView.setImageResource(R.drawable.btn_like_normal);
+        }
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String stringDate = simpleDateFormat.format(mArticle.getCreatedTime());
