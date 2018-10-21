@@ -55,6 +55,13 @@ public class LikedArticlesAdapter extends RecyclerView.Adapter {
             }
         });
 
+        holder.mLikedImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LikedArticlesData.getInstance().removeLikedArticle(article.getArticleUid());
+            }
+        });
+
     }
 
     @Override

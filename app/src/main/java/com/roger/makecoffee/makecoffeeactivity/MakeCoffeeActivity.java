@@ -11,10 +11,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,6 +30,7 @@ import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.fabric.sdk.android.Fabric;
 
 public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContract.View {
@@ -38,6 +41,7 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     private BottomNavigationViewEx mBottomNavigation;
     private DrawerLayout mDrawerLayout;
     private ConstraintLayout mLogoutView;
+    private Button mProfileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,8 +115,19 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         mDrawerLayout.setFitsSystemWindows(true);
         mDrawerLayout.setClipToPadding(false);
 
+        TextView authorEmail = findViewById(R.id.textView_drawable_user_email);
+        authorEmail.setText(UserManager.getInstance().getUserEmail());
+
+        CircleImageView circleImageView = findViewById(R.id.circleImageView_drawable_user_picture);
+        Glide.with(this)
+                .load(UserManager.getInstance().getUserPhotoUrl())
+                .into(circleImageView);
+
         mLogoutView = findViewById(R.id.constraintLayout_nav_logout);
         mLogoutView.setOnClickListener(mOnClickListener);
+
+        mProfileButton = findViewById(R.id.button_drawable_profile);
+        mProfileButton.setOnClickListener(mOnClickListener);
     }
 
     private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationViewEx.OnNavigationItemSelectedListener() {
@@ -123,28 +138,32 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
             switch (item.getItemId()) {
 
                 case R.id.navigation_make_coffee:
+                    item.setCheckable(true);
                     transToMakeCoffee();
                     return true;
 
                 case R.id.navigation_knowledge:
+                    item.setCheckable(true);
                     transToKnowledge();
                     return true;
 
                 case R.id.navigation_news:
+                    item.setCheckable(true);
                     transToNews();
                     return true;
 
                 case R.id.navigation_articles:
+                    item.setCheckable(true);
                     transToArticles();
                     return true;
 
                 case R.id.navigation_liked:
+                    item.setCheckable(true);
                     transToLiked();
                     return true;
-
                 default:
+                    return false;
             }
-            return false;
         }
     };
 
@@ -159,11 +178,22 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
                 case R.id.constraintLayout_nav_logout:
                     mPresenter.logout();
                     break;
+                case R.id.button_drawable_profile:
+                    transToProfile();
+                    setAllNavigationButtonUnChecked();
+                    onBackPressed();
+                    break;
 
                 default:
             }
         }
     };
+
+    private void setAllNavigationButtonUnChecked() {
+        for (int i = 0; i < mBottomNavigation.getMenu().size(); i++) {
+            mBottomNavigation.getMenu().getItem(i).setCheckable(false);
+        }
+    }
 
     @Override
     public void onBackPressed() {

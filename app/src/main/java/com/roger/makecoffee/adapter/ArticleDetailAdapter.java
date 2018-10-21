@@ -21,6 +21,7 @@ import com.roger.makecoffee.R;
 import com.roger.makecoffee.articledetail.ArticleDetailFragment;
 import com.roger.makecoffee.objects.LikedArticlesData;
 import com.roger.makecoffee.objects.define.NewArticle;
+import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
 
 import java.text.SimpleDateFormat;
@@ -96,7 +97,9 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
         holder.mAuthorNameTextView.setText(mArticle.getAuthor().getName());
         holder.mContentTextView.setText(mArticle.getContent());
 
-        if (LikedArticlesData.getInstance().isLikedArticle(mArticle.getArticleUid())) {
+        if (mArticle.getAuthor().getUid().equals(UserManager.getInstance().getUserUid())) {
+            holder.mLikedImageView.setVisibility(View.GONE);
+        } else if (LikedArticlesData.getInstance().isLikedArticle(mArticle.getArticleUid())) {
             holder.mLikedImageView.setImageResource(R.drawable.btn_like_selected);
 
         } else {

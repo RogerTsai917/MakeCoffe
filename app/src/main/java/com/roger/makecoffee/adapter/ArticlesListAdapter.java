@@ -109,10 +109,8 @@ public class ArticlesListAdapter extends RecyclerView.Adapter {
             public void onClick(View v) {
                 if (LikedArticlesData.getInstance().isLikedArticle(article.getArticleUid())) {
                     LikedArticlesData.getInstance().removeLikedArticle(article.getArticleUid());
-                    notifyDataSetChanged();
                 } else {
                     LikedArticlesData.getInstance().addLikedArticle(article.getArticleUid());
-                    notifyDataSetChanged();
                 }
             }
         });

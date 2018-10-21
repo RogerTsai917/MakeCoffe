@@ -168,7 +168,25 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
 
     @Override
     public void transToProfile() {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
+        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(ARTICLE_DETAIL) != null) mFragmentManager.popBackStack();
+
+        if (mProfileFragment == null) mProfileFragment = ProfileFragment.newInstance();
+        if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
+        if (mKnowledgeFragment != null) transaction.hide(mKnowledgeFragment);
+        if (mNewsFragment != null) transaction.hide(mNewsFragment);
+        if (mArticlesListFragment != null) transaction.hide(mArticlesListFragment);
+        if (mLikedFragment != null) transaction.hide(mLikedFragment);
+        if (!mProfileFragment.isAdded()) {
+            transaction.add(R.id.frameLayout_make_coffee_container, mProfileFragment, PROFILE);
+        } else {
+            transaction.show(mProfileFragment);
+        }
+        transaction.commit();
     }
 
     @Override
@@ -251,6 +269,11 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         if (mLikedFragment != null && !mLikedFragment.isHidden()) {
             transaction.hide(mLikedFragment);
             transaction.addToBackStack(LIKED);
+        }
+
+        if (mProfileFragment != null && !mProfileFragment.isHidden()) {
+            transaction.hide(mProfileFragment);
+            transaction.addToBackStack(PROFILE);
         }
     }
 }
