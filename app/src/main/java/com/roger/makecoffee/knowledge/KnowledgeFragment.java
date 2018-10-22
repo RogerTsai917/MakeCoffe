@@ -44,7 +44,7 @@ public class KnowledgeFragment extends Fragment implements KnowledgeContract.Vie
 
         mRecyclerView.setAdapter(mAdapter);
 
-        mRecyclerView.addItemDecoration(new KnowledgeItemDecoration(getResources().getDimensionPixelSize(R.dimen.make_coffee_item_space)));
+        mRecyclerView.addItemDecoration(new KnowledgeItemDecoration(getResources().getDimensionPixelSize(R.dimen.items_space)));
 
         return view;
     }

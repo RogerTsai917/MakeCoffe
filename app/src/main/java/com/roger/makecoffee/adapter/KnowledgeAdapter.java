@@ -63,6 +63,8 @@ public class KnowledgeAdapter extends RecyclerView.Adapter {
             constraintLayout = itemView.findViewById(R.id.constraintLayout_knowledge_item);
             knowledgeImageView = itemView.findViewById(R.id.imageView_knowledge);
             knowledgeTExtView = itemView.findViewById(R.id.textView_knowledge);
+
+            knowledgeImageView.setClipToOutline(true);
         }
     }
 

@@ -58,7 +58,7 @@ public class ProfileFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         mRecyclerView.addItemDecoration(new ArticlesListDecoration(
-                getResources().getDimensionPixelSize(R.dimen.make_coffee_item_space)));
+                getResources().getDimensionPixelSize(R.dimen.items_space)));
 
         return view;
     }

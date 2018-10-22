@@ -2,9 +2,11 @@ package com.roger.makecoffee.loginactivity;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -19,6 +21,7 @@ import com.roger.makecoffee.utils.Constants;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "LoginActivity";
     private SignInButton mSignInButton;
+    private TextView mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         mSignInButton = findViewById(R.id.sign_in_button);
         mSignInButton.setOnClickListener(this);
+
+        mTitle = findViewById(R.id.textView_login_icon);
+
     }
 
 

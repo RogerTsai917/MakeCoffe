@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.adapter.ArticlesListAdapter;
 import com.roger.makecoffee.adapter.LikedArticlesAdapter;
 import com.roger.makecoffee.decoration.ArticlesListDecoration;
 
@@ -44,7 +43,7 @@ public class LikedFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         mRecyclerView.addItemDecoration(new ArticlesListDecoration(
-                getResources().getDimensionPixelSize(R.dimen.make_coffee_item_space)));
+                getResources().getDimensionPixelSize(R.dimen.items_space)));
 
         return view;
     }

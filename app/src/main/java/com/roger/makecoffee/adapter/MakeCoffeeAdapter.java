@@ -44,6 +44,13 @@ public class MakeCoffeeAdapter extends RecyclerView.Adapter {
     private void bindMakeCoffeeViewHolder(MakeCoffeeViewHolder holder, int position) {
         final MakeCoffeeTeaching teaching
                 = MakeCoffeeData.getInstance().getMakeCoffeeTeachingsArrayList().get(position);
+
+        if (position == 0) {
+            holder.mImageView.getLayoutParams().height = mMakeCoffeeFragment.getResources().getDimensionPixelSize(R.dimen.make_coffee_first_height);
+        } else {
+            holder.mImageView.getLayoutParams().height = mMakeCoffeeFragment.getResources().getDimensionPixelSize(R.dimen.make_coffee_height);
+        }
+
         holder.mImageView.setImageResource(teaching.getCoffeeDrawableId());
         holder.mTextView.setText(teaching.getCoffeeName());
 
@@ -62,10 +69,11 @@ public class MakeCoffeeAdapter extends RecyclerView.Adapter {
 
         public MakeCoffeeViewHolder(View itemView) {
             super(itemView);
-
             mConstraintLayout = itemView.findViewById(R.id.constraintLayout_make_coffee);
             mImageView = itemView.findViewById(R.id.imageView_item_make_coffee);
             mTextView = itemView.findViewById(R.id.textView_item_make_coffee);
+
+            mImageView.setClipToOutline(true);
         }
     }
 }

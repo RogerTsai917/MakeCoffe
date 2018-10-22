@@ -43,7 +43,7 @@
 
     <string name="article_coffee_bean_detail">咖啡詳細記錄</string>
     <string name="article_coffee_bean">咖啡豆: </string>
-    <string name="article_coffee_bean_weight">咖啡量(g): </string>
+    <string name="article_coffee_bean_weight">豆克數(g): </string>
     <string name="article_coffee_bean_roast_level">烘焙度: </string>
     <string name="article_coffee_bean_grind">研磨度: </string>
     <string name="article_coffee_water_temp">水溫(°C): </string>

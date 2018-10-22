@@ -7,21 +7,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.roger.makecoffee.MakeCoffee;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.adapter.ArticlesListAdapter;
 import com.roger.makecoffee.decoration.ArticlesListDecoration;
 import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
-import com.roger.makecoffee.objects.define.Article;
 import com.roger.makecoffee.objects.define.NewArticle;
-import com.roger.makecoffee.utils.Constants;
-
-import java.util.ArrayList;
 
 public class ArticlesListFragment extends Fragment implements ArticlesListContract.View, View.OnClickListener {
     private static ArticlesListFragment mArticlesListFragment;
@@ -62,7 +56,7 @@ public class ArticlesListFragment extends Fragment implements ArticlesListContra
         mRecyclerView.setAdapter(mAdapter);
 
         mRecyclerView.addItemDecoration(new ArticlesListDecoration(
-                getResources().getDimensionPixelSize(R.dimen.make_coffee_item_space)));
+                getResources().getDimensionPixelSize(R.dimen.items_space)));
 
         return view;
     }

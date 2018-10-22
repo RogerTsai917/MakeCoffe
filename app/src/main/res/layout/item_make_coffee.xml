@@ -4,42 +4,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/constraintLayout_make_coffee">
+    android:id="@+id/constraintLayout_make_coffee"
+    android:background="@drawable/image_view_round_corner"
+    android:elevation="@dimen/card_elevation">
 
     <ImageView
         android:id="@+id/imageView_item_make_coffee"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="350dp"
         android:scaleType="centerCrop"
+        android:background="@drawable/image_view_round_corner"
+        android:maxHeight="@dimen/make_coffee_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/coffee_espresso" />
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/shadow_bottom_rounded_corner"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_item_make_coffee"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_item_make_coffee">
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-        <TextView
-            android:id="@+id/textView_item_make_coffee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Americano"
-            android:textColor="@color/black_57"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView_item_make_coffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Americano"
+        android:textColor="@color/gray_E1"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
 </android.support.constraint.ConstraintLayout>

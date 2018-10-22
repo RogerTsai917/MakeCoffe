@@ -121,6 +121,7 @@ public class MakeCoffeeDetailAdapter extends RecyclerView.Adapter {
     private void bindTimingViewHolder(TimingViewHolder holder, int position) {
         String currentStep = "(" + (position + 1) + "/" + mTeaching.getMakeCoffeeStepsArrayList().size() + ")";
         holder.currentStepTextView.setText(currentStep);
+        holder.contentTextView.setText(mTeaching.getMakeCoffeeStepsArrayList().get(position).getContent());
         holder.setCrollerMaxTime(mTeaching.getMakeCoffeeStepsArrayList().get(position).getOtherMessage());
     }
 
@@ -167,6 +168,7 @@ public class MakeCoffeeDetailAdapter extends RecyclerView.Adapter {
 
     public class TimingViewHolder extends RecyclerView.ViewHolder {
         TextView currentStepTextView;
+        TextView contentTextView;
         Croller croller;
         TextView countTextView;
         Button startButton;
@@ -180,6 +182,7 @@ public class MakeCoffeeDetailAdapter extends RecyclerView.Adapter {
         TimingViewHolder(View itemView) {
             super(itemView);
             currentStepTextView = itemView.findViewById(R.id.textView_coffee_detail_timing_current_step);
+            contentTextView = itemView.findViewById(R.id.textView_coffee_detail_prepare);
             croller = itemView.findViewById(R.id.croller_coffee_detail_timing);
             countTextView = itemView.findViewById(R.id.textView_coffee_detail_timing_count);
             startButton = itemView.findViewById(R.id.button_coffee_detail_timing_start);

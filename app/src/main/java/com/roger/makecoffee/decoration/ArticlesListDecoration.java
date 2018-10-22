@@ -16,6 +16,6 @@ public class ArticlesListDecoration extends RecyclerView.ItemDecoration {
         outRect.left = mSpace;
         outRect.right = mSpace;
         outRect.top = mSpace;
-        outRect.bottom = mSpace;
+        //outRect.bottom = mSpace;
     }
 }

@@ -10,8 +10,12 @@
 
     <dimen name="nav_bottom_height">50dp</dimen>
     <dimen name="nav_bottom_icon_size">20dp</dimen>
-    
-    <dimen name="make_coffee_item_space">5dp</dimen>
+
+    <dimen name="make_coffee_first_height">300dp</dimen>
+    <dimen name="make_coffee_height">350dp</dimen>
+
+    <dimen name="items_space">5dp</dimen>
+    <dimen name="make_coffee_items_space">5dp</dimen>
 
     <dimen name="teaching_step_button_height">48dp</dimen>
 
@@ -21,5 +25,9 @@
     <dimen name="knowledge_item_space">10dp</dimen>
 
     <dimen name="bar_chart_text_size">12sp</dimen>
+
+    <dimen name="button_height">30dp</dimen>
+
+    <dimen name="card_elevation">4dp</dimen>
 
 </resources>

@@ -43,7 +43,7 @@ public class MakeCoffeeFragment extends Fragment implements MakeCoffeeContract.V
         mRecyclerView.setAdapter(mMakeCoffeeAdapter);
 
         mRecyclerView.addItemDecoration(new MakeCoffeeItemDecoration(2,
-                getResources().getDimensionPixelSize(R.dimen.make_coffee_item_space),
+                getResources().getDimensionPixelSize(R.dimen.make_coffee_items_space),
                 true));
 
         return view;

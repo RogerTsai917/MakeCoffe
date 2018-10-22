@@ -124,6 +124,8 @@ public class NewsAdapter extends RecyclerView.Adapter {
             newsImageView = itemView.findViewById(R.id.imageView_bigger_news_item_image);
             newsTitle = itemView.findViewById(R.id.textView_smaller_news_item_title);
             newsContent = itemView.findViewById(R.id.textView_bigger_news_item_content);
+
+            newsImageView.setClipToOutline(true);
         }
     }
 
@@ -137,6 +139,8 @@ public class NewsAdapter extends RecyclerView.Adapter {
             mLayout = itemView.findViewById(R.id.constraintLayout_smaller_news_item);
             newsImageView = itemView.findViewById(R.id.imageView_smaller_news_item_image);
             newsTitle = itemView.findViewById(R.id.textView_smaller_news_item_title);
+
+            newsImageView.setClipToOutline(true);
         }
     }
 }

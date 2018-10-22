@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Make Coffee</string>
+
+    <string name="make_coffee">沖杯咖啡</string>
+    <string name="makecoffee">沖杯咖啡</string>
+    <string name="coffee_knowledge">知識</string>
+    <string name="knowledge">知識</string>
+    <string name="news">新聞</string>
+    <string name="articles">文章</string>
+    <string name="liked">收藏</string>
+    <string name="profile">個人頁面</string>
+    <string name="following">Following</string>
+
+    <string name="completed">完成！</string>
+    <string name="previous_step">上一步</string>
+    <string name="next_step">下一步</string>
+    <string name="start">開始</string>
+    <string name="pause">暫停</string>
+    <string name="restart">重新開始</string>
+    <string name="continue_text">繼續</string>
+    <string name="google_login">Google 登入</string>
+    <string name="logout">登出</string>
+
+    <string name="write_article_title">標題: </string>
+    <string name="write_article_description">描述: </string>
+    <string name="write_article_title_hint">輸入標題…</string>
+    <string name="write_article_description_hint">輸入描述…</string>
+    <string name="write_article_preview_photo">照片: </string>
+    <string name="write_article_upload_photo">上傳照片</string>
+    <string name="write_article_content">內容: </string>
+    <string name="write_article_content_hint">輸入內容…</string>
+    <string name="write_article_step_upload_photo">上傳照片(選擇): </string>
+    <string name="post_article">發文</string>
+    <string name="history_articles">歷史文章</string>
+
+    <string name="title_cannot_be_empty">標題不能為空！</string>
+    <string name="description_cannot_be_empty">描述不能為空！</string>
+    <string name="content_cannot_be_empty">內容不能為空！</string>
+    <string name="photo_cannot_be_empty">照片不能為空！</string>
+    <string name="step_content_cannot_be_empty">步驟不能為空！</string>
+    <string name="uploading_article_please_wait">發文中, 請稍等。</string>
+    <string name="uploading_article_successful">發文成功！</string>
+
+    <string name="article_coffee_bean_detail">咖啡詳細記錄</string>
+    <string name="article_coffee_bean">咖啡豆: </string>
+    <string name="article_coffee_bean_weight">豆克數(g): </string>
+    <string name="article_coffee_bean_roast_level">烘焙度: </string>
+    <string name="article_coffee_bean_grind">研磨度: </string>
+    <string name="article_coffee_water_temp">水溫(°C): </string>
+    <string name="article_coffee_water_volume">水量(g): </string>
+    <string name="article_coffee_tool">沖泡工具: </string>
+    <string name="article_coffee_time">沖泡時間: </string>
+    <string name="article_coffee_volume">咖啡液成品(g): </string>
+    <string name="article_coffee_additive">咖啡添加物: </string>
+
+    <string name="article_coffee_flavor">咖啡風味</string>
+    <string name="article_coffee_flavor_body">醇度:</string>
+    <string name="article_coffee_flavor_acidity">酸味:</string>
+    <string name="article_coffee_flavor_bitter">苦味:</string>
+    <string name="article_coffee_flavor_sweet">甘味:</string>
+    <string name="article_coffee_flavor_aroma">香氣:</string>
+    <string name="article_supplement">補充:</string>
+    <string name="article_supplement_hint">補充內容…</string>
+
+    <string name="flavor_body">醇度</string>
+    <string name="flavor_acidity">酸味</string>
+    <string name="flavor_bitter">苦味</string>
+    <string name="flavor_sweet">甘味</string>
+    <string name="flavor_aroma">香氣</string>
+
+    <string name="confirm">確認</string>
+    <string name="cancel">取消</string>
+
+</resources>

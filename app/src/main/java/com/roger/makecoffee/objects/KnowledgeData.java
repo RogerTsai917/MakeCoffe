@@ -157,20 +157,20 @@ public class KnowledgeData {
         collection.setName("咖啡的風味");
         collection.setDrawableId(R.drawable.knowledge_coffee_01);
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "醇度(Body)",
+                "醇度 Body",
                 R.drawable.knowledge_coffee_03,
                 "醇度應是指咖啡在口中濃稠黏滑的觸感，可以用豐厚來形容質感濃稠的咖啡，質感單薄的咖啡喝起來就像是一般的飲料汽水一樣。\n" +
                         "\n" +
                         "醇度的感受可分為清淡如水般的淡薄，中度如全脂鮮奶的口感以及深度如糖漿般的超高濃脂狀。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "酸度(Acidity)",
+                "酸度 Acidity",
                 R.drawable.knowledge_coffee_03,
                 "一種分佈在舌頭後側的味覺，與令人分泌唾液的檸檬酸味不太相同，這種酸度是形容一種乾淨、明亮的感受，而且酸的香味會帶給酸味更豐富的內涵。\n" +
                         "通常產自高海拔高密度之Arabica種咖啡豆會有這種酸的特性，而低海拔之Robusta咖啡豆則沒有此種特性。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "苦味(Bitter)",
+                "苦味 Bitter",
                 R.drawable.knowledge_coffee_03,
                 "這是深焙豆的特徵，和酸味一樣，不一定會令人感到不愉悅。一般說來酸味較強的咖啡，苦味會較弱，通常會形成苦味的原因有下列五種：\n" +
                         "\n" +
@@ -185,7 +185,7 @@ public class KnowledgeData {
                         "    萃取時間：萃取時間愈長，苦味愈明顯。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "甘度(Sweet)",
+                "甘度 Sweet",
                 R.drawable.knowledge_coffee_03,
                 "形容咖啡入口之後回甘轉甜的完美感受，令人聯想到糖漿，這種回味無窮的的美味口感也正是優質咖啡才能散發出來的風味。\n" +
                         "\n" +
@@ -194,7 +194,7 @@ public class KnowledgeData {
                         "在烘焙與沖泡過程中，如果處理過度會很容易喪失這種咖啡的甘甜味。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "香氣(Aroma)",
+                "香氣 Aroma",
                 R.drawable.knowledge_coffee_03,
                 "香味是咖啡品質的重要指標，產地的氣候、處理過程及烘焙技術，都是會左右咖啡豆香味的重要條件，香氣是指沖煮完成的咖啡所發出的味道，用來形容咖啡氣味包括有焦糖味、可可味、水果味、花香味、濃郁、香辛味等。一般來說，香氣的消失正意味著品質變差。"
         ));
@@ -232,7 +232,7 @@ public class KnowledgeData {
         collection.setDrawableId(R.drawable.knowledge_world_asia);
 
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "印尼(Indonesia)",
+                "印尼 Indonesia",
                 R.drawable.knowledge_world_indonesia,
                 "知名代表性咖啡: 爪哇(Java), 蘇門達臘曼特寧(Sumatra Mandheling)\n" +
                         "\n" +
@@ -247,7 +247,7 @@ public class KnowledgeData {
                         "但是因為產量極少，故售價極昂，每磅在數百美元之譜。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "印度(India)",
+                "印度 India",
                 R.drawable.knowledge_world_india,
                 "知名代表性咖啡: 季風馬拉巴(Monsooned Malabar)\n" +
                         "\n" +
@@ -260,7 +260,7 @@ public class KnowledgeData {
                         "這後來成為一種特別的咖啡豆處理手法，咖啡豆採收後，特別將其放置在潮濕的季風中幾個月的時間，使其變為黃白的顏色且酸度降低，即是我們買到的季風馬拉巴(Monsooned Malabar)。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "越南(Vietnam)",
+                "越南 Vietnam",
                 R.drawable.knowledge_world_vietnam,
                 "知名代表性咖啡: 越南咖啡\n" +
                         "\n" +
@@ -286,7 +286,7 @@ public class KnowledgeData {
         collection.setDrawableId(R.drawable.knowledge_world_africa);
 
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "葉門(Yemen)",
+                "葉門 Yemen",
                 R.drawable.knowledge_world_yemen,
                 "知名代表性咖啡: 摩卡馬塔里(Mocha Mattari)\n" +
                         "\n" +
@@ -299,7 +299,7 @@ public class KnowledgeData {
                         "摩卡這個名字有好幾種寫法，\"Mocca\", \"Mocha\", \"Moka\", \"Mokha\"... 等等，不過它們代表的意思都是一樣的。摩卡咖啡豆因為有獨特的巧克力味， 在深焙時尤其明顯，所以有一種加入巧克力醬調味的花式咖啡也就以\"摩卡咖啡\"作為它的名子了。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "依索比亞(Ethiopia)",
+                "依索比亞 Ethiopia",
                 R.drawable.knowledge_world_ethiopia,
                 "知名代表性咖啡: 摩卡哈拉(Mocha Harra), 耶加雪啡(Yirgacheffe)\n" +
                         "\n" +
@@ -316,7 +316,7 @@ public class KnowledgeData {
                         "那是因為先前衣索比亞的咖啡也是由葉門的摩卡港出口，因此也是以摩卡來命名咖啡，而再以不同的產地名稱來細分，例如摩卡哈拉，摩卡吉馬等。 所以同是摩卡咖啡，有可能它是來自於葉門，也有可能是來自於依索比亞喔。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "象牙海岸(Cote d'Ivoire / Ivory Coast)",
+                "象牙海岸 Cote d'Ivoire / Ivory Coast",
                 R.drawable.knowledge_world_ivory_coast,
                 "知名代表性咖啡: 無\n" +
                         "\n" +
@@ -333,7 +333,7 @@ public class KnowledgeData {
                         "而如前所述，羅布斯塔種的咖啡由於其特殊的味道及特性，大多使用於調合的即溶咖啡或罐裝咖啡等用途，很少以精品咖啡的形式單品直接飲用，因此就不常出現在我們常提的咖啡生產國家之列了。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "肯亞(Kenya)",
+                "肯亞 Kenya",
                 R.drawable.knowledge_world_kenya,
                 "知名代表性咖啡: 肯亞AA\n" +
                         "\n" +
@@ -346,7 +346,7 @@ public class KnowledgeData {
                         "肯亞咖啡在淺焙時明亮的果香及果酸有人評為像水果茶，可見其獨特的風味。其中知名的肯亞AA顆粒飽滿，口感豐富濃郁，頗受世人的好評。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "坦尚尼亞(Tanzania)",
+                "坦尚尼亞 Tanzania",
                 R.drawable.knowledge_world_tanzania,
                 "知名代表性咖啡: 克里曼佳羅(Kilimanjaro)\n" +
                         "\n" +
@@ -359,7 +359,7 @@ public class KnowledgeData {
                         "這裡所產的克里曼佳羅 咖啡一般來說有較強的酸性，但較肯亞的稍弱些，口感則與肯亞類似，質感濃郁且帶濃厚的甘甜香氣。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "辛巴威(Zimbabwe)",
+                "辛巴威 Zimbabwe",
                 R.drawable.knowledge_world_zimbabwe,
                 "知名代表性咖啡: 辛巴威\n" +
                         "\n" +
@@ -368,7 +368,7 @@ public class KnowledgeData {
                         "辛巴威的咖啡特色是和肯亞類似有較強的酸度及水果的香味，但與肯亞不同的 是它帶有一種類似胡椒的味道。 最好的咖啡產自奇平(Chipinge)這個地方。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "馬拉威(Malawi)",
+                "馬拉威 Malawi",
                 R.drawable.knowledge_world_malawi,
                 "知名代表性咖啡: 馬拉威\n" +
                         "\n" +
@@ -394,7 +394,7 @@ public class KnowledgeData {
         collection.setName("中美洲單品咖啡");
         collection.setDrawableId(R.drawable.knowledge_world_central_america);
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "瓜地馬拉(Guatemala)",
+                "瓜地馬拉 Guatemala",
                 R.drawable.knowledge_world_guatemala,
                 "知名代表性咖啡: 安堤瓜(Antigua), 薇薇特楠果(Huehuetenango)\n" +
                         "\n" +
@@ -407,7 +407,7 @@ public class KnowledgeData {
                         "瓜國的咖啡屬阿拉比卡種，以水洗法處理， 在較遠的西北方有一片薇薇特楠果(Huehuetenango)高地，因為海拔高於5000英呎，所產咖啡具有高海拔咖啡質地堅硬， 酸性較強且具豐富滋味的特色，亦是瓜地馬拉極有特色的咖啡之一。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "哥斯大黎加(Costa Rica)",
+                "哥斯大黎加 Costa Rica",
                 R.drawable.knowledge_world_costa_rica,
                 "知名代表性咖啡: 塔拉蘇(Tarrazu)\n" +
                         "\n" +
@@ -420,7 +420,7 @@ public class KnowledgeData {
                         "塔拉蘇這個地區生產的咖啡則因為帶有水果味及一些巧克力味或核果味的特殊風味，也是咖啡品嚐者非常喜愛的咖啡之一。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "尼加拉瓜(Nicaragua)",
+                "尼加拉瓜 Nicaragua",
                 R.drawable.knowledge_world_nicaragua,
                 "知名代表性咖啡: 尼加拉瓜\n" +
                         "\n" +
@@ -429,7 +429,7 @@ public class KnowledgeData {
                         "不過高品質的尼加拉瓜豆例如瑪拉果吉佩(Maragogipe, 一種咖啡豆十分巨大稱為象豆的樹種)則評價很高，因為它口味較為均衡，沒有其它中美洲咖啡常帶有的鮮明果酸，但有著清澈的口感以及絕佳的香醇度。 這種圓潤而柔和的質感，也使得它在瓜地馬拉咖啡一般較中庸的評價中一支獨秀，受到許多人的喜愛。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "宏都拉斯(Honduras)",
+                "宏都拉斯 Honduras",
                 R.drawable.knowledge_world_honduras,
                 "知名代表性咖啡: 宏都拉斯\n" +
                         "\n" +
@@ -446,7 +446,7 @@ public class KnowledgeData {
                         "而因為其風味上的特性，作單品或加入綜合咖啡的，甚或加入為Espresso成份豆之一都是不錯的選擇。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "巴拿馬(Panama)",
+                "巴拿馬 Panama",
                 R.drawable.knowledge_world_panama,
                 "知名代表性咖啡: 巴拿馬\n" +
                         "\n" +
@@ -461,7 +461,7 @@ public class KnowledgeData {
                         "好的巴拿馬的豆以乾淨澄澈，明亮溫順的口感，中等的醇度表現令人驚豔，是咖啡品嚐家認為是非常優秀的咖啡之一。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "薩爾瓦多(El Salvador)",
+                "薩爾瓦多 El Salvador",
                 R.drawable.knowledge_world_el_salvado,
                 "知名代表性咖啡: 薩爾瓦多\n" +
                         "\n" +
@@ -474,7 +474,7 @@ public class KnowledgeData {
                         "依海拔高低分為三個等級，分別為SHG(Strictly High Grown), SG(High Grown)及SC(Central Standard)等。 值得一提的是，薩爾瓦多出產一款溫泉咖啡，因為使用溫泉水作水洗處理而得名，其特別而柔順的酸味及甘甜香十分迷人，因為產量少使得單價頗高， 是其十分具有特色的咖啡。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "墨西哥(Mexico)",
+                "墨西哥 Mexico",
                 R.drawable.knowledge_world_mexico,
                 "知名代表性咖啡: 墨西哥\n" +
                         "\n" +
@@ -493,7 +493,7 @@ public class KnowledgeData {
         collection.setName("南美洲單品咖啡");
         collection.setDrawableId(R.drawable.knowledge_world_south_america);
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "巴西(Brazil)",
+                "巴西 Brazil",
                 R.drawable.knowledge_world_brazil,
                 "知名代表性咖啡: 山多士(Santos)\n" +
                         "\n" +
@@ -506,7 +506,7 @@ public class KnowledgeData {
                         "巴西咖啡豆性屬中性，可單品來品嚐(雖較單調一點)， 或和其他種類的咖啡豆相混成綜合咖啡，一般被認為是混合調配時不可缺少的咖啡豆。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "哥倫比亞(Colombia)",
+                "哥倫比亞 Colombia",
                 R.drawable.knowledge_world_colombia,
                 "知名代表性咖啡: 哥倫比亞\n" +
                         "\n" +
@@ -517,7 +517,7 @@ public class KnowledgeData {
                         "哥倫比亞豆與巴西豆同屬調和式咖啡基本豆之最佳選擇，但其風味則較巴西豆更為甘醇些，香氣也更濃厚，除單品品嚐外， 也常用於調合咖啡中，用來增加咖啡的甘味，調合其它咖啡的苦味。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "祕魯(Peru)",
+                "祕魯 Peru",
                 R.drawable.knowledge_world_peru,
                 "知名代表性咖啡: 祕魯\n" +
                         "\n" +
@@ -528,7 +528,7 @@ public class KnowledgeData {
                         "祕魯咖啡豆有圓潤的口感、醇度適中不稠不淡、柔和的酸是其一大特點，另略帶核果的味道。隨著出口量漸增，咖啡愛好著逐漸熟悉， 目前有越來越多的人喜愛上秘魯咖啡其香醇的口感以及柔細酸味。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "厄瓜多爾(Ecuador)",
+                "厄瓜多爾 Ecuador",
                 R.drawable.knowledge_world_ecuador,
                 "知名代表性咖啡: 加拉帕哥(Galapagos)\n" +
                         "\n" +
@@ -552,7 +552,7 @@ public class KnowledgeData {
         collection.setName("大洋洲單品咖啡");
         collection.setDrawableId(R.drawable.knowledge_world_oceania);
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "新幾內亞(New Guinea)",
+                "新幾內亞 New Guinea",
                 R.drawable.knowledge_world_new_guinea,
                 "知名代表性咖啡: 新幾內亞\n" +
                         "\n" +
@@ -567,7 +567,7 @@ public class KnowledgeData {
                         "新幾內亞的咖啡嚐起來口感濃郁而均衡，帶有甘甜味及明亮的酸，有類似水果的香味。 其水果香類似葡萄柚另帶一點巧克力味，也有人認為帶有一點核果的味道。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "澳洲(Australia)",
+                "澳洲 Australia",
                 R.drawable.knowledge_world_australia,
                 "知名代表性咖啡: 澳洲咖啡\n" +
                         "\n" +
@@ -578,7 +578,7 @@ public class KnowledgeData {
                         "澳洲的咖啡豆品質相當不錯，帶有島嶼豆的特性，香醇而帶著溫和的酸，有別於中美洲通常帶著明亮酸的咖啡豆。其香味略帶巧克力味，單品喝或用於調合都不錯。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "夏威夷(Hawaii)",
+                "夏威夷 Hawaii",
                 R.drawable.knowledge_world_hawaii,
                 "知名代表性咖啡: 可娜(Kona)\n" +
                         "\n" +
@@ -598,7 +598,7 @@ public class KnowledgeData {
         collection.setName("加勒比海單品咖啡");
         collection.setDrawableId(R.drawable.knowledge_world_caribbean);
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "牙買加(Jamaica)",
+                "牙買加 Jamaica",
                 R.drawable.knowledge_world_jamaica,
                 "知名代表性咖啡: 藍山(Blue Mountain)\n" +
                         "\n" +
@@ -615,7 +615,7 @@ public class KnowledgeData {
                         "聖安琪區目前仍是牙買加除藍山外的主要咖啡生產區之一， 海拔6000英呎以上，生產的咖啡和藍山類似，品質也相當高，但因不在藍山上，以牙買加高級水洗(Jamaica Prime washed)為名，其滋味濃郁香醇， 酸甘苦均衡圓潤，市場上售價相當高，也是眾所認為的極品之一。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "波多黎各(Puerto Rico)",
+                "波多黎各 Puerto Rico",
                 R.drawable.knowledge_world_puerto_rico,
                 "知名代表性咖啡: 波多黎各\n" +
                         "\n" +
@@ -626,7 +626,7 @@ public class KnowledgeData {
                         "今日尤科仍是 波多黎各咖啡的代表，由於品質佳，產量少加上人工費用高昂，市場上的價格一向居高不下。尤科特選豆被評為 質感醇厚，風味平衡，溫和，有相當的複雜感而不單調，低酸度低苦味近似牙買加藍山，也是加勒比海裡的極品咖啡之一。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "多明尼加(Dominican Republic)",
+                "多明尼加 Dominican Republic",
                 R.drawable.knowledge_world_dominican_republic,
                 "知名代表性咖啡: 聖多明尼加(Santo Domingo)\n" +
                         "\n" +
@@ -650,7 +650,7 @@ public class KnowledgeData {
         collection.setDrawableId(R.drawable.knowledge_makecoffee);
 
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "塞風式(Siphon)",
+                "塞風式 Siphon",
                 R.drawable.knowledge_makecoffee_siphon,
                 "塞風式咖啡壺一般也稱為「虹吸式」，也稱為「真空過濾式」，是由上杯、下杯、置杯架、濾布和加熱器等物件所組成，並利用熱漲冷縮的物理原理沖煮咖啡，水溫在酒精燈的加熱下，由下杯上升到上杯裡後，被抽出的咖啡液再度回到下杯裡。\n" +
                         "\n" +
@@ -677,7 +677,7 @@ public class KnowledgeData {
                         "    下杯上部蓋濕布的用意是加速冷卻增大虹吸力量，儘速讓咖啡汁與咖啡粉分離，避免萃取時間過長影響整體風味。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "義式機器沖煮式(Espresso)",
+                "義式機器沖煮式 Espresso",
                 R.drawable.knowledge_makecoffee_espresso,
                 "咖啡是一種極不穩定的液體，因為義式濃縮咖啡的沖煮步驟十分繁雜，每一個步驟都會影響到義式濃縮咖啡的最終品質，並改變咖啡的特性，所以瞭解其沖煮方式並選擇適當的咖啡豆十分的重要。\n" +
                         "\n" +
@@ -686,7 +686,7 @@ public class KnowledgeData {
                         "記得不要將咖啡研磨的太細，否則萃取出來的咖啡將會太苦。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "摩卡(Moka)",
+                "摩卡 Moka",
                 R.drawable.knowledge_makecoffee_moke,
                 "為蒸餾式的一種，以摩卡壺所沖煮出的咖啡帶著一種沈穩的濃稠和香味。\n" +
                         "\n" +
@@ -697,7 +697,7 @@ public class KnowledgeData {
                         "常見的塞風式煮法也是利用相同的原理。"
         ));
         collection.addCoffeeKnowledge(new CoffeeKnowledge(
-                "過濾式(Filter coffee)",
+                "過濾式 Filter coffee",
                 R.drawable.knowledge_makecoffee_filter_coffee,
                 "這是一種濾紙滴落式的沖泡方式，主要是讓咖啡豆粉與熱水充分混合後，溶解出咖啡中的濃醇甘香，再透過濾紙滴漏出來，此種方式能過濾咖啡中所含的脂肪、蛋白質及不良雜質，得到口感較清爽的咖啡，在享受美味的同時並能得到自己手沖咖啡的樂趣。\n" +
                         "\n" +

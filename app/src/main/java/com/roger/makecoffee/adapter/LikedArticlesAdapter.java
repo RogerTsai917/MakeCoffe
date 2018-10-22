@@ -16,6 +16,8 @@ import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.objects.LikedArticlesData;
 import com.roger.makecoffee.objects.define.NewArticle;
 
+import java.text.SimpleDateFormat;
+
 
 public class LikedArticlesAdapter extends RecyclerView.Adapter {
     private LikedFragment mFragment;
@@ -48,6 +50,10 @@ public class LikedArticlesAdapter extends RecyclerView.Adapter {
         holder.mTitleTextView.setText(article.getTitle());
         holder.mAuthorNameTextView.setText(article.getAuthor().getName());
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String stringDate = simpleDateFormat.format(article.getCreatedTime());
+        holder.mTimeTextView.setText(stringDate);
+
         holder.mConstraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +81,7 @@ public class LikedArticlesAdapter extends RecyclerView.Adapter {
         ImageView mLikedImageView;
         TextView mTitleTextView;
         TextView mAuthorNameTextView;
+        TextView mTimeTextView;
 
         public LikedArticlesViewHolder(View itemView) {
             super(itemView);
@@ -83,6 +90,7 @@ public class LikedArticlesAdapter extends RecyclerView.Adapter {
             mLikedImageView = itemView.findViewById(R.id.imageView_liked_articles_liked);
             mTitleTextView = itemView.findViewById(R.id.textView_liked_articles_title);
             mAuthorNameTextView = itemView.findViewById(R.id.textView_liked_articles_author_name);
+            mTimeTextView = itemView.findViewById(R.id.textView_liked_articles_time);
 
             mPhotoImageView.setClipToOutline(true);
         }
