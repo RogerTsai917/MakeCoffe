@@ -47,15 +47,9 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Fabric.with(this, new Crashlytics());
-        FirebaseApp.initializeApp(this);
-
-        if (UserManager.getInstance().isLoginStatus()) {
-            init();
-        } else {
-
-            popLogin();
-        }
+        init();
+        UserManager.getInstance().checkFireStoreUserInfo();
+        
     }
 
     @Override

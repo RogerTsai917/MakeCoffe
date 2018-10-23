@@ -46,9 +46,11 @@ public class MakeCoffeeAdapter extends RecyclerView.Adapter {
                 = MakeCoffeeData.getInstance().getMakeCoffeeTeachingsArrayList().get(position);
 
         if (position == 0) {
-            holder.mImageView.getLayoutParams().height = mMakeCoffeeFragment.getResources().getDimensionPixelSize(R.dimen.make_coffee_first_height);
+            holder.mImageView.getLayoutParams().height = mMakeCoffeeFragment.getResources()
+                    .getDimensionPixelSize(R.dimen.make_coffee_first_height);
         } else {
-            holder.mImageView.getLayoutParams().height = mMakeCoffeeFragment.getResources().getDimensionPixelSize(R.dimen.make_coffee_height);
+            holder.mImageView.getLayoutParams().height = mMakeCoffeeFragment.getResources()
+                    .getDimensionPixelSize(R.dimen.make_coffee_height);
         }
 
         holder.mImageView.setImageResource(teaching.getCoffeeDrawableId());

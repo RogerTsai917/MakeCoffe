@@ -16,14 +16,16 @@
         <activity
             android:name=".makecoffeeactivity.MakeCoffeeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan">
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".loginactivity.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".loginactivity.LoginActivity"/>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="9e5366622a8c2793a326f650d25e5f12d5312f9e"
