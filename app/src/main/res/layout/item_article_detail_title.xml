@@ -19,13 +19,14 @@
         android:id="@+id/textView_article_detail_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="45dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
-        android:textColor="@color/grey_72"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black_57"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_article_detail_like"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_article_detail_image"
         tools:text="First Article: First time to make a cup of espresso." />
@@ -34,12 +35,10 @@
         android:id="@+id/imageView_article_detail_like"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_article_detail_image"
         app:srcCompat="@drawable/btn_like_normal" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -64,12 +63,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Roger Tsai"
         android:textColor="@color/grey_72"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/circleImageView_article_detail_author_image"
         app:layout_constraintStart_toEndOf="@+id/circleImageView_article_detail_author_image"
-        app:layout_constraintTop_toTopOf="@+id/circleImageView_article_detail_author_image" />
+        app:layout_constraintTop_toTopOf="@+id/circleImageView_article_detail_author_image"
+        tools:text="Roger Tsai"/>
 
     <TextView
         android:id="@+id/textView_article_detail_posted_time"
@@ -80,7 +79,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:textColor="@color/grey_72"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_author_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView_article_detail_author_name"
@@ -90,8 +89,8 @@
         android:id="@+id/view_separation_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="#e7e7e7"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,6 +105,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="@dimen/line_spacing_extra"
         android:textColor="@color/black_57"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,17 +115,27 @@
 
     <View
         android:id="@+id/view_separation_line2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="#e7e7e7"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_content" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_posted_time"
+        app:layout_constraintEnd_toStartOf="@+id/textView_article_detail_posted_time"
+        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_posted_time"
+        app:srcCompat="@drawable/icon_time" />
 
 
 </android.support.constraint.ConstraintLayout>

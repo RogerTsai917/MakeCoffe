@@ -16,6 +16,7 @@
         android:text="@string/article_coffee_flavor"
         android:textColor="@color/black_57"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,11 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/article_supplement"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HorizontalBarChart_article_detail_coffee_flavor" />
 
@@ -50,6 +51,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="@dimen/line_spacing_extra"
         android:textColor="@color/black_57"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,6 +59,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_supplement"
         tools:text="無" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalBarChart_article_detail_coffee_flavor"
+        app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintTop_toTopOf="@+id/textView19"
+        app:srcCompat="@drawable/coffee_cup_02" />
 
 
 </android.support.constraint.ConstraintLayout>

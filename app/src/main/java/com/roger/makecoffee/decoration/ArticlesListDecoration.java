@@ -13,9 +13,12 @@ public class ArticlesListDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+        int position = parent.getChildAdapterPosition(view);
+        if (position == 0) {
+            outRect.top = mSpace;
+        }
         outRect.left = mSpace;
         outRect.right = mSpace;
-        outRect.top = mSpace;
-        //outRect.bottom = mSpace;
+        outRect.bottom = mSpace;
     }
 }

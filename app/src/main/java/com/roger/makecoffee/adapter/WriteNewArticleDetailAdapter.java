@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -89,7 +90,7 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter{
         holder.mTitleEditText.setText(mNewArticle.getTitle());
         holder.mContentEditText.setText(mNewArticle.getContent());
 
-        holder.mUploadPhotoButton.setOnClickListener(new View.OnClickListener() {
+        holder.mUploadView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mFragment.getImageFromAlbum();
@@ -98,6 +99,10 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter{
         });
 
         if (!mNewArticle.getImageUrl().equals("")) {
+            holder.mUploadImageView.setVisibility(View.GONE);
+            holder.mUploadTextView.setVisibility(View.GONE);
+            holder.mUploadView.setBackgroundResource(R.drawable.shadow_transparent_round_corner);
+
             Uri uri = Uri.parse(mNewArticle.getImageUrl());
             Glide.with(mFragment)
                     .load(uri)
@@ -348,7 +353,11 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter{
         holder.mBarChartConstraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFragment.showChangeCoffeeFlavorDialog();
+                mFragment.showChangeCoffeeFlavorDialog(mNewArticle);
+                holder.mClickView.setVisibility(View.GONE);
+                holder.mClickTextView.setVisibility(View.GONE);
+                holder.mClickImageView.setVisibility(View.GONE);
+                mBarChart.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -404,14 +413,18 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter{
         EditText mTitleEditText;
         EditText mContentEditText;
         ImageView mPreviewImageView;
-        Button mUploadPhotoButton;
+        View mUploadView;
+        TextView mUploadTextView;
+        ImageView mUploadImageView;
 
         public TitleViewHolder(View itemView) {
             super(itemView);
             mTitleEditText = itemView.findViewById(R.id.editText_write_article_title_title);
             mContentEditText = itemView.findViewById(R.id.editText_write_article_title_description);
             mPreviewImageView = itemView.findViewById(R.id.imageView_write_article_title);
-            mUploadPhotoButton = itemView.findViewById(R.id.button_write_article_title);
+            mUploadView = itemView.findViewById(R.id.view_click_to_upload_photo);
+            mUploadTextView = itemView.findViewById(R.id.textView_click_to_upload_photo);
+            mUploadImageView = itemView.findViewById(R.id.imageView_click_to_upload_photo);
 
             mPreviewImageView.setClipToOutline(true);
         }
@@ -447,6 +460,9 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter{
     private class CoffeeFlavorViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout mBarChartConstraintLayout;
         EditText mSupplementEditText;
+        View mClickView;
+        TextView mClickTextView;
+        ImageView mClickImageView;
 
         public CoffeeFlavorViewHolder(View itemView) {
             super(itemView);
@@ -454,6 +470,9 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter{
             mBarChartConstraintLayout = itemView.findViewById(R.id.constraintLayout_barChart_coffee_flavor);
             mSupplementEditText = itemView.findViewById(R.id.editText_write_article_supplement);
             mBarChart = itemView.findViewById(R.id.HorizontalBarChart_coffee_flavor);
+            mClickView = itemView.findViewById(R.id.view_click_to_edit_flavor);
+            mClickTextView = itemView.findViewById(R.id.textView_click_to_edit_flavor);
+            mClickImageView = itemView.findViewById(R.id.imageView_click_to_edit_flavor);
 
             mBarChart.setTouchEnabled(false);
 

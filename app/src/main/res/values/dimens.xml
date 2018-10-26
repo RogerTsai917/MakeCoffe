@@ -12,7 +12,7 @@
     <dimen name="nav_bottom_icon_size">20dp</dimen>
 
     <dimen name="make_coffee_first_height">220dp</dimen>
-    <dimen name="make_coffee_height">350dp</dimen>
+    <dimen name="make_coffee_height">264dp</dimen>
 
     <dimen name="items_space">5dp</dimen>
     <dimen name="make_coffee_items_space">5dp</dimen>
@@ -26,8 +26,12 @@
 
     <dimen name="bar_chart_text_size">12sp</dimen>
 
-    <dimen name="button_height">30dp</dimen>
+    <dimen name="button_height">35dp</dimen>
 
     <dimen name="card_elevation">4dp</dimen>
+
+    <dimen name="line_spacing_extra">4dp</dimen>
+
+    <dimen name="article_text_view_padding">8dp</dimen>
 
 </resources>

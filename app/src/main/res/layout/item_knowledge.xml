@@ -11,9 +11,9 @@
     <ImageView
         android:id="@+id/imageView_knowledge"
         android:layout_width="0dp"
-        android:layout_height="110dp"
-        android:scaleType="centerCrop"
+        android:layout_height="88dp"
         android:background="@drawable/image_view_round_corner"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -24,7 +24,7 @@
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:background="@drawable/shadow_bottom_rounded_corner"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_knowledge"
         app:layout_constraintEnd_toEndOf="parent"

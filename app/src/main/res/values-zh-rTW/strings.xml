@@ -50,7 +50,7 @@
     <string name="article_coffee_water_volume">水量(g): </string>
     <string name="article_coffee_tool">沖泡工具: </string>
     <string name="article_coffee_time">沖泡時間: </string>
-    <string name="article_coffee_volume">咖啡液成品(g): </string>
+    <string name="article_coffee_volume">咖啡液(g): </string>
     <string name="article_coffee_additive">咖啡添加物: </string>
 
     <string name="article_coffee_flavor">咖啡風味</string>

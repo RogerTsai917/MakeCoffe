@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
@@ -16,6 +23,7 @@
         android:text="@string/article_coffee_bean_detail"
         android:textColor="@color/black_57"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,11 +33,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/article_text_view_padding"
         android:fontFamily="sans-serif-medium"
         android:text="@string/article_coffee_bean"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -39,7 +48,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
         android:textColor="@color/black_57"
@@ -59,6 +67,7 @@
         android:text="@string/article_coffee_bean_roast_level"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_bean_print" />
 
@@ -66,45 +75,50 @@
         android:id="@+id/textView_article_detail_roast_level_print"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
         android:textColor="@color/black_57"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_roast_level"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_roast_level"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toEndOf="@+id/textView_article_detail_roast_level"
+        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_roast_level"
         tools:text="淺焙" />
 
     <TextView
         android:id="@+id/textView_article_detail_coffee_bean_grind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/article_coffee_bean_grind"
         android:textColor="@color/black_57"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_roast_level_print" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_bean_print" />
 
     <TextView
         android:id="@+id/textView_article_detail_coffee_bean_grind_print"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_coffee_bean_grind"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_bean_grind"
+        app:layout_constraintStart_toEndOf="@+id/textView_article_detail_coffee_bean_grind"
+        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_coffee_bean_grind"
         tools:text="細研磨" />
 
     <TextView
@@ -117,23 +131,26 @@
         android:text="@string/article_coffee_bean_weight"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_bean_grind_print" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_water_temp_print" />
 
     <TextView
         android:id="@+id/textView_article_detail_coffee_bean_weight_print"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
         android:textColor="@color/black_57"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_bean_weight"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_coffee_bean_weight"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toEndOf="@+id/textView_article_detail_coffee_bean_weight"
+        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_coffee_bean_weight"
         tools:text="13g" />
 
     <TextView
@@ -141,57 +158,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/article_coffee_water_temp"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_bean_weight_print" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_roast_level_print" />
 
     <TextView
         android:id="@+id/textView_article_detail_water_temp_print"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
         android:textColor="@color/black_57"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_water_temp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_water_temp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toEndOf="@+id/textView_article_detail_water_temp"
+        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_water_temp"
         tools:text="96" />
 
     <TextView
         android:id="@+id/textView_article_detail_water_volume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/article_coffee_water_volume"
         android:textColor="@color/black_57"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_water_temp_print" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_bean_grind_print" />
 
     <TextView
         android:id="@+id/textView_article_detail_water_volume_print"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_water_volume"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_water_volume"
+        app:layout_constraintStart_toEndOf="@+id/textView_article_detail_water_volume"
+        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_water_volume"
         tools:text="250g" />
 
     <TextView
@@ -204,8 +227,9 @@
         android:text="@string/article_coffee_tool"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_water_volume_print" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_bean_weight_print" />
 
     <TextView
         android:id="@+id/textView_article_detail_coffee_tool_print"
@@ -213,7 +237,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
         android:textColor="@color/black_57"
@@ -233,6 +256,7 @@
         android:text="@string/article_coffee_time"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_tool_print" />
 
@@ -242,9 +266,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
+        android:lineSpacingExtra="@dimen/line_spacing_extra"
         android:textColor="@color/black_57"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -256,29 +280,32 @@
         android:id="@+id/textView_article_detail_coffee_volume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/article_coffee_volume"
         android:textColor="@color/black_57"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_time_print" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_water_volume_print" />
 
     <TextView
         android:id="@+id/textView_article_detail_coffee_volume_print"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_article_detail_coffee_volume"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_volume"
+        app:layout_constraintStart_toEndOf="@+id/textView_article_detail_coffee_volume"
+        app:layout_constraintTop_toTopOf="@+id/textView_article_detail_coffee_volume"
         tools:text="223g" />
 
     <TextView
@@ -291,8 +318,9 @@
         android:text="@string/article_coffee_additive"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_volume_print" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_time_print" />
 
     <TextView
         android:id="@+id/textView_article_detail_coffee_additive_print"
@@ -300,7 +328,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
         android:textColor="@color/black_57"
@@ -314,15 +341,25 @@
         android:id="@+id/view_separation_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="#e7e7e7"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_article_detail_coffee_additive_print" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintTop_toTopOf="@+id/textView19"
+        app:srcCompat="@drawable/coffee_bean_02" />
 
 
 </android.support.constraint.ConstraintLayout>

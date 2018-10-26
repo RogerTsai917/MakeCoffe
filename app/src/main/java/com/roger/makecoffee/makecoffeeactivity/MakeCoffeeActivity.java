@@ -48,8 +48,8 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         super.onCreate(savedInstanceState);
 
         init();
+
         UserManager.getInstance().checkFireStoreUserInfo();
-        
     }
 
     @Override

@@ -222,7 +222,6 @@ public class WriteArticleDetailAdapter extends RecyclerView.Adapter {
             mTitleEditText = itemView.findViewById(R.id.editText_write_article_title_title);
             mDescriptionEditText = itemView.findViewById(R.id.editText_write_article_title_description);
             mPreviewImageView = itemView.findViewById(R.id.imageView_write_article_title);
-            mUploadPhotoButton = itemView.findViewById(R.id.button_write_article_title);
 
             mPreviewImageView.setClipToOutline(true);
         }

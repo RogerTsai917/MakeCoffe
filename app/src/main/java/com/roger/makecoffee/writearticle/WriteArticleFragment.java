@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.adapter.WriteNewArticleDetailAdapter;
 import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
+import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.utils.Constants;
 
 public class WriteArticleFragment extends Fragment implements WriteArticleContract.View, View.OnClickListener {
@@ -130,7 +131,7 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
     }
 
     @Override
-    public void showChangeCoffeeFlavorDialog() {
+    public void showChangeCoffeeFlavorDialog(NewArticle article) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         mChangeCoffeeFlavorDialog = builder.create();
         View dialogView = View.inflate(getContext(), R.layout.dialog_choose_coffee_flavor, null);
@@ -145,15 +146,25 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
         Button cancelButton = dialogView.findViewById(R.id.button_coffee_flavor_cancel);
 
         final int[] tempLevel = {0, 0, 0, 0, 0};
+
         final String[] level = {"0", "1", "2", "3", "4", "5"};
         ArrayAdapter<String> levelList = new ArrayAdapter<>
                 (getContext(), R.layout.item_simple_spinner, level);
 
         flavorBodySpinner.setAdapter(levelList);
+        flavorBodySpinner.setSelection(article.getFlavorBody());
+
         flavorAciditySpinner.setAdapter(levelList);
+        flavorAciditySpinner.setSelection(article.getFlavorAcidity());
+
         flavorBitterSpinner.setAdapter(levelList);
+        flavorBitterSpinner.setSelection(article.getFlavorBitter());
+
         flavorSweetSpinner.setAdapter(levelList);
+        flavorSweetSpinner.setSelection(article.getFlavorSweet());
+
         flavorAromaSpinner.setAdapter(levelList);
+        flavorAromaSpinner.setSelection(article.getFlavorAroma());
 
         flavorBodySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

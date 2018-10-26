@@ -144,7 +144,7 @@
         android:background="@drawable/button_background"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/confirm"
-        android:textColor="@color/gray_E1"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
@@ -158,7 +158,7 @@
         android:background="@drawable/button_background"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/cancel"
-        android:textColor="@color/gray_E1"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_coffee_flavor_confirm"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />

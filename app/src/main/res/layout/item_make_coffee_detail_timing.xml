@@ -99,7 +99,7 @@
         android:background="@drawable/button_background"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/start"
-        android:textColor="@color/gray_E1"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/croller_coffee_detail_timing" />
@@ -120,7 +120,7 @@
         android:background="@drawable/button_background"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/pause"
-        android:textColor="@color/gray_E1"
+        android:textColor="@android:color/white"
         android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/croller_coffee_detail_timing" />
@@ -134,7 +134,7 @@
         android:background="@drawable/button_background"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/restart"
-        android:textColor="@color/gray_E1"
+        android:textColor="@android:color/white"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/croller_coffee_detail_timing" />
@@ -149,7 +149,7 @@
         android:background="@drawable/button_background"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/restart"
-        android:textColor="@color/gray_E1"
+        android:textColor="@android:color/white"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.knowledgedetail.KnowledgeDetailFragment;
 import com.roger.makecoffee.objects.define.CoffeeKnowledge;
@@ -45,6 +46,9 @@ public class KnowledgeDetailAdapter extends RecyclerView.Adapter {
 
     private void bindKnowledgeDetailViewHolder(KnowledgeDetailViewHolder holder,int position) {
         final CoffeeKnowledge knowledge = mCollection.getCoffeeKnowledgeArrayList().get(position);
+
+        holder.mImageView.setImageResource(knowledge.getImage());
+
         holder.mTextView.setText(knowledge.getName());
 
         holder.mConstraintLayout.setOnClickListener(new View.OnClickListener() {
@@ -72,13 +76,17 @@ public class KnowledgeDetailAdapter extends RecyclerView.Adapter {
 
     private class KnowledgeDetailViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout mConstraintLayout;
+        ImageView mImageView;
         TextView mTextView;
 
         KnowledgeDetailViewHolder(View itemView) {
             super(itemView);
 
             mConstraintLayout = itemView.findViewById(R.id.constraintLayout_knowledge_detail);
+            mImageView = itemView.findViewById(R.id.imageView_knowledge_detail);
             mTextView = itemView.findViewById(R.id.textView_knowledge_detail);
+
+            mImageView.setClipToOutline(true);
         }
     }
 }

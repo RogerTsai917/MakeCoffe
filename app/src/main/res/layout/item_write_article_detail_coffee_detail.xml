@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <View
+        android:id="@+id/view_separation_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="#e7e7e7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/article_coffee_bean_detail"
+        android:textColor="@color/black_57"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_separation_line" />
 
     <TextView
         android:id="@+id/textView10"
@@ -15,6 +51,7 @@
         android:text="@string/article_coffee_bean"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_bean"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_bean" />
@@ -32,11 +69,12 @@
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <TextView
         android:id="@+id/textView12"
@@ -49,6 +87,7 @@
         android:text="@string/article_coffee_bean_roast_level"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_bean_roast_level"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_bean_roast_level" />
@@ -57,19 +96,18 @@
         android:id="@+id/editText_write_article_coffee_bean_roast_level"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_bean" />
 
@@ -78,14 +116,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/article_coffee_bean_grind"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_bean_grind"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_bean_grind" />
 
     <EditText
@@ -94,19 +133,18 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_bean_roast_level" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_bean" />
 
     <TextView
         android:id="@+id/textView11"
@@ -119,6 +157,7 @@
         android:text="@string/article_coffee_bean_weight"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_bean_volume"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_bean_volume" />
@@ -127,35 +166,36 @@
         android:id="@+id/editText_write_article_coffee_bean_volume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:inputType="textMultiLine|number"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_bean_grind" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_bean_roast_level" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/article_coffee_water_temp"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_water_temp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_water_temp" />
 
     <EditText
@@ -164,19 +204,18 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:inputType="textMultiLine|number"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_bean_volume" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_bean_grind" />
 
     <TextView
         android:id="@+id/textView15"
@@ -189,6 +228,7 @@
         android:text="@string/article_coffee_water_volume"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_water_volume"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_water_volume" />
@@ -197,20 +237,20 @@
         android:id="@+id/editText_write_article_coffee_water_volume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:inputType="textMultiLine|number"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText_write_article_coffee_water_temp"
-        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_water_temp" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_bean_volume" />
 
     <TextView
         android:id="@+id/textView16"
@@ -223,6 +263,7 @@
         android:text="@string/article_coffee_tool"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_tool"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_tool" />
@@ -232,17 +273,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editText_write_article_coffee_water_volume"
+        app:layout_constraintStart_toStartOf="@+id/editText_write_article_coffee_additive"
         app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_water_volume" />
 
     <TextView
@@ -256,6 +297,7 @@
         android:text="@string/article_coffee_time"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_time"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_time" />
@@ -265,19 +307,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintStart_toStartOf="@+id/editText_write_article_coffee_additive"
         app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_tool" />
 
     <TextView
@@ -285,14 +325,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/article_coffee_volume"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_volume"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_volume" />
 
     <EditText
@@ -301,18 +342,18 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
-        android:inputType="textMultiLine"
+        android:inputType="textMultiLine|number"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_time" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_water_temp" />
 
     <TextView
         android:id="@+id/textView26"
@@ -325,6 +366,7 @@
         android:text="@string/article_coffee_additive"
         android:textColor="@color/black_57"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editText_write_article_coffee_additive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_write_article_coffee_additive" />
@@ -333,19 +375,33 @@
         android:id="@+id/editText_write_article_coffee_additive"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textColor="@color/black_57"
-        android:textSize="16sp"
         android:textCursorDrawable="@drawable/edit_cursor_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView26"
-        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_volume" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_write_article_coffee_time" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintTop_toTopOf="@+id/textView19"
+        app:srcCompat="@drawable/coffee_bean_02" />
 
 </android.support.constraint.ConstraintLayout>

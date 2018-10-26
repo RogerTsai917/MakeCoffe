@@ -18,7 +18,7 @@ public interface WriteArticleContract {
 
         void hideUploadingDialog();
 
-        void showChangeCoffeeFlavorDialog();
+        void showChangeCoffeeFlavorDialog(NewArticle article);
 
         void hideChangeCoffeeFlavorDialog();
 
