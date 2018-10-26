@@ -1,7 +1,6 @@
 package com.roger.makecoffee.makecoffeeactivity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
@@ -15,23 +14,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.bumptech.glide.Glide;
-import com.crashlytics.android.Crashlytics;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.roger.makecoffee.BaseActivity;
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.loginactivity.LoginActivity;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.user.UserManager;
-import com.roger.makecoffee.utils.Constants;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import io.fabric.sdk.android.Fabric;
 
 public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContract.View {
     private MakeCoffeeContract.Presenter mPresenter;
@@ -40,8 +32,6 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     private TextView mToolbarTitle;
     private BottomNavigationViewEx mBottomNavigation;
     private DrawerLayout mDrawerLayout;
-    private ConstraintLayout mLogoutView;
-    private Button mProfileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +40,9 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         init();
 
         UserManager.getInstance().checkFireStoreUserInfo();
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == Constants.LOGIN_SUCCESS) {
-            init();
-            UserManager.getInstance().checkFireStoreUserInfo();
-        }
+        mPresenter = new MakeCoffeePresenter(this, getFragmentManager());
+        transToMakeCoffee();
     }
 
     private void init() {
@@ -68,11 +51,6 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         setToolbar();
         setBottomNavigation();
         setDrawerLayout();
-
-        mPresenter = new MakeCoffeePresenter(this, getFragmentManager());
-        setToolbarTitle(getResources().getString(R.string.make_coffee));
-        mPresenter.start();
-
     }
 
     private void setToolbar() {
@@ -113,11 +91,11 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
                 .load(UserManager.getInstance().getUserPhotoUrl())
                 .into(circleImageView);
 
-        mLogoutView = findViewById(R.id.constraintLayout_nav_logout);
-        mLogoutView.setOnClickListener(mOnClickListener);
+        ConstraintLayout logoutView = findViewById(R.id.constraintLayout_nav_logout);
+        logoutView.setOnClickListener(mOnClickListener);
 
-        mProfileButton = findViewById(R.id.button_drawable_profile);
-        mProfileButton.setOnClickListener(mOnClickListener);
+        Button profileButton = findViewById(R.id.button_drawable_profile);
+        profileButton.setOnClickListener(mOnClickListener);
     }
 
     private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationViewEx.OnNavigationItemSelectedListener() {

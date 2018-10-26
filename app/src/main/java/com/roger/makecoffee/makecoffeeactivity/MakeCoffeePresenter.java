@@ -41,7 +41,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     private LikedFragment mLikedFragment;
     private ProfileFragment mProfileFragment;
 
-    public MakeCoffeePresenter(MakeCoffeeContract.View makeCoffeeView, FragmentManager fragmentManager) {
+    MakeCoffeePresenter(MakeCoffeeContract.View makeCoffeeView, FragmentManager fragmentManager) {
         mMakeCoffeeView = makeCoffeeView;
         makeCoffeeView.setPresenter(this);
         mFragmentManager = fragmentManager;
@@ -52,10 +52,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     public void transToMakeCoffee() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(ARTICLE_DETAIL) != null) mFragmentManager.popBackStack();
+        popBackStackFragment();
 
         if (mMakeCoffeeFragment == null) mMakeCoffeeFragment = MakeCoffeeFragment.newInstance();
         if (mKnowledgeFragment != null) transaction.hide(mKnowledgeFragment);
@@ -76,11 +73,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     public void transToKnowledge() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(ARTICLE_DETAIL) != null) mFragmentManager.popBackStack();
-
+        popBackStackFragment();
 
         if (mKnowledgeFragment == null) mKnowledgeFragment = KnowledgeFragment.newInstance();
         if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
@@ -100,10 +93,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     public void transToNews() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(ARTICLE_DETAIL) != null) mFragmentManager.popBackStack();
+        popBackStackFragment();
 
         if (mNewsFragment == null) mNewsFragment = NewsFragment.newInstance();
         if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
@@ -123,10 +113,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     public void transToArticles() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(ARTICLE_DETAIL) != null) mFragmentManager.popBackStack();
+        popBackStackFragment();
 
         if (mArticlesListFragment == null) mArticlesListFragment = ArticlesListFragment.newInstance();
         if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
@@ -146,11 +133,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     public void transToLiked() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(ARTICLE_DETAIL) != null) mFragmentManager.popBackStack();
-
+        popBackStackFragment();
 
         if (mLikedFragment == null) mLikedFragment = LikedFragment.newInstance();
         if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
@@ -170,10 +153,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     public void transToProfile() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
 
-        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
-        if (mFragmentManager.findFragmentByTag(ARTICLE_DETAIL) != null) mFragmentManager.popBackStack();
+        popBackStackFragment();
 
         if (mProfileFragment == null) mProfileFragment = ProfileFragment.newInstance();
         if (mMakeCoffeeFragment != null) transaction.hide(mMakeCoffeeFragment);
@@ -248,6 +228,12 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         UserManager.getInstance().signOut(mMakeCoffeeView.getMakeCoffeeActivity());
     }
 
+    private void popBackStackFragment() {
+        if (mFragmentManager.findFragmentByTag(KNOWLEDGE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(ARTICLE_DETAIL) != null) mFragmentManager.popBackStack();
+    }
 
     private void hideFragment(FragmentTransaction transaction) {
         if (mMakeCoffeeFragment != null && !mMakeCoffeeFragment.isHidden()) {

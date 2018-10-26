@@ -12,10 +12,10 @@ import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.user.UserManager;
 
 public class LoginPresenter implements LoginContract.Presenter {
-    public static final String TAG = "LoginPresenter";
+    private static final String TAG = "LoginPresenter";
     private LoginContract.View mView;
 
-    public LoginPresenter(LoginContract.View view) {
+    LoginPresenter(LoginContract.View view) {
         mView = view;
         mView.setPresenter(this);
     }
@@ -31,7 +31,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void decodeGoogleSinResult(Intent data) {
         Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
         try {
-            // Google Sign In was successful, authenticate with Firebase
+            // Google Sign In was successful, authenticate with FireBase
             mView.hideSignInButton();
             GoogleSignInAccount account = task.getResult(ApiException.class);
             UserManager.getInstance().firebaseAuthWithGoogle(mView.getActivity(), account);
