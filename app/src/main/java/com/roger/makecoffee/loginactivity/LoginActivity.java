@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -71,6 +72,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             } catch (ApiException e) {
                 // Google Sign In failed.
                 Log.w(TAG, "Google sign in failed", e);
+                showSignInButton();
+                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_LONG).show();
             }
         }
     }

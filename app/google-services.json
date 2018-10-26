@@ -23,6 +23,22 @@
           }
         },
         {
+          "client_id": "1004929203715-ju1qu93d925dd9cltu64u2afrcj3bs1v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.roger.makecoffee",
+            "certificate_hash": "8f9c8178ed3e55b1692af54f3553684cee45a050"
+          }
+        },
+        {
+          "client_id": "1004929203715-e4mmvs25hpirlkqe3u2s1dmmr95q54sd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.roger.makecoffee",
+            "certificate_hash": "8c55a1d409dc5935c982534d92bed8ef26cb7619"
+          }
+        },
+        {
           "client_id": "1004929203715-kpeg6pk1ii6caojrbdr0bba0nchpbs7p.apps.googleusercontent.com",
           "client_type": 3
         }

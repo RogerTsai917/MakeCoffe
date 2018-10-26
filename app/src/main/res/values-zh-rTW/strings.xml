@@ -70,5 +70,7 @@
 
     <string name="confirm">確認</string>
     <string name="cancel">取消</string>
+    <string name="click_to_edit">點擊編輯</string>
+    <string name="click_to_upload_photo">上傳照片</string>
 
 </resources>
