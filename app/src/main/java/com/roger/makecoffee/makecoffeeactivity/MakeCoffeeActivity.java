@@ -62,10 +62,6 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
         }
     }
 
-    private void popLogin() {
-        startActivityForResult(new Intent(mContext, LoginActivity.class), Constants.LOGIN_ACTIVITY);
-    }
-
     private void init() {
         setContentView(R.layout.activity_main_drawer);
 
@@ -284,7 +280,5 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     public void setPresenter(MakeCoffeeContract.Presenter presenter) {
         mPresenter = presenter;
     }
-
-
 
 }

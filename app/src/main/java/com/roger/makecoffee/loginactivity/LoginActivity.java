@@ -1,46 +1,43 @@
 package com.roger.makecoffee.loginactivity;
 
-
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.roger.makecoffee.BaseActivity;
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
 
 import io.fabric.sdk.android.Fabric;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
-    private static final String TAG = "LoginActivity";
+public class LoginActivity extends BaseActivity implements LoginContract.View, View.OnClickListener {
+    private LoginContract.Presenter mPresenter;
     private SignInButton mSignInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Fabric.with(this, new Crashlytics());
-        FirebaseApp.initializeApp(this);
+        initialFireBase();
+
+        mPresenter = new LoginPresenter(this);
 
         if (UserManager.getInstance().isLoginStatus()) {
-            transToMakeCoffeeActivity(this);
+            mPresenter.transToMakeCoffeeActivity(this);
         } else {
             init();
         }
+    }
+
+    private void  initialFireBase() {
+        Fabric.with(this, new Crashlytics());
+        FirebaseApp.initializeApp(this);
     }
 
     private void init() {
@@ -50,47 +47,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mSignInButton.setOnClickListener(this);
     }
 
-    private void transToMakeCoffeeActivity(Activity activity) {
-        Intent intent = new Intent(activity, MakeCoffeeActivity.class);
-        activity.startActivity(intent);
-        activity.finish();
-    }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == Constants.RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                hideSignInButton();
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                UserManager.getInstance().firebaseAuthWithGoogle(this, account);
-            } catch (ApiException e) {
-                // Google Sign In failed.
-                Log.w(TAG, "Google sign in failed", e);
-                showSignInButton();
-                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_LONG).show();
-            }
+            mPresenter.decodeGoogleSinResult(data);
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        setResult(Constants.LOGIN_EXIT);
-        super.onDestroy();
-    }
-
-    @Override
-    public void onBackPressed() {
-        setResult(Constants.LOGIN_EXIT);
-        super.onBackPressed();
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_in_button:
@@ -101,12 +67,28 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
+    @Override
     public void hideSignInButton() {
         mSignInButton.setVisibility(View.GONE);
     }
 
+    @Override
     public void showSignInButton() {
         mSignInButton.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public Activity getActivity() {
+        return this;
+    }
+
+    @Override
+    public void showToast(String string) {
+        Toast.makeText(this, string, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void setPresenter(LoginContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
 }
