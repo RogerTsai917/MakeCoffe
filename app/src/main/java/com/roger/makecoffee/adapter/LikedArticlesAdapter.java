@@ -1,5 +1,6 @@
 package com.roger.makecoffee.adapter;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -43,14 +44,14 @@ public class LikedArticlesAdapter extends RecyclerView.Adapter {
     private void bindLikedArticlesViewHolder(LikedArticlesViewHolder holder, int position) {
         final NewArticle article = LikedArticlesData.getInstance().getArticle(position);
 
-        Glide.with(mFragment)
+        Glide.with(mFragment.getActivity())
                 .load(article.getImageUrl())
                 .into(holder.mPhotoImageView);
 
         holder.mTitleTextView.setText(article.getTitle());
         holder.mAuthorNameTextView.setText(article.getAuthor().getName());
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String stringDate = simpleDateFormat.format(article.getCreatedTime());
         holder.mTimeTextView.setText(stringDate);
 
@@ -83,7 +84,7 @@ public class LikedArticlesAdapter extends RecyclerView.Adapter {
         TextView mAuthorNameTextView;
         TextView mTimeTextView;
 
-        public LikedArticlesViewHolder(View itemView) {
+        LikedArticlesViewHolder(View itemView) {
             super(itemView);
             mConstraintLayout = itemView.findViewById(R.id.constraintLayout_liked_articles_item);
             mPhotoImageView = itemView.findViewById(R.id.imageView_liked_articles_photo);

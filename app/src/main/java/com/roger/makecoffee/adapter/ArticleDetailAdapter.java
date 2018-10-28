@@ -1,5 +1,6 @@
 package com.roger.makecoffee.adapter;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -24,10 +25,10 @@ import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ArticleDetailAdapter extends RecyclerView.Adapter {
     private ArticleDetailFragment mFragment;
@@ -61,7 +62,7 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TitleViewHolder) {
-                bindTitleViewHolder((TitleViewHolder) holder);
+            bindTitleViewHolder((TitleViewHolder) holder);
         } else if (holder instanceof CoffeeDetailViewHolder) {
             bindCoffeeDetailViewHolder((CoffeeDetailViewHolder) holder);
         } else if (holder instanceof CoffeeFlavorViewHolder) {
@@ -86,10 +87,10 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
     }
 
     private void bindTitleViewHolder(TitleViewHolder holder) {
-        Glide.with(mFragment)
+        Glide.with(mFragment.getActivity())
                 .load(mArticle.getImageUrl())
                 .into(holder.mArticleImageView);
-        Glide.with(mFragment)
+        Glide.with(mFragment.getActivity())
                 .load(mArticle.getAuthor().getImage())
                 .into(holder.mAuthorImageCircleImageView);
 
@@ -106,7 +107,7 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
             holder.mLikedImageView.setImageResource(R.drawable.btn_like_normal);
         }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String stringDate = simpleDateFormat.format(mArticle.getCreatedTime());
         holder.mPostTimeTextView.setText(stringDate);
     }
@@ -175,7 +176,7 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
         TextView mPostTimeTextView;
         TextView mContentTextView;
 
-        public TitleViewHolder(View itemView) {
+        TitleViewHolder(View itemView) {
             super(itemView);
             mArticleImageView = itemView.findViewById(R.id.imageView_article_detail_image);
             mLikedImageView = itemView.findViewById(R.id.imageView_article_detail_like);
@@ -209,7 +210,7 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
         TextView mCoffeeAdditive;
         TextView mCoffeeAdditivePrint;
 
-        public CoffeeDetailViewHolder(View itemView) {
+        CoffeeDetailViewHolder(View itemView) {
             super(itemView);
             mCoffeeBean = itemView.findViewById(R.id.textView_article_detail_coffee_bean);
             mCoffeeBeanPrint = itemView.findViewById(R.id.textView_article_detail_coffee_bean_print);
@@ -239,7 +240,7 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
         TextView mSupplement;
         TextView mSupplementPrint;
 
-        public CoffeeFlavorViewHolder(View itemView) {
+        CoffeeFlavorViewHolder(View itemView) {
             super(itemView);
             mBarChart = itemView.findViewById(R.id.HorizontalBarChart_article_detail_coffee_flavor);
             mSupplement = itemView.findViewById(R.id.textView_article_detail_supplement);

@@ -1,5 +1,6 @@
 package com.roger.makecoffee.adapter;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -25,16 +26,14 @@ import java.util.ArrayList;
 
 public class ArticlesListAdapter extends RecyclerView.Adapter {
     private ArticlesListFragment mFragment;
-    private ArticlesListContract.Presenter mPresenter;
     private ArrayList<NewArticle> mNewArticleArrayList;
     private String mUserUid;
 
     public ArticlesListAdapter(ArticlesListFragment fragment, ArticlesListContract.Presenter presenter, ArrayList<NewArticle> articleArrayList) {
         mFragment = fragment;
-        mPresenter = presenter;
         mNewArticleArrayList = articleArrayList;
         LikedArticlesData.getInstance();
-        mPresenter.getArticlesDataFromFireStore(mNewArticleArrayList);
+        presenter.getArticlesDataFromFireStore(mNewArticleArrayList);
         mUserUid = UserManager.getInstance().getUserUid();
     }
 
@@ -79,7 +78,7 @@ public class ArticlesListAdapter extends RecyclerView.Adapter {
         holder.mTitleTextView.setText(article.getTitle());
         holder.mAuthorNameTextView.setText(article.getAuthor().getName());
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String stringDate = simpleDateFormat.format(article.getCreatedTime());
         holder.mTimeTextView.setText(stringDate);
 

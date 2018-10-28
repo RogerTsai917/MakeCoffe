@@ -72,7 +72,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
         holder.newsTitle.setText(news.getTitle());
         holder.newsContent.setText(news.getContent());
 
-        Glide.with(mFragment)
+        Glide.with(mFragment.getActivity())
                 .load(news.getUrlToImage())
                 .into(holder.newsImageView);
 
@@ -88,7 +88,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
     private void bindSmallNewsItemViewHolder(SmallNewsItemViewHolder holder, int position) {
         final News news = NewsData.getInstance().getNewsArrayList().get(position);
         holder.newsTitle.setText(news.getTitle());
-        Glide.with(mFragment)
+        Glide.with(mFragment.getActivity())
                 .load(news.getUrlToImage())
                 .into(holder.newsImageView);
 
@@ -107,7 +107,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
 
     private class LoadingNewsItemViewHolder extends RecyclerView.ViewHolder {
 
-        public LoadingNewsItemViewHolder(View itemView) {
+        LoadingNewsItemViewHolder(View itemView) {
             super(itemView);
         }
     }
@@ -118,7 +118,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
         TextView newsTitle;
         TextView newsContent;
 
-        public BigNewsItemViewHolder(View itemView) {
+        BigNewsItemViewHolder(View itemView) {
             super(itemView);
             mLayout = itemView.findViewById(R.id.constraintLayout_bigger_news_item);
             newsImageView = itemView.findViewById(R.id.imageView_bigger_news_item_image);
@@ -134,7 +134,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
         ImageView newsImageView;
         TextView newsTitle;
 
-        public SmallNewsItemViewHolder(View itemView) {
+        SmallNewsItemViewHolder(View itemView) {
             super(itemView);
             mLayout = itemView.findViewById(R.id.constraintLayout_smaller_news_item);
             newsImageView = itemView.findViewById(R.id.imageView_smaller_news_item_image);

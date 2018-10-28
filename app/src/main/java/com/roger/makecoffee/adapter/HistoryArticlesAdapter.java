@@ -1,5 +1,6 @@
 package com.roger.makecoffee.adapter;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -20,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class HistoryArticlesAdapter extends RecyclerView.Adapter {
-    ProfileFragment mFragment;
+    private ProfileFragment mFragment;
     private ArrayList<NewArticle> mArticlesList;
 
     public HistoryArticlesAdapter(ProfileFragment fragment, ArrayList<NewArticle> articleArrayList) {
@@ -72,7 +73,7 @@ public class HistoryArticlesAdapter extends RecyclerView.Adapter {
                 .into(holder.mPhotoImageView);
 
         holder.mTitle.setText(article.getTitle());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String stringDate = simpleDateFormat.format(article.getCreatedTime());
         holder.mTime.setText(stringDate);
 

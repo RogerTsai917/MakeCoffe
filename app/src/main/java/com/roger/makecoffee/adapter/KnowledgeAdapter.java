@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.knowledge.KnowledgeFragment;
+import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.objects.KnowledgeData;
 import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 
@@ -58,7 +58,7 @@ public class KnowledgeAdapter extends RecyclerView.Adapter {
         ImageView knowledgeImageView;
         TextView knowledgeTExtView;
 
-        public KnowledgeViewHolder(View itemView) {
+        KnowledgeViewHolder(View itemView) {
             super(itemView);
             constraintLayout = itemView.findViewById(R.id.constraintLayout_knowledge_item);
             knowledgeImageView = itemView.findViewById(R.id.imageView_knowledge);

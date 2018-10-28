@@ -103,7 +103,7 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter {
             holder.mUploadView.setBackgroundResource(R.drawable.shadow_transparent_round_corner);
 
             Uri uri = Uri.parse(mNewArticle.getImageUrl());
-            Glide.with(mFragment)
+            Glide.with(mFragment.getActivity())
                     .load(uri)
                     .into(holder.mPreviewImageView);
             holder.mPreviewImageView.setVisibility(View.VISIBLE);
@@ -416,7 +416,7 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter {
         TextView mUploadTextView;
         ImageView mUploadImageView;
 
-        public TitleViewHolder(View itemView) {
+        TitleViewHolder(View itemView) {
             super(itemView);
             mTitleEditText = itemView.findViewById(R.id.editText_write_article_title_title);
             mContentEditText = itemView.findViewById(R.id.editText_write_article_title_description);
@@ -441,7 +441,7 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter {
         EditText mCoffeeVolumeEditText;
         EditText mCoffeeAdditive;
 
-        public CoffeeDetailViewHolder(View itemView) {
+        CoffeeDetailViewHolder(View itemView) {
             super(itemView);
             mCoffeeBeanEditText = itemView.findViewById(R.id.editText_write_article_coffee_bean);
             mCoffeeBeanRoastLevelEditText = itemView.findViewById(R.id.editText_write_article_coffee_bean_roast_level);
@@ -463,7 +463,7 @@ public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter {
         TextView mClickTextView;
         ImageView mClickImageView;
 
-        public CoffeeFlavorViewHolder(View itemView) {
+        CoffeeFlavorViewHolder(View itemView) {
             super(itemView);
 
             mBarChartConstraintLayout = itemView.findViewById(R.id.constraintLayout_barChart_coffee_flavor);

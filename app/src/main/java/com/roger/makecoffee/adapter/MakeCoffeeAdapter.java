@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.makecoffee.MakeCoffeeFragment;
+import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.objects.MakeCoffeeData;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 
@@ -69,7 +69,7 @@ public class MakeCoffeeAdapter extends RecyclerView.Adapter {
         ImageView mImageView;
         TextView mTextView;
 
-        public MakeCoffeeViewHolder(View itemView) {
+        MakeCoffeeViewHolder(View itemView) {
             super(itemView);
             mConstraintLayout = itemView.findViewById(R.id.constraintLayout_make_coffee);
             mImageView = itemView.findViewById(R.id.imageView_item_make_coffee);
