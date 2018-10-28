@@ -3,7 +3,6 @@ package com.roger.makecoffee.adapter;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.roger.makecoffee.MakeCoffee;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.profile.ProfileFragment;
-import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
 
 import java.text.SimpleDateFormat;
@@ -31,13 +22,10 @@ import java.util.ArrayList;
 public class HistoryArticlesAdapter extends RecyclerView.Adapter {
     ProfileFragment mFragment;
     private ArrayList<NewArticle> mArticlesList;
-    private FirebaseFirestore mDb;
 
-    public HistoryArticlesAdapter(ProfileFragment fragment) {
+    public HistoryArticlesAdapter(ProfileFragment fragment, ArrayList<NewArticle> articleArrayList) {
         mFragment = fragment;
-        mArticlesList = new ArrayList<>();
-        mDb = FirebaseFirestore.getInstance();
-        getArticlesDataFromFireStore();
+        mArticlesList = articleArrayList;
     }
 
     @NonNull
@@ -64,15 +52,14 @@ public class HistoryArticlesAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return mArticlesList.size() == 0? 1 : mArticlesList.size();
+        return mArticlesList.size() == 0 ? 1 : mArticlesList.size();
     }
 
     @Override
     public int getItemViewType(int position) {
         if (mArticlesList.size() == 0) {
             return Constants.VIEW_TYPE_ARTICLES_LOADING;
-        }
-        else {
+        } else {
             return Constants.VIEW_TYPE_ARTICLES_LIST;
         }
     }
@@ -80,7 +67,7 @@ public class HistoryArticlesAdapter extends RecyclerView.Adapter {
     private void bindHistoryArticlesViewHolder(HistoryArticlesViewHolder holder, int position) {
         final NewArticle article = mArticlesList.get(position);
 
-        Glide.with(mFragment)
+        Glide.with(mFragment.getActivity())
                 .load(article.getImageUrl())
                 .into(holder.mPhotoImageView);
 
@@ -95,31 +82,6 @@ public class HistoryArticlesAdapter extends RecyclerView.Adapter {
                 ((MakeCoffeeActivity)mFragment.getActivity()).transToArticleDetail(article);
             }
         });
-
-
-    }
-
-    public void getArticlesDataFromFireStore() {
-        mArticlesList.clear();
-
-        mDb.collection(Constants.USERS)
-                .document(UserManager.getInstance().getUserUid())
-                .collection(Constants.POSTED_ARTICLES)
-                .orderBy(Constants.CREATE_TIME, Query.Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                NewArticle article = document.toObject(NewArticle.class);
-                                mArticlesList.add(article);
-                            }
-                            Log.d(Constants.TAG, "onComplete, HistoryArticleList = " + mArticlesList.size());
-                            mFragment.notifyAdapterDataSetChanged();
-                        }
-                    }
-                });
     }
 
     private class HistoryArticlesViewHolder extends RecyclerView.ViewHolder {
@@ -128,7 +90,7 @@ public class HistoryArticlesAdapter extends RecyclerView.Adapter {
         TextView mTitle;
         TextView mTime;
 
-        public HistoryArticlesViewHolder(View itemView) {
+        HistoryArticlesViewHolder(View itemView) {
             super(itemView);
             mConstraintLayout = itemView.findViewById(R.id.constraintLayout_history_article_item);
             mPhotoImageView = itemView.findViewById(R.id.imageView_history_article_photo);
@@ -141,7 +103,7 @@ public class HistoryArticlesAdapter extends RecyclerView.Adapter {
 
     private class LoadingNewsItemViewHolder extends RecyclerView.ViewHolder {
 
-        public LoadingNewsItemViewHolder(View itemView) {
+        LoadingNewsItemViewHolder(View itemView) {
             super(itemView);
         }
     }

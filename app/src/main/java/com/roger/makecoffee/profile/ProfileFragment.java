@@ -14,19 +14,20 @@ import com.bumptech.glide.Glide;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.adapter.HistoryArticlesAdapter;
 import com.roger.makecoffee.decoration.ArticlesListDecoration;
+import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.user.UserManager;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProfileFragment extends Fragment {
-    private CircleImageView mUserImage;
-    private TextView mUserName;
-    private TextView mUserEmail;
-    private RecyclerView mRecyclerView;
+import java.util.ArrayList;
+
+public class ProfileFragment extends Fragment implements ProfileContract.View {
     private HistoryArticlesAdapter mAdapter;
+    private ProfileContract.Presenter mPresenter;
+    private ArrayList<NewArticle> mArticlesList;
 
     public ProfileFragment() {
-        // Requires empty public constructor
+        mArticlesList = new ArrayList<>();
     }
 
     public static ProfileFragment newInstance() {
@@ -38,26 +39,28 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        mUserImage = view.findViewById(R.id.circleImageView_profile_user_picture);
-        mUserName = view.findViewById(R.id.textView_profile_user_name);
-        mUserEmail = view.findViewById(R.id.textView_profile_user_email);
+        mPresenter = new ProfilePresenter(this);
+
+        CircleImageView userImage = view.findViewById(R.id.circleImageView_profile_user_picture);
+        TextView userName = view.findViewById(R.id.textView_profile_user_name);
+        TextView userEmail = view.findViewById(R.id.textView_profile_user_email);
         Glide.with(this)
                 .load(UserManager.getInstance().getUserPhotoUrl())
-                .into(mUserImage);
-        mUserName.setText(UserManager.getInstance().getUserName());
-        mUserEmail.setText(UserManager.getInstance().getUserEmail());
+                .into(userImage);
+        userName.setText(UserManager.getInstance().getUserName());
+        userEmail.setText(UserManager.getInstance().getUserEmail());
 
-        mRecyclerView = view.findViewById(R.id.recyclerView_profile_history_articles);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_profile_history_articles);
 
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
 
-        mAdapter = new HistoryArticlesAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);
+        mAdapter = new HistoryArticlesAdapter(this, mArticlesList);
+        recyclerView.setAdapter(mAdapter);
 
-        mRecyclerView.addItemDecoration(new ArticlesListDecoration(
+        recyclerView.addItemDecoration(new ArticlesListDecoration(
                 getResources().getDimensionPixelSize(R.dimen.items_space)));
 
         return view;
@@ -66,9 +69,16 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mPresenter.getArticlesDataFromFireStore(mArticlesList);
     }
 
+    @Override
     public void notifyAdapterDataSetChanged() {
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setPresenter(ProfileContract.Presenter presenter) {
+        mPresenter = presenter;
     }
 }
