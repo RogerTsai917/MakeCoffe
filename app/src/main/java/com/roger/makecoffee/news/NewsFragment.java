@@ -13,7 +13,6 @@ import com.roger.makecoffee.R;
 import com.roger.makecoffee.adapter.NewsAdapter;
 
 public class NewsFragment extends Fragment implements NewsContract.View {
-    private RecyclerView mRecyclerView;
     private NewsAdapter mNewsAdapter;
     private NewsContract.Presenter mPresenter;
 
@@ -30,18 +29,18 @@ public class NewsFragment extends Fragment implements NewsContract.View {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
-        mRecyclerView = view.findViewById(R.id.recyclerView_news);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_news);
 
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
 
-        mRecyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
 
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
 
         mNewsAdapter = new NewsAdapter(this);
 
-        mRecyclerView.setAdapter(mNewsAdapter);
+        recyclerView.setAdapter(mNewsAdapter);
 
         return view;
     }

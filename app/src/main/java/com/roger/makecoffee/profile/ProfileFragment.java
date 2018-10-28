@@ -44,7 +44,7 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
         CircleImageView userImage = view.findViewById(R.id.circleImageView_profile_user_picture);
         TextView userName = view.findViewById(R.id.textView_profile_user_name);
         TextView userEmail = view.findViewById(R.id.textView_profile_user_email);
-        Glide.with(this)
+        Glide.with(getActivity())
                 .load(UserManager.getInstance().getUserPhotoUrl())
                 .into(userImage);
         userName.setText(UserManager.getInstance().getUserName());

@@ -12,12 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.adapter.MakeCoffeeDetailAdapter;
+import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 
 public class MakeCoffeeDetailFragment extends Fragment implements MakeCoffeeDetailContract.View {
-    private MakeCoffeeDetailContract.Presenter mPresenter;
     private MakeCoffeeTeaching mTeaching;
     private RecyclerView mRecyclerView;
     private MakeCoffeeDetailAdapter mAdapter;
@@ -47,8 +46,6 @@ public class MakeCoffeeDetailFragment extends Fragment implements MakeCoffeeDeta
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_make_coffee_detail, container, false);
-
-        mPresenter = new MakeCoffeeDetailPresenter(this);
 
         mFirstNextStepButton = view.findViewById(R.id.button_make_coffee_first_next);
         mPreviousStepButton = view.findViewById(R.id.button_make_coffee_previous);
@@ -157,6 +154,6 @@ public class MakeCoffeeDetailFragment extends Fragment implements MakeCoffeeDeta
 
     @Override
     public void setPresenter(MakeCoffeeDetailContract.Presenter presenter) {
-        mPresenter = presenter;
+
     }
 }

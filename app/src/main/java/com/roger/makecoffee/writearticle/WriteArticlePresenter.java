@@ -16,23 +16,20 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.roger.makecoffee.MakeCoffee;
 import com.roger.makecoffee.R;
-import com.roger.makecoffee.objects.define.Article;
-import com.roger.makecoffee.objects.define.ArticleStep;
 import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
-
-import static android.support.constraint.Constraints.TAG;
 
 public class WriteArticlePresenter implements WriteArticleContract.Presenter {
     private WriteArticleContract.View mView;
     private FirebaseFirestore mDb;
 
-    public WriteArticlePresenter(WriteArticleContract.View view) {
+    WriteArticlePresenter(WriteArticleContract.View view) {
         mView = view;
         mView.setPresenter(this);
 
@@ -109,9 +106,9 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
                     e.printStackTrace();
                 }
                 if (bitmap != null) {
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                    byte[] data = baos.toByteArray();
+                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                    byte[] data = outputStream.toByteArray();
 
                     UploadTask uploadTask = reference.putBytes(data);
                     uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -119,7 +116,7 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
                         public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                             if (!task.isSuccessful()) {
                                 mView.hideUploadingDialog();
-                                throw task.getException();
+                                throw Objects.requireNonNull(task.getException());
                             }
                             // Continue with the task to get the download URL
                             return reference.getDownloadUrl();
@@ -127,8 +124,8 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
                     }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                         @Override
                         public void onComplete(@NonNull Task<Uri> task) {
-                            String downloadUrl = task.getResult().toString();
-                            Log.d(TAG, "get photo downloadUrl: " + downloadUrl);
+                            String downloadUrl = Objects.requireNonNull(task.getResult()).toString();
+                            Log.d("WriteArticle", "get photo downloadUrl: " + downloadUrl);
                             article.setImageUrl(downloadUrl);
                             postArticleToFireStore(article);
                         }

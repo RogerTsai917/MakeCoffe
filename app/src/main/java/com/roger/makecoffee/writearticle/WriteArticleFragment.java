@@ -24,23 +24,20 @@ import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.utils.Constants;
 
+import java.util.Objects;
+
 public class WriteArticleFragment extends Fragment implements WriteArticleContract.View, View.OnClickListener {
-    private RecyclerView mRecyclerView;
     private WriteNewArticleDetailAdapter mAdapter;
-    private Button mPostArticleButton;
     private WriteArticleContract.Presenter mPresenter;
     private AlertDialog mUploadingDialog;
     private AlertDialog mChangeCoffeeFlavorDialog;
-    private boolean isPostArticle = false;
 
     public WriteArticleFragment() {
 
     }
 
     public static WriteArticleFragment newInstance() {
-        WriteArticleFragment fragment = new WriteArticleFragment();
-
-        return fragment;
+        return new WriteArticleFragment();
     }
 
     @Override
@@ -54,20 +51,20 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_write_article, container, false);
 
-        mPostArticleButton = view.findViewById(R.id.button_write_article_post);
-        mPostArticleButton.setOnClickListener(this);
+        Button postArticleButton = view.findViewById(R.id.button_write_article_post);
+        postArticleButton.setOnClickListener(this);
 
-        mRecyclerView = view.findViewById(R.id.recyclerView_write_article_detail);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_write_article_detail);
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
 
-        mRecyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
 
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
 
         mAdapter = new WriteNewArticleDetailAdapter(this);
 
-        mRecyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(mAdapter);
 
         return view;
     }
@@ -90,7 +87,6 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
         switch (v.getId()) {
             case R.id.button_write_article_post:
                 mPresenter.postArticle(mAdapter.getNewArticle());
-                isPostArticle = true;
                 break;
 
             default:
@@ -121,7 +117,7 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
         View dialogView = View.inflate(getContext(), R.layout.dialog_uploading_article, null);
 
         mUploadingDialog.setView(dialogView);
-        mUploadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        Objects.requireNonNull(mUploadingDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         mUploadingDialog.show();
     }
 
@@ -136,33 +132,28 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
         mChangeCoffeeFlavorDialog = builder.create();
         View dialogView = View.inflate(getContext(), R.layout.dialog_choose_coffee_flavor, null);
 
-        Spinner flavorBodySpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_body);
-        Spinner flavorAciditySpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_acidity);
-        Spinner flavorBitterSpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_bitter);
-        Spinner flavorSweetSpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_sweet);
-        Spinner flavorAromaSpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_aroma);
-
-        Button confirmButton = dialogView.findViewById(R.id.button_coffee_flavor_confirm);
-        Button cancelButton = dialogView.findViewById(R.id.button_coffee_flavor_cancel);
-
         final int[] tempLevel = {0, 0, 0, 0, 0};
 
         final String[] level = {"0", "1", "2", "3", "4", "5"};
-        ArrayAdapter<String> levelList = new ArrayAdapter<>
-                (getContext(), R.layout.item_simple_spinner, level);
+        ArrayAdapter<String> levelList = new ArrayAdapter<>(getContext(), R.layout.item_simple_spinner, level);
 
+        Spinner flavorBodySpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_body);
         flavorBodySpinner.setAdapter(levelList);
         flavorBodySpinner.setSelection(article.getFlavorBody());
 
+        Spinner flavorAciditySpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_acidity);
         flavorAciditySpinner.setAdapter(levelList);
         flavorAciditySpinner.setSelection(article.getFlavorAcidity());
 
+        Spinner flavorBitterSpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_bitter);
         flavorBitterSpinner.setAdapter(levelList);
         flavorBitterSpinner.setSelection(article.getFlavorBitter());
 
+        Spinner flavorSweetSpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_sweet);
         flavorSweetSpinner.setAdapter(levelList);
         flavorSweetSpinner.setSelection(article.getFlavorSweet());
 
+        Spinner flavorAromaSpinner = dialogView.findViewById(R.id.spinner_coffee_flavor_aroma);
         flavorAromaSpinner.setAdapter(levelList);
         flavorAromaSpinner.setSelection(article.getFlavorAroma());
 
@@ -226,6 +217,8 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
             }
         });
 
+        Button confirmButton = dialogView.findViewById(R.id.button_coffee_flavor_confirm);
+
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -235,6 +228,7 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
             }
         });
 
+        Button cancelButton = dialogView.findViewById(R.id.button_coffee_flavor_cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -254,14 +248,6 @@ public class WriteArticleFragment extends Fragment implements WriteArticleContra
     @Override
     public void backPress() {
         getActivity().onBackPressed();
-    }
-
-    public void scrollTORecyclerViewBottom() {
-
-    }
-
-    public void notifyAdapterDataSetChanged() {
-        mAdapter.notifyDataSetChanged();
     }
 
     public void getImageFromAlbum() {

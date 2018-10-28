@@ -6,11 +6,11 @@ import com.roger.makecoffee.api.GetNewsTask;
 import com.roger.makecoffee.api.callbacks.GetNewsCallBack;
 
 public class NewsPresenter implements NewsContract.Presenter {
-    public static final String TAG = "NewsPresenter";
+    private static final String TAG = "NewsPresenter";
     private NewsContract.View mNewsView;
     private boolean isLoading = false;
 
-    public NewsPresenter(NewsContract.View view) {
+    NewsPresenter(NewsContract.View view) {
         mNewsView = view;
         mNewsView.setPresenter(this);
     }

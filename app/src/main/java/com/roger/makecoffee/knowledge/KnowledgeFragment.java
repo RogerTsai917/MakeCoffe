@@ -15,8 +15,6 @@ import com.roger.makecoffee.decoration.KnowledgeItemDecoration;
 
 public class KnowledgeFragment extends Fragment implements KnowledgeContract.View {
     private KnowledgeContract.Presenter mPresenter;
-    private RecyclerView mRecyclerView;
-    private KnowledgeAdapter mAdapter;
 
     public KnowledgeFragment() {
 
@@ -31,20 +29,20 @@ public class KnowledgeFragment extends Fragment implements KnowledgeContract.Vie
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_knowledge, container, false);
 
-        mRecyclerView = view.findViewById(R.id.recyclerView_knowledge);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_knowledge);
 
         GridLayoutManager gridLayoutManager =
                 new GridLayoutManager(getContext(), 2);
 
-        mRecyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setLayoutManager(gridLayoutManager);
 
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
 
-        mAdapter = new KnowledgeAdapter(this);
+        KnowledgeAdapter adapter = new KnowledgeAdapter(this);
 
-        mRecyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(adapter);
 
-        mRecyclerView.addItemDecoration(new KnowledgeItemDecoration(getResources().getDimensionPixelSize(R.dimen.items_space)));
+        recyclerView.addItemDecoration(new KnowledgeItemDecoration(getResources().getDimensionPixelSize(R.dimen.items_space)));
 
         return view;
     }

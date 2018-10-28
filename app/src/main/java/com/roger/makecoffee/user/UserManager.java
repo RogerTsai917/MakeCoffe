@@ -86,7 +86,7 @@ public class UserManager {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot documentSnapshot = task.getResult();
-                    if (documentSnapshot!= null && documentSnapshot.exists()) {
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
                         Log.d(TAG, "documentSnapshot exists: " + documentSnapshot.getString("name"));
 
                     } else {

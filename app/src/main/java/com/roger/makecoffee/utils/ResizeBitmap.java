@@ -22,16 +22,17 @@ public class ResizeBitmap {
         input.close();
         int originalWidth = onlyBoundsOptions.outWidth;
         int originalHeight = onlyBoundsOptions.outHeight;
-        if ((originalWidth == -1) || (originalHeight == -1))
+        if ((originalWidth == -1) || (originalHeight == -1)) {
             return null;
+        }
         //圖片解析度以480x800為標準
         float hh = 800f;//這裡設定高度為800f
         float ww = 480f;//這裡設定寬度為480f
         //縮放比。由於是固定比例縮放，只用高或者寬其中一個數據進行計算即可
         int be = 1;//be=1表示不縮放
-        if (originalWidth > originalHeight && originalWidth > ww) {//如果寬度大的話根據寬度固定大小縮放
+        if (originalWidth > originalHeight && originalWidth > ww) { //如果寬度大的話根據寬度固定大小縮放
             be = (int) (originalWidth / ww);
-        } else if (originalWidth < originalHeight && originalHeight > hh) {//如果高度高的話根據寬度固定大小縮放
+        } else if (originalWidth < originalHeight && originalHeight > hh) { //如果高度高的話根據寬度固定大小縮放
             be = (int) (originalHeight / hh);
         }
         if (be <= 0)

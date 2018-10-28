@@ -14,9 +14,6 @@ import com.roger.makecoffee.adapter.MakeCoffeeAdapter;
 import com.roger.makecoffee.decoration.MakeCoffeeItemDecoration;
 
 public class MakeCoffeeFragment extends Fragment implements MakeCoffeeContract.View {
-    private MakeCoffeeContract.Presenter mpresenter;
-    private RecyclerView mRecyclerView;
-    private MakeCoffeeAdapter mMakeCoffeeAdapter;
 
     public MakeCoffeeFragment() {
 
@@ -31,20 +28,18 @@ public class MakeCoffeeFragment extends Fragment implements MakeCoffeeContract.V
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_make_coffee, container, false);
 
-        mpresenter = new MakeCoffeePresenter(this);
-
-        mRecyclerView = view.findViewById(R.id.recyclerView_make_coffee);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_make_coffee);
 
         StaggeredGridLayoutManager layoutManager =
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
 
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
 
-        mMakeCoffeeAdapter = new MakeCoffeeAdapter(this);
-        mRecyclerView.setAdapter(mMakeCoffeeAdapter);
+        MakeCoffeeAdapter makeCoffeeAdapter = new MakeCoffeeAdapter(this);
+        recyclerView.setAdapter(makeCoffeeAdapter);
 
-        mRecyclerView.addItemDecoration(new MakeCoffeeItemDecoration(2,
+        recyclerView.addItemDecoration(new MakeCoffeeItemDecoration(2,
                 getResources().getDimensionPixelSize(R.dimen.make_coffee_items_space),
                 true));
 
@@ -59,7 +54,7 @@ public class MakeCoffeeFragment extends Fragment implements MakeCoffeeContract.V
 
     @Override
     public void setPresenter(MakeCoffeeContract.Presenter presenter) {
-        mpresenter = presenter;
+
     }
 
 }

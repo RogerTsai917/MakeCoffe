@@ -13,12 +13,9 @@ import android.view.ViewGroup;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.adapter.LikedArticlesAdapter;
 import com.roger.makecoffee.decoration.ArticlesListDecoration;
-import com.roger.makecoffee.objects.LikedArticlesData;
-
 
 public class LikedFragment extends Fragment implements LikedContract.View {
     public static LikedArticlesAdapter mAdapter;
-    private LikedContract.Presenter mPresenter;
 
     public LikedFragment() {
 
@@ -33,7 +30,6 @@ public class LikedFragment extends Fragment implements LikedContract.View {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_liked, container, false);
 
-        mPresenter = new LikedPresenter(this);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView_liked_articles);
 
@@ -58,6 +54,6 @@ public class LikedFragment extends Fragment implements LikedContract.View {
 
     @Override
     public void setPresenter(LikedContract.Presenter presenter) {
-        mPresenter = presenter;
+
     }
 }

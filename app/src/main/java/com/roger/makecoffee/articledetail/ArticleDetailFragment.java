@@ -16,8 +16,6 @@ import com.roger.makecoffee.objects.define.NewArticle;
 
 public class ArticleDetailFragment extends Fragment {
     private NewArticle mNewArticle;
-    private RecyclerView mRecyclerView;
-    private ArticleDetailAdapter mAdapter;
 
 
     public ArticleDetailFragment() {
@@ -42,15 +40,15 @@ public class ArticleDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_article_detail, container, false);
 
-        mRecyclerView = view.findViewById(R.id.recyclerView_article_detail);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_article_detail);
 
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
 
-        mAdapter = new ArticleDetailAdapter(this, mNewArticle);
-        mRecyclerView.setAdapter(mAdapter);
+        ArticleDetailAdapter adapter = new ArticleDetailAdapter(this, mNewArticle);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
