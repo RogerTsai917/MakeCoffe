@@ -31,6 +31,8 @@ public class MakeCoffeeFragment extends Fragment implements MakeCoffeeContract.V
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_make_coffee, container, false);
 
+        mpresenter = new MakeCoffeePresenter(this);
+
         mRecyclerView = view.findViewById(R.id.recyclerView_make_coffee);
 
         StaggeredGridLayoutManager layoutManager =
@@ -52,7 +54,6 @@ public class MakeCoffeeFragment extends Fragment implements MakeCoffeeContract.V
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
     }
 

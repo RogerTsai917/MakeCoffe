@@ -20,7 +20,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MakeCoffeeDetailAdapter extends RecyclerView.Adapter {
-    public static Timer coffeeDetailTimer;
+    private static Timer coffeeDetailTimer;
     private static final int PREPARE = 0;
     private static final int WATER_TEMP = 1;
     private static final int TIMING = 2;
@@ -294,7 +294,7 @@ public class MakeCoffeeDetailAdapter extends RecyclerView.Adapter {
                 @Override
                 public void run() {
                     Log.d("counter", "time: " + currentTime);
-                    currentTime --;
+                    currentTime--;
                     mFragment.getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {

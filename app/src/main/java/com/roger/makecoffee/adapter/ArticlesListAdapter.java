@@ -3,7 +3,6 @@ package com.roger.makecoffee.adapter;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,35 +10,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.roger.makecoffee.R;
+import com.roger.makecoffee.articleslist.ArticlesListContract;
 import com.roger.makecoffee.articleslist.ArticlesListFragment;
 import com.roger.makecoffee.objects.LikedArticlesData;
 import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.user.UserManager;
 import com.roger.makecoffee.utils.Constants;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class ArticlesListAdapter extends RecyclerView.Adapter {
     private ArticlesListFragment mFragment;
+    private ArticlesListContract.Presenter mPresenter;
     private ArrayList<NewArticle> mNewArticleArrayList;
-    private FirebaseFirestore mDb = FirebaseFirestore.getInstance();
     private String mUserUid;
 
-    public ArticlesListAdapter(ArticlesListFragment fragment) {
+    public ArticlesListAdapter(ArticlesListFragment fragment, ArticlesListContract.Presenter presenter, ArrayList<NewArticle> articleArrayList) {
         mFragment = fragment;
-        mNewArticleArrayList = new ArrayList<>();
+        mPresenter = presenter;
+        mNewArticleArrayList = articleArrayList;
         LikedArticlesData.getInstance();
-        getArticlesDataFromFireStore();
+        mPresenter.getArticlesDataFromFireStore(mNewArticleArrayList);
         mUserUid = UserManager.getInstance().getUserUid();
     }
 
@@ -74,8 +69,7 @@ public class ArticlesListAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         if (mNewArticleArrayList.size() == 0) {
             return Constants.VIEW_TYPE_ARTICLES_LOADING;
-        }
-        else {
+        } else {
             return Constants.VIEW_TYPE_ARTICLES_LIST;
         }
     }
@@ -115,10 +109,10 @@ public class ArticlesListAdapter extends RecyclerView.Adapter {
             }
         });
 
-        Glide.with(mFragment)
+        Glide.with(mFragment.getActivity())
                 .load(article.getImageUrl())
                 .into(holder.mPhotoImageView);
-        Glide.with(mFragment)
+        Glide.with(mFragment.getActivity())
                 .load(article.getAuthor().getImage())
                 .into(holder.mAuthorPhotoCircleImageView);
 
@@ -130,29 +124,9 @@ public class ArticlesListAdapter extends RecyclerView.Adapter {
         });
     }
 
-    public void getArticlesDataFromFireStore() {
-        mNewArticleArrayList.clear();
-
-        mDb.collection(Constants.ARTICLES).orderBy(Constants.CREATE_TIME, Query.Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                NewArticle article = document.toObject(NewArticle.class);
-                                mNewArticleArrayList.add(article);
-                            }
-                            Log.d(Constants.TAG, "onComplete, ArticleArrayList = " + mNewArticleArrayList.size());
-                            mFragment.notifyAdapterDataSetChanged();
-                        }
-                    }
-                });
-    }
-
     private class LoadingNewsItemViewHolder extends RecyclerView.ViewHolder {
 
-        public LoadingNewsItemViewHolder(View itemView) {
+        LoadingNewsItemViewHolder(View itemView) {
             super(itemView);
         }
     }
@@ -167,7 +141,7 @@ public class ArticlesListAdapter extends RecyclerView.Adapter {
         TextView mTimeTextView;
         TextView mTitleTextView;
 
-        public ArticlesListViewHolder(View itemView) {
+        ArticlesListViewHolder(View itemView) {
             super(itemView);
             mConstraintLayout = itemView.findViewById(R.id.constraintLayout_articles_list);
             mAuthorPhotoCircleImageView = itemView.findViewById(R.id.circleImageView_articles_ist);

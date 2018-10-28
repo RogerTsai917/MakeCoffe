@@ -10,7 +10,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,7 +29,7 @@ import com.roger.makecoffee.writearticle.WriteArticleFragment;
 
 import java.util.ArrayList;
 
-public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter{
+public class WriteNewArticleDetailAdapter extends RecyclerView.Adapter {
     private WriteArticleFragment mFragment;
     private NewArticle mNewArticle;
     private HorizontalBarChart mBarChart;

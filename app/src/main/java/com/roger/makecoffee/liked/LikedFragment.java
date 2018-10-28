@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.roger.makecoffee.R;
 import com.roger.makecoffee.adapter.LikedArticlesAdapter;
 import com.roger.makecoffee.decoration.ArticlesListDecoration;
+import com.roger.makecoffee.objects.LikedArticlesData;
 
 
 public class LikedFragment extends Fragment {
@@ -20,7 +21,7 @@ public class LikedFragment extends Fragment {
     public static LikedArticlesAdapter mAdapter;
 
     public LikedFragment() {
-
+        //LikedArticlesData.getInstance();
     }
 
     public static LikedFragment newInstance() {

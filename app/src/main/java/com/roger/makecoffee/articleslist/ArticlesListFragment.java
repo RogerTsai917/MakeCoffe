@@ -17,23 +17,20 @@ import com.roger.makecoffee.decoration.ArticlesListDecoration;
 import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.objects.define.NewArticle;
 
+import java.util.ArrayList;
+
 public class ArticlesListFragment extends Fragment implements ArticlesListContract.View, View.OnClickListener {
-    private static ArticlesListFragment mArticlesListFragment;
-    private RecyclerView mRecyclerView;
     public static ArticlesListAdapter mAdapter;
-    private FloatingActionButton mFloatingActionButton;
     private SwipeRefreshLayout mRefreshLayout;
     private ArticlesListContract.Presenter mPresenter;
+    private ArrayList<NewArticle> mNewArticleArrayList;
 
     public ArticlesListFragment() {
-
+        mNewArticleArrayList = new ArrayList<>();
     }
 
     public static ArticlesListFragment newInstance() {
-        if (mArticlesListFragment == null) {
-            mArticlesListFragment = new ArticlesListFragment();
-        }
-        return mArticlesListFragment;
+        return new ArticlesListFragment();
     }
 
     @Nullable
@@ -41,21 +38,23 @@ public class ArticlesListFragment extends Fragment implements ArticlesListContra
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_articles_list, container, false);
 
-        mRefreshLayout = view.findViewById(R.id.SwipeRefreshLayout_articles_list);
-        mFloatingActionButton = view.findViewById(R.id.floatingActionButton_write_article);
-        mFloatingActionButton.setOnClickListener(this);
+        mPresenter = new ArticlesListPresenter(this);
 
-        mRecyclerView = view.findViewById(R.id.recyclerView_articles_list);
+        mRefreshLayout = view.findViewById(R.id.SwipeRefreshLayout_articles_list);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton_write_article);
+        floatingActionButton.setOnClickListener(this);
+
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_articles_list);
 
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
 
-        mAdapter = new ArticlesListAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);
+        mAdapter = new ArticlesListAdapter(this, mPresenter, mNewArticleArrayList);
+        recyclerView.setAdapter(mAdapter);
 
-        mRecyclerView.addItemDecoration(new ArticlesListDecoration(
+        recyclerView.addItemDecoration(new ArticlesListDecoration(
                 getResources().getDimensionPixelSize(R.dimen.items_space)));
 
         return view;
@@ -64,8 +63,6 @@ public class ArticlesListFragment extends Fragment implements ArticlesListContra
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mPresenter = new ArticlesListPresenter(this);
 
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -87,13 +84,15 @@ public class ArticlesListFragment extends Fragment implements ArticlesListContra
         }
     }
 
+    @Override
     public void notifyAdapterDataSetChanged() {
         mRefreshLayout.setRefreshing(false);
         mAdapter.notifyDataSetChanged();
     }
 
     public void getNewArticlesList() {
-        mAdapter.getArticlesDataFromFireStore();
+        mPresenter.getArticlesDataFromFireStore(mNewArticleArrayList);
+        //mAdapter.getArticlesDataFromFireStore();
     }
 
     public void transToArticleDetail(NewArticle newArticle) {
