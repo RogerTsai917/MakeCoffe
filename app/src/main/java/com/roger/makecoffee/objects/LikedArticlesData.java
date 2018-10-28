@@ -145,7 +145,7 @@ public class LikedArticlesData {
         return mArticlesList.size();
     }
 
-    public void notifyAdapterDataSetChanged() {
+    private void notifyAdapterDataSetChanged() {
         if (ArticlesListFragment.mAdapter != null) {
             ArticlesListFragment.mAdapter.notifyDataSetChanged();
         }

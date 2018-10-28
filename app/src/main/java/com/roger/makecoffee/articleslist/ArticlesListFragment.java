@@ -92,7 +92,6 @@ public class ArticlesListFragment extends Fragment implements ArticlesListContra
 
     public void getNewArticlesList() {
         mPresenter.getArticlesDataFromFireStore(mNewArticleArrayList);
-        //mAdapter.getArticlesDataFromFireStore();
     }
 
     public void transToArticleDetail(NewArticle newArticle) {
