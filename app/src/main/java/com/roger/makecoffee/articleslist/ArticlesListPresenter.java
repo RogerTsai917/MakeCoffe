@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -18,6 +19,7 @@ import java.util.Objects;
 public class ArticlesListPresenter implements ArticlesListContract.Presenter {
     private ArticlesListContract.View mView;
     private FirebaseFirestore mDb = FirebaseFirestore.getInstance();
+    private boolean isLoading = false;
 
 
     ArticlesListPresenter(ArticlesListContract.View view) {
@@ -33,6 +35,7 @@ public class ArticlesListPresenter implements ArticlesListContract.Presenter {
 
     @Override
     public void getArticlesDataFromFireStore(final ArrayList<NewArticle> articleArrayList) {
+        isLoading = true;
         articleArrayList.clear();
 
         mDb.collection(Constants.ARTICLES).orderBy(Constants.CREATE_TIME, Query.Direction.DESCENDING)
@@ -47,8 +50,22 @@ public class ArticlesListPresenter implements ArticlesListContract.Presenter {
                             }
                             Log.d(Constants.TAG, "onComplete, ArticleArrayList = " + articleArrayList.size());
                             mView.notifyAdapterDataSetChanged();
+                            isLoading = false;
+                        } else {
+                            isLoading = false;
                         }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        isLoading = false;
                     }
                 });
     }
+
+    @Override
+    public boolean isLoading() {
+        return isLoading;
+    }
+
 }

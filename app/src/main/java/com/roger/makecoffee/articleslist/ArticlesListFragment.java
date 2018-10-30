@@ -67,7 +67,9 @@ public class ArticlesListFragment extends Fragment implements ArticlesListContra
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getNewArticlesList();
+                if (!mPresenter.isLoading()) {
+                    getNewArticlesList();
+                }
             }
         });
 

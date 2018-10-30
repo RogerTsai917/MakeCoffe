@@ -14,6 +14,8 @@ public interface ArticlesListContract {
 
     interface Presenter extends BasePresenter {
         void getArticlesDataFromFireStore(ArrayList<NewArticle> articleArrayList);
+
+        boolean isLoading();
     }
 
 }
