@@ -29,7 +29,7 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
     private WriteArticleContract.View mView;
     private FirebaseFirestore mDb;
 
-    WriteArticlePresenter(WriteArticleContract.View view) {
+    public WriteArticlePresenter(WriteArticleContract.View view) {
         mView = view;
         mView.setPresenter(this);
 
@@ -50,7 +50,7 @@ public class WriteArticlePresenter implements WriteArticleContract.Presenter {
 
     }
 
-    private boolean isArticleContentLegal(NewArticle article) {
+    public boolean isArticleContentLegal(NewArticle article) {
 
         if (article.getTitle().equals("")) {
             mView.showToast(MakeCoffee.getAppContext().getResources()
