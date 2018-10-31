@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#b77e46</color>
     <color name="colorPrimaryDark">#b77e46</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#FFFFFF</color>
 
     <color name="brown_A2_origin">#A27751</color>
     <color name="brown_B7">#b77e46</color>

@@ -3,7 +3,16 @@ package com.roger.makecoffee.loginactivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
@@ -19,6 +28,8 @@ import io.fabric.sdk.android.Fabric;
 public class LoginActivity extends BaseActivity implements LoginContract.View, View.OnClickListener {
     private LoginContract.Presenter mPresenter;
     private SignInButton mSignInButton;
+    private TextView mPrivacyPolicyTextView;
+    private Spanned mSpanned;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +56,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
         mSignInButton = findViewById(R.id.sign_in_button);
         mSignInButton.setOnClickListener(this);
+
+        mPrivacyPolicyTextView = findViewById(R.id.textView_login_privacy_policy);
+        mSpanned = Html.fromHtml(getString(R.string.login_privacy_policy_html));
+        mPrivacyPolicyTextView.setText(mSpanned);
+        mPrivacyPolicyTextView.setMovementMethod(LinkMovementMethod.getInstance());
+
     }
 
     @Override

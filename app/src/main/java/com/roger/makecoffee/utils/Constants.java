@@ -6,6 +6,8 @@ public class Constants {
     public static final String NEWS_URL =
             "https://newsapi.org/v2/everything?q=coffee&apiKey=af49a2f28f1f4e78b1267bb01efadaa3";
 
+    public static final String PRIVACY_POLICY_URL = "https://rogertsai917.wixsite.com/makecoffee";
+
     public static final int GET_IMAGE_FROM_ALBUM = 0x21;
 
     // News page view type

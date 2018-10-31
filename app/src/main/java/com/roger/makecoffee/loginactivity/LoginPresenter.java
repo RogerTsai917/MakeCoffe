@@ -8,6 +8,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.roger.makecoffee.MakeCoffee;
+import com.roger.makecoffee.R;
 import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.user.UserManager;
 
@@ -39,7 +41,7 @@ public class LoginPresenter implements LoginContract.Presenter {
             // Google Sign In failed.
             Log.w(TAG, "Google sign in failed", e);
             mView.showSignInButton();
-            mView.showToast("Google sign in failed");
+            mView.showToast(MakeCoffee.getAppContext().getString(R.string.google_login_failed));
         }
     }
 

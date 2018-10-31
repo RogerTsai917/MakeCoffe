@@ -9,6 +9,7 @@
     <string name="articles">Articles</string>
     <string name="liked">Liked</string>
     <string name="profile">Profile</string>
+    <string name="privacy_policy">Privacy Policy</string>
     <string name="following">Following</string>
 
     <string name="completed">Completed!</string>
@@ -19,6 +20,7 @@
     <string name="restart">Restart</string>
     <string name="continue_text">Continue</string>
     <string name="google_login">Login with Google</string>
+    <string name="google_login_failed">Google Login Failed</string>
     <string name="logout">Log Out</string>
 
     <string name="write_article_title">Title: </string>
@@ -75,5 +77,11 @@
 
     <string name="liked_article_is_empty">您收藏的文章會顯示在這裡。</string>
     <string name="history_article_is_empty">您發布過的文章會顯示在這裡。</string>
+
+    <string name="login_privacy_policy_html">
+        <![CDATA[
+        <font color="#ffffff">在您登入時，即同意我們的<a href="https://rogertsai917.wixsite.com/makecoffee">隱私權政策</a><br></font>
+        ]]>
+    </string>
 
 </resources>

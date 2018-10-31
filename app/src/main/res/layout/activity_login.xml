@@ -41,12 +41,27 @@
         android:id="@+id/sign_in_button"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="112dp"
         android:layout_marginEnd="48dp"
         android:layout_marginStart="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_login_privacy_policy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button"
+        tools:text="在您登入時，即同意我們的隱私權政策" />
 
 </android.support.constraint.ConstraintLayout>

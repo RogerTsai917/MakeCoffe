@@ -22,6 +22,7 @@ import com.roger.makecoffee.objects.define.CoffeeKnowledgeCollection;
 import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.user.UserManager;
+import com.roger.makecoffee.utils.Constants;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -96,6 +97,9 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
 
         Button profileButton = findViewById(R.id.button_drawable_profile);
         profileButton.setOnClickListener(mOnClickListener);
+
+        Button privacyPolicyButton = findViewById(R.id.button_drawable_privacy_policy);
+        privacyPolicyButton.setOnClickListener(mOnClickListener);
     }
 
     private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationViewEx.OnNavigationItemSelectedListener() {
@@ -149,8 +153,11 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
                 case R.id.button_drawable_profile:
                     transToProfile();
                     setAllNavigationButtonUnChecked();
-                    onBackPressed();
+                    closeDrawer();
                     break;
+                case R.id.button_drawable_privacy_policy:
+                    mPresenter.openWebView(Constants.PRIVACY_POLICY_URL);
+                    closeDrawer();
 
                 default:
             }
@@ -160,6 +167,12 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     private void setAllNavigationButtonUnChecked() {
         for (int i = 0; i < mBottomNavigation.getMenu().size(); i++) {
             mBottomNavigation.getMenu().getItem(i).setCheckable(false);
+        }
+    }
+
+    private void closeDrawer() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
         }
     }
 
