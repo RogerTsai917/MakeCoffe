@@ -17,6 +17,7 @@ import com.roger.makecoffee.objects.define.MakeCoffeeTeaching;
 import com.roger.makecoffee.objects.define.NewArticle;
 import com.roger.makecoffee.profile.ProfileFragment;
 import com.roger.makecoffee.user.UserManager;
+import com.roger.makecoffee.webview.WebViewFragment;
 import com.roger.makecoffee.writearticle.WriteArticleFragment;
 
 public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
@@ -30,6 +31,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     private static final String KNOWLEDGE_DETAIL = "KNOWLEDGE_DETAIL";
     private static final String WRITE_ARTICLE = "WRITE_ARTICLE";
     private static final String ARTICLE_DETAIL = "ARTICLE_DETAIL";
+    private static final String WEB_VIEW = "WEB_VIEW";
 
     private MakeCoffeeContract.View mMakeCoffeeView;
     private FragmentManager mFragmentManager;
@@ -214,6 +216,17 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
     }
 
     @Override
+    public void openWebView(String url) {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+
+        hideFragment(transaction);
+
+        WebViewFragment webViewFragment = WebViewFragment.newInstance(url);
+        transaction.add(R.id.frameLayout_make_coffee_container, webViewFragment, WEB_VIEW);
+        transaction.commit();
+    }
+
+    @Override
     public void start() {
         transToMakeCoffee();
     }
@@ -233,6 +246,7 @@ public class MakeCoffeePresenter implements MakeCoffeeContract.Presenter {
         if (mFragmentManager.findFragmentByTag(MAKE_COFFEE_DETAIL) != null) mFragmentManager.popBackStack();
         if (mFragmentManager.findFragmentByTag(WRITE_ARTICLE) != null) mFragmentManager.popBackStack();
         if (mFragmentManager.findFragmentByTag(ARTICLE_DETAIL) != null) mFragmentManager.popBackStack();
+        if (mFragmentManager.findFragmentByTag(WEB_VIEW) != null) mFragmentManager.popBackStack();
     }
 
     private void hideFragment(FragmentTransaction transaction) {

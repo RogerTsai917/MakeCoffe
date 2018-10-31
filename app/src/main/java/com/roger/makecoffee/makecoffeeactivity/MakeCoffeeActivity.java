@@ -234,6 +234,11 @@ public class MakeCoffeeActivity extends BaseActivity implements MakeCoffeeContra
     }
 
     @Override
+    public void openWebView(String url) {
+        mPresenter.openWebView(url);
+    }
+
+    @Override
     public void showToolbarAndNavBottom() {
         mToolbar.setVisibility(View.VISIBLE);
         mToolbarIcon.setVisibility(View.VISIBLE);

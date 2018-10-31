@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.roger.makecoffee.api.GetNewsTask;
 import com.roger.makecoffee.api.callbacks.GetNewsCallBack;
+import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 
 public class NewsPresenter implements NewsContract.Presenter {
     private static final String TAG = "NewsPresenter";
@@ -23,17 +24,22 @@ public class NewsPresenter implements NewsContract.Presenter {
                 @Override
                 public void onCompleted() {
                     setLoading(false);
-                    Log.d(TAG, "onCompleted");
+                    Log.d(TAG, "Load News onCompleted");
                     mNewsView.showNews();
                 }
 
                 @Override
                 public void onError() {
                     setLoading(false);
-                    Log.d(TAG, "onError");
+                    Log.d(TAG, "Load News onError");
                 }
             }).execute();
         }
+    }
+
+    @Override
+    public void openWebView(String url) {
+        ((MakeCoffeeActivity)mNewsView.getMakeCoffeeActivity()).openWebView(url);
     }
 
     @Override

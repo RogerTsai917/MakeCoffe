@@ -33,6 +33,8 @@ public interface MakeCoffeeContract {
 
         void transToArticleDetail(NewArticle newArticle);
 
+        void openWebView(String url);
+
         void showToolbarAndNavBottom();
 
         void hideToolbarAndNavBottom();
@@ -61,6 +63,8 @@ public interface MakeCoffeeContract {
         void transToWriteArticle();
 
         void transToArticleDetail(NewArticle newArticle);
+
+        void openWebView(String url);
 
         void setToolbarTitle(String title);
 

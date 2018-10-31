@@ -1,5 +1,6 @@
 package com.roger.makecoffee.news;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -28,6 +29,7 @@ public class NewsFragment extends Fragment implements NewsContract.View {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
+        mPresenter = new NewsPresenter(this);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView_news);
 
@@ -38,7 +40,7 @@ public class NewsFragment extends Fragment implements NewsContract.View {
 
         recyclerView.setHasFixedSize(true);
 
-        mNewsAdapter = new NewsAdapter(this);
+        mNewsAdapter = new NewsAdapter(this, mPresenter);
 
         recyclerView.setAdapter(mNewsAdapter);
 
@@ -49,7 +51,6 @@ public class NewsFragment extends Fragment implements NewsContract.View {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mPresenter = new NewsPresenter(this);
         mPresenter.start();
     }
 
@@ -59,8 +60,8 @@ public class NewsFragment extends Fragment implements NewsContract.View {
     }
 
     @Override
-    public void showNewsDetail() {
-
+    public Activity getMakeCoffeeActivity() {
+        return getActivity();
     }
 
     @Override

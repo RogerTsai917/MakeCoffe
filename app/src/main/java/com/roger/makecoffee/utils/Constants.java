@@ -6,14 +6,6 @@ public class Constants {
     public static final String NEWS_URL =
             "https://newsapi.org/v2/everything?q=coffee&apiKey=af49a2f28f1f4e78b1267bb01efadaa3";
 
-    // Activity
-    public static final int LOGIN_ACTIVITY = 0x01;
-    public static final int RE_LOGIN_ACTIVITY = 0x02;
-
-    // Status
-    public static final int LOGIN_SUCCESS = 0x11;
-    public static final int LOGIN_EXIT = 0x12;
-
     public static final int GET_IMAGE_FROM_ALBUM = 0x21;
 
     // News page view type
@@ -60,7 +52,6 @@ public class Constants {
     public static final String ARTICLES_PHOTOS = "articlesPhotos/";
 
     public static final String USERS = "users";
-    public static final String USER_INFO_USER_UID = "userUid";
 
     public static final String POSTED_ARTICLES = "postedArticles";
     public static final String LIKED_ARTICLES = "likedArticles";

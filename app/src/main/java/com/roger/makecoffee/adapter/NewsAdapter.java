@@ -1,6 +1,5 @@
 package com.roger.makecoffee.adapter;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -14,15 +13,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.roger.makecoffee.R;
+import com.roger.makecoffee.news.NewsContract;
+import com.roger.makecoffee.news.NewsFragment;
 import com.roger.makecoffee.objects.NewsData;
 import com.roger.makecoffee.objects.define.News;
 import com.roger.makecoffee.utils.Constants;
 
 public class NewsAdapter extends RecyclerView.Adapter {
-    private Fragment mFragment;
+    private NewsFragment mFragment;
+    private NewsContract.Presenter mPresenter;
 
-    public NewsAdapter(Fragment fragment) {
+    public NewsAdapter(NewsFragment fragment, NewsContract.Presenter presenter) {
         mFragment = fragment;
+        mPresenter = presenter;
     }
 
     @NonNull
@@ -79,7 +82,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
         holder.mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onWebView(news.getUrl());
+                mPresenter.openWebView(news.getUrl());
             }
         });
 
@@ -95,14 +98,9 @@ public class NewsAdapter extends RecyclerView.Adapter {
         holder.mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onWebView(news.getUrl());
+                mPresenter.openWebView(news.getUrl());
             }
         });
-    }
-
-    private void onWebView(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        mFragment.getActivity().startActivity(intent);
     }
 
     private class LoadingNewsItemViewHolder extends RecyclerView.ViewHolder {
