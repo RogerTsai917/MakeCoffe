@@ -138,7 +138,7 @@
     <Button
         android:id="@+id/button_coffee_flavor_confirm"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_background"
@@ -151,7 +151,7 @@
     <Button
         android:id="@+id/button_coffee_flavor_cancel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"

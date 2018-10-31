@@ -24,18 +24,17 @@
 
     <ImageView
         android:id="@+id/imageView_liked_articles_liked"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="@dimen/toolbar_icon_width"
+        android:layout_height="@dimen/toolbar_icon_height"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView_liked_articles_photo"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btn_like_selected" />
 
     <TextView
         android:id="@+id/textView_liked_articles_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:fontFamily="sans-serif-medium"
         android:maxLines="2"

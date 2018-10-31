@@ -73,4 +73,7 @@
     <string name="click_to_edit">點擊編輯</string>
     <string name="click_to_upload_photo">上傳照片</string>
 
+    <string name="liked_article_is_empty">您收藏的文章會顯示在這裡。</string>
+    <string name="history_article_is_empty">您發布過的文章會顯示在這裡。</string>
+
 </resources>

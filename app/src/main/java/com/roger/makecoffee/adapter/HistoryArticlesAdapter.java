@@ -35,7 +35,7 @@ public class HistoryArticlesAdapter extends RecyclerView.Adapter {
         View view;
         if (viewType == Constants.VIEW_TYPE_ARTICLES_LOADING) {
             view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_news_loading, parent, false);
+                    .inflate(R.layout.item_history_no_article, parent, false);
             return new LoadingNewsItemViewHolder(view);
         } else {
             view = LayoutInflater.from(parent.getContext())

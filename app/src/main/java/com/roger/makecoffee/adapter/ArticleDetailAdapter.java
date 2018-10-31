@@ -86,7 +86,7 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private void bindTitleViewHolder(TitleViewHolder holder) {
+    private void bindTitleViewHolder(final TitleViewHolder holder) {
         Glide.with(mFragment.getActivity())
                 .load(mArticle.getImageUrl())
                 .into(holder.mArticleImageView);
@@ -106,6 +106,19 @@ public class ArticleDetailAdapter extends RecyclerView.Adapter {
         } else {
             holder.mLikedImageView.setImageResource(R.drawable.btn_like_normal);
         }
+
+        holder.mLikedImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (LikedArticlesData.getInstance().isLikedArticle(mArticle.getArticleUid())) {
+                    LikedArticlesData.getInstance().removeLikedArticle(mArticle.getArticleUid());
+                    holder.mLikedImageView.setImageResource(R.drawable.btn_like_normal);
+                } else {
+                    LikedArticlesData.getInstance().addLikedArticle(mArticle.getArticleUid());
+                    holder.mLikedImageView.setImageResource(R.drawable.btn_like_selected);
+                }
+            }
+        });
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String stringDate = simpleDateFormat.format(mArticle.getCreatedTime());

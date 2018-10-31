@@ -16,6 +16,7 @@ import com.roger.makecoffee.liked.LikedFragment;
 import com.roger.makecoffee.makecoffeeactivity.MakeCoffeeActivity;
 import com.roger.makecoffee.objects.LikedArticlesData;
 import com.roger.makecoffee.objects.define.NewArticle;
+import com.roger.makecoffee.utils.Constants;
 
 import java.text.SimpleDateFormat;
 
@@ -31,14 +32,23 @@ public class LikedArticlesAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_liked_articles, parent, false);
-        return new LikedArticlesViewHolder(view);
+        View view;
+        if (viewType == Constants.VIEW_TYPE_ARTICLES_LOADING) {
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_liked_no_article, parent, false);
+            return new LoadingNewsItemViewHolder(view);
+        } else {
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_liked_articles, parent, false);
+            return new LikedArticlesViewHolder(view);
+        }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        bindLikedArticlesViewHolder((LikedArticlesViewHolder) holder, position);
+        if (holder instanceof LikedArticlesViewHolder) {
+            bindLikedArticlesViewHolder((LikedArticlesViewHolder) holder, position);
+        }
     }
 
     private void bindLikedArticlesViewHolder(LikedArticlesViewHolder holder, int position) {
@@ -73,7 +83,17 @@ public class LikedArticlesAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return LikedArticlesData.getInstance().getLikedArticlesListSize();
+        return LikedArticlesData.getInstance().getLikedArticlesListSize() == 0
+                ? 1 : LikedArticlesData.getInstance().getLikedArticlesListSize();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (LikedArticlesData.getInstance().getLikedArticlesListSize() == 0) {
+            return Constants.VIEW_TYPE_ARTICLES_LOADING;
+        } else {
+            return Constants.VIEW_TYPE_ARTICLES_LIST;
+        }
     }
 
     private class LikedArticlesViewHolder extends RecyclerView.ViewHolder {
@@ -94,6 +114,13 @@ public class LikedArticlesAdapter extends RecyclerView.Adapter {
             mTimeTextView = itemView.findViewById(R.id.textView_liked_articles_time);
 
             mPhotoImageView.setClipToOutline(true);
+        }
+    }
+
+    private class LoadingNewsItemViewHolder extends RecyclerView.ViewHolder {
+
+        LoadingNewsItemViewHolder(View itemView) {
+            super(itemView);
         }
     }
 }

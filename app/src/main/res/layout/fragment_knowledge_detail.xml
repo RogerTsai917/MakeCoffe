@@ -18,8 +18,7 @@
         android:id="@+id/imageView_knowledge_detail_back"
         android:layout_width="@dimen/toolbar_icon_width"
         android:layout_height="@dimen/toolbar_icon_height"
-        android:layout_marginBottom="12dp"
-        android:layout_marginStart="16dp"
+        android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar_knowledge_detail"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/back" />
@@ -29,7 +28,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:textColor="#EEEEEE"
         android:textSize="20sp"
