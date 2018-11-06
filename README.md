@@ -54,7 +54,7 @@ Make Coffee 是一款咖啡新手或老手都適用的咖啡 App <br />
 
 # Requirement
 * Android 6.0+ (API level 23+)
-* gradle 3.1.3+
+* Gradle 3.1.3+
 
 # Contact
 Roger Tsai
