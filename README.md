@@ -1,7 +1,7 @@
 # Make Coffee
 
-Make Coffee是一款咖啡新手或老手都適用的咖啡 App
-透過 Make Coffee，可以從零開始跟著教學一步步完成一杯咖啡
+Make Coffee 是一款咖啡新手或老手都適用的咖啡 App <br />
+透過 Make Coffee，可以從零開始跟著教學一步步完成一杯咖啡 <br />
 可以了解咖啡的知識、新聞，也能記下咖啡的紀錄並分享。
 
 
@@ -10,7 +10,7 @@ Make Coffee是一款咖啡新手或老手都適用的咖啡 App
 # Feature
 - 深入了解咖啡知識，從原豆到完成一杯咖啡
   - 使用 Google+ 註冊與登入
-  - 點擊 Make Coffee裡的咖啡，可以開啟泡咖啡的教學
+  - 點擊 Make Coffee 裡的咖啡，可以開啟泡咖啡的教學
   - 在教學步驟裡附上計時器，讓使用者及時使用
   - 詳細的咖啡知識，從零開始也能輕鬆上手
   - 除了咖啡豆、工具、工具介紹，還有世界各國單品咖啡
@@ -33,7 +33,7 @@ Make Coffee是一款咖啡新手或老手都適用的咖啡 App
 # Implemented
   
   * Design Patterns
-    * Object-oriented programming (OOP)
+    * Object-Oriented Programming (OOP)
     * Model-View-Presenter (MVP)
     * Singleton 
 
@@ -54,6 +54,7 @@ Make Coffee是一款咖啡新手或老手都適用的咖啡 App
 
 # Requirement
 * Android 6.0+ (API level 23+)
+* gradle 3.1.3+
 
 # Contact
 Roger Tsai
